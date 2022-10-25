@@ -1,3 +1,4 @@
+<!-- https://www.drawkit.com/ -->
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,7 +21,8 @@ body, html {
 .bgimg-1 {
   background-position: center;
   background-size: cover;
-  background-image: url("https://www.w3schools.com/w3images/mac.jpg");
+  background-image: url("https://www.w3schools.com/w3images/mac.jpg"); 
+
   min-height: 100%;
 }
 
@@ -34,7 +36,39 @@ body, html {
 <!-- Navbar (sit on top) -->
 <div class="w3-top">
   <div class="w3-bar w3-white w3-card" id="myNavbar">
-    <a href="#home" class="w3-bar-item w3-button w3-wide">TathastuClasses</a>
+    <a href="#home" class="w3-bar-item  w3-button w3-wide">TathastuClasses</a>
+    
+
+    <!-- centre Book a class float -->
+    <style type="text/css">
+     @keyframes color {
+  0%   { background: #33CCCC; box-shadow: 0px 0px 5px 10px #33CCCC;}
+  20%  { background: #33CC36; box-shadow: 0px 0px 2px 19px #FCCA00;}
+  40%  { background: #B8CC33; box-shadow: 0px 0px 7px 14px #23F2D7;}
+  60%  { background: #FCCA00; box-shadow: 0px 0px 3px 19px #FCCA00;}
+  80%  { background: #33CC36; box-shadow: 0px 0px 9px 11px #23F2D7;}
+  100% { background: #33CCCC; box-shadow: 0px 0px 4px 16px #FCCA00;}
+}
+
+.bg{
+  background: #33CCCC; /* Fallback */
+  animation: color 9s infinite linear;
+  text-align: center;
+  padding: 2em;
+}
+    </style>
+    <div class="w3-button bg" style="padding:0 !important; margin-left: 20%!important;  border-radius: 20px;">
+    <div class=" w3-bar-item w3-wide " style="padding:0 !important;"><script src="https://cdn.lordicon.com/qjzruarw.js"></script>
+    <lord-icon
+    src="https://cdn.lordicon.com/imamsnbq.json"
+    trigger="loop"
+    style="width:50px;height:50px">
+    </lord-icon></div> 
+    <div class=" w3-bar-item w3-wide">Book a class now!!</div>
+    </div>
+
+
+
     <!-- Right-sided navbar links -->
     <div class="w3-right w3-hide-small">
       <a href="#about" class="w3-bar-item w3-button">Our Story</a>
@@ -62,10 +96,16 @@ body, html {
 </nav>
 
 <!-- Header with full-height image -->
+<!-- particles.js lib - https://github.com/VincentGarreau/particles.js --> 
+<script src="http://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script> 
+<!-- stats.js lib --> <script src="http://threejs.org/examples/js/libs/stats.min.js"></script>
+
 <header class="bgimg-1 w3-display-container w3-grayscale-min" id="home">
   <div class="w3-display-left w3-text-white" style="padding:48px">
+    <span id="test" class="w3-xxxlarge w3-hide-small"> </span><br>
     <span class="w3-jumbo w3-hide-small">Start one chapter, and become the best...</span><br>
-    <span class="w3-xxlarge w3-hide-large w3-hide-medium">Start a chapter & become the best...</span><br>
+    <span id="test2" class="w3-xxlarge w3-hide-large w3-hide-medium"><!-- deleted the data, this is the tag that will be written by function--></span><br>
+    <span class="w3-large w3-hide-large w3-hide-medium">Start a chapter & become the best...</span><br>
     <span class="w3-large">Trust me, I will be your best Friend in this Journey!! </span>
     <p><a href="#about" class="w3-button w3-white w3-padding-large w3-large w3-margin-top w3-opacity w3-hover-opacity-off" style="border-radius:35px 30px 50px 70px;">Click Here, Welcome to the Room</a></p>
   </div>
@@ -90,23 +130,23 @@ body, html {
   <p class="w3-center w3-large">Some Features Of Our Teaching Style</p>
   <div class="w3-row-padding w3-center" style="margin-top:64px">
     <div class="w3-quarter">
-      <i class="fa fa-desktop w3-margin-bottom w3-jumbo w3-center"></i>
+      <img src="./moneySave.gif" width="40%">
       <p class="w3-large">Low Cost, For All</p>
       <!--<p>110 characters, one line 2 sentences mostly, no ENTER</p>-->
       <p>The Lowest cost to be paid for the highest Quality of education!
     </div>
     <div class="w3-quarter">
-      <i class="fa fa-heart w3-margin-bottom w3-jumbo"></i>
+      <img src="./pets.gif" width="40%">
       <p class="w3-large">Tablet included</p>
       <p>Only have a mobile, or the laptop does not work? No Problem!! We give you a Tablet at NO EXTRA COST!!</p>
     </div>
     <div class="w3-quarter">
-      <i class="fa fa-diamond w3-margin-bottom w3-jumbo"></i>
+      <img src="./babay.gif" width="40%">
       <p class="w3-large">Clarity & Simplicity</p>
       <p>The lessons are simple, taught by real teachers giving 100% result back to back...</p>
     </div>
     <div class="w3-quarter">
-      <i class="fa fa-cog w3-margin-bottom w3-jumbo"></i>
+      <img src="./easyConcept.gif" width="40%">
       <p class="w3-large">True Knowledge</p>
       <p>Knowledge is important, but Understanding a concept is a step by step process. We help you with it.</p>
     </div>
@@ -129,6 +169,616 @@ body, html {
   </div>
 </div>
 
+
+<!--cardsWeOffer-->
+
+<section class="info">
+  <style type="text/css">
+    @import url('https://fonts.googleapis.com/css?family=Heebo:400,700|Open+Sans:400,700');
+
+:root {
+  --color: #3c3163;
+  --transition-time: 0.5s;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: 'Open Sans';
+  background: #fafafa;
+}
+
+a {
+  color: inherit;
+}
+
+.cards-wrapper {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 4rem;
+  padding: 4rem;
+  margin: 0 auto;
+  width: max-content;
+}
+
+.card {
+  font-family: 'Heebo';
+  --bg-filter-opacity: 0.5;
+  background-image: linear-gradient(rgba(0,0,0,var(--bg-filter-opacity)),rgba(0,0,0,var(--bg-filter-opacity))), var(--bg-img);
+  height: 20em;
+  width: 15em;
+  font-size: 1.5em;
+  color: white;
+  border-radius: 1em;
+  padding: 1em;
+  /*margin: 2em;*/
+  display: flex;
+  align-items: flex-end;
+  background-size: cover;
+  background-position: center;
+  box-shadow: 0 0 5em -1em black;
+  transition: all, var(--transition-time);
+  position: relative;
+  overflow: hidden;
+  border: 10px solid #ccc;
+  text-decoration: none;
+}
+
+.card:hover {
+  transform: rotate(0);
+}
+
+.card h1 {
+  margin: 0;
+  font-size: 1.5em;
+  line-height: 1.2em;
+}
+
+.card p {
+  font-size: 0.75em;
+  font-family: 'Open Sans';
+  margin-top: 0.5em;
+  line-height: 2em;
+}
+
+.card .tags {
+  display: flex;
+}
+
+.card .tags .tag {
+  font-size: 0.75em;
+  background: rgba(255,255,255,0.5);
+  border-radius: 0.3rem;
+  padding: 0 0.5em;
+  margin-right: 0.5em;
+  line-height: 1.5em;
+  transition: all, var(--transition-time);
+}
+
+.card:hover .tags .tag {
+  background: var(--color);
+  color: white;
+}
+
+.card .date {
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-size: 0.75em;
+  padding: 1em;
+  line-height: 1em;
+  opacity: .8;
+}
+
+.card:before, .card:after {
+  content: '';
+  transform: scale(0);
+  transform-origin: top left;
+  border-radius: 50%;
+  position: absolute;
+  left: -50%;
+  top: -50%;
+  z-index: -5;
+  transition: all, var(--transition-time);
+  transition-timing-function: ease-in-out;
+}
+
+.card:before {
+  background: #ddd;
+  width: 250%;
+  height: 250%;
+}
+
+.card:after {
+  background: white;
+  width: 200%;
+  height: 200%;
+}
+
+.card:hover {
+  color: var(--color);
+}
+
+.card:hover:before, .card:hover:after {
+  transform: scale(1);
+}
+
+.card-grid-space .num {
+  font-size: 3em;
+  margin-bottom: 1.2rem;
+  margin-left: 1rem;
+}
+
+.info {
+  font-size: 1.2em;
+  display: flex;
+  padding: 1em 3em;
+  height: 3em;
+}
+
+.info img {
+  height: 3em;
+  margin-right: 0.5em;
+}
+
+.info h1 {
+  font-size: 1em;
+  font-weight: normal;
+}
+
+/* MEDIA QUERIES */
+@media screen and (max-width: 1285px) {
+  .cards-wrapper {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .cards-wrapper {
+    grid-template-columns: 1fr;
+  }
+  .info {
+    justify-content: center;
+  }
+  .card-grid-space .num {
+    /margin-left: 0;
+    /text-align: center;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .cards-wrapper {
+    padding: 4rem 2rem;
+  }
+  .card {
+    max-width: calc(100vw - 4rem);
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .info {
+    display: block;
+    text-align: center;
+  }
+  .info h1 {
+    margin: 0;
+  }
+}
+</style>
+ <!-- Essay Writing, Speech Writing, Presentation Writing, Assignment Writing -->
+</section>
+<div>  
+  <h2 class="w3-center">Develop yourselves in various areas of life...</h2>
+  <p class="w3-center w3-large">Take a look at some of our amazing offerings.</p>
+</div>
+<section class="cards-wrapper">
+  <div class="card-grid-space">
+    <div class="num">01</div>
+    <a class="card" href="https://codetheweb.blog/2017/10/06/html-syntax/" style="--bg-img: url(https://images.pexels.com/photos/35828/soap-bubble-colorful-ball-soapy-water.jpg)">
+      <div>
+        <h1>ENGLISH</h1>
+        <p>The basics of a subject are important. Lets learn everything from reading to writing to Grammer</p>
+        <div class="date">next batch 25 Oct 2022</div>
+        <div class="tags">
+          <div class="tag">English</div>
+        </div>
+      </div>
+    </a>
+  </div>
+  <div class="card-grid-space">
+    <div class="num">02</div>
+    <a class="card" href="https://codetheweb.blog/2017/10/09/basic-types-of-html-tags/" style="--bg-img: url('https://images.pexels.com/photos/63238/pexels-photo-63238.jpeg')">
+      <div>
+        <h1>SCIENCE</h1>
+        <p>Learn about Science from the best Teachers in the Region, Easily</p>
+        <div class="date">next batch 25 Oct 2022</div>
+        <div class="tags">
+          <div class="tag">Science</div>
+        </div>
+      </div>
+    </a>
+  </div>
+  <div class="card-grid-space">
+    <div class="num">03</div>
+    <a class="card" href="https://codetheweb.blog/2017/10/14/links-images-about-file-paths/" style="--bg-img: url('https://images.pexels.com/photos/262577/pexels-photo-262577.jpeg')">
+      <div>
+        <h1>Maths</h1>
+        <p>Numbers are not difficult, they're boring if the teacher is not smart. Not anymore!!</p>
+        <div class="date">next batch 25 Oct 2022</div>
+        <div class="tags">
+          <div class="tag">Maths</div>
+        </div>
+      </div>
+    </a>
+  </div>
+  <div class="card-grid-space">
+    <div class="num">04</div>
+    <a class="card" href="https://codetheweb.blog/2017/10/14/links-images-about-file-paths/" style="--bg-img: url('https://images.pexels.com/photos/269050/pexels-photo-269050.jpeg')">
+      <div>
+        <h1>COMPUTERS</h1>
+        <p>Computers are the fastest, Closes and Cheapest way to become better than everyone on Planet!!!</p>
+        <div class="date">next batch 25 Oct 2022</div>
+        <div class="tags">
+          <div class="tag">Computer</div>
+        </div>
+      </div>
+    </a>
+  </div>
+  <div class="card-grid-space">
+    <div class="num">05</div>
+    <a class="card" href="https://codetheweb.blog/2017/10/14/links-images-about-file-paths/" style="--bg-img: url('https://images.pexels.com/photos/261577/pexels-photo-261577.jpeg')">
+      <div>
+        <h1>SOCIAL SCIENCE</h1>
+        <p>Call it Planet, World or the Globe, Either way you have to study it!!</p>
+        <div class="date">next batch 25 Oct 2022</div>
+        <div class="tags">
+          <div class="tag">Social Science</div>
+        </div>
+      </div>
+    </a>
+  </div>
+  <div class="card-grid-space">
+    <div class="num">06</div>
+    <a class="card" href="https://codetheweb.blog/2017/10/14/links-images-about-file-paths/" style="--bg-img: url('https://images.pexels.com/photos/261497/pexels-photo-261497.jpeg')">
+      <div>
+        <h1>Assignment Writing</h1>
+        <p>Your Assignment, Our Effort. Use this time for yourselves</p>
+        <div class="date">Get yours now</div>
+        <div class="tags">
+          <div class="tag">Assignment</div>
+        </div>
+      </div>
+    </a>
+  </div>
+    <div class="card-grid-space">
+    <div class="num">07</div>
+    <a class="card" href="https://codetheweb.blog/2017/10/14/links-images-about-file-paths/" style="--bg-img: url('https://images.pexels.com/photos/261327/pexels-photo-261327.jpeg')">
+      <div>
+        <h1>Essay Writing</h1>
+        <p>Longs Paragraphs, Endless Research. We'll do it for you!</p>
+        <div class="date">Request Writing Anytime</div>
+        <div class="tags">
+          <div class="tag">Essay</div>
+        </div>
+      </div>
+    </a>
+  </div>
+      <div class="card-grid-space">
+    <div class="num">08</div>
+    <a class="card" href="https://codetheweb.blog/2017/10/14/links-images-about-file-paths/" style="--bg-img: url('https://images.pexels.com/photos/261377/pexels-photo-261377.jpeg')">
+      <div>
+        <h1>Presentation Writing</h1>
+        <p>Presenting something is different from making a BORING Presentation, or sometimes You are just tired!</p>
+        <div class="date">Request Presentation Anytime</div>
+        <div class="tags">
+          <div class="tag">Presentation</div>
+        </div>
+      </div>
+    </a>
+  </div>
+      <div class="card-grid-space">
+    <div class="num">09</div>
+    <a class="card" href="https://codetheweb.blog/2017/10/14/links-images-about-file-paths/" style="--bg-img: url('https://images.pexels.com/photos/261477/pexels-photo-261477.jpeg')">
+      <div>
+        <h1>Speech Writing</h1>
+        <p>Not everybody is a writer and Speaker together, Some people are Just EXCEPTIONAL..."Speakers"</p>
+        <div class="date">Get your historic Speech Written</div>
+        <div class="tags">
+          <div class="tag">Speech</div>
+        </div>
+      </div>
+    </a>
+  </div>
+
+</section>
+
+
+
+<!-- Experimental Cards-->
+<style type="text/css">
+  body {
+  font-family: "Trebuchet MS", sans-serif;
+  font-size: 15.5px;
+}
+* {
+  box-sizing: border-box;
+}
+.container {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 200px));
+  grid-auto-rows: 200px;
+  grid-auto-flow: row dense;
+  grid-gap: 23px;
+  justify-content: center;
+}
+.card-top, .card-right, .card-bottom, .card-left {
+  display: flex;
+  flex-wrap: nowrap;
+  height: 100%;
+  width: 100%;
+  border-radius: 95.2380952381px;
+  box-shadow: 0px 3px 9px 1px rgba(0, 10, 20, 0.2);
+}
+.card-top {
+  flex-direction: column;
+  grid-column: auto / span 1;
+  grid-row: auto / span 2;
+}
+.card-right {
+  flex-direction: row-reverse;
+  grid-column: auto / span 2;
+  grid-row: auto / span 1;
+}
+.card-bottom {
+  flex-direction: column-reverse;
+  grid-column: auto / span 1;
+  grid-row: auto / span 2;
+}
+.card-left {
+  flex-direction: row;
+  grid-column: auto / span 2;
+  grid-row: auto / span 1;
+}
+.card-image {
+  display: flex;
+}
+.card-top .card-image, .card-bottom .card-image {
+  height: 50%;
+  width: 100%;
+}
+.card-left .card-image, .card-right .card-image {
+  height: 100%;
+  width: 50%;
+}
+.card-image img {
+  width: 100%;
+  object-fit: cover;
+}
+.card-top img {
+  border-radius: 95.2380952381px 95.2380952381px 0 0;
+}
+.card-right img {
+  border-radius: 0 95.2380952381px 95.2380952381px 0;
+}
+.card-bottom img {
+  border-radius: 0 0 95.2380952381px 95.2380952381px;
+}
+.card-left img {
+  border-radius: 95.2380952381px 0 0 95.2380952381px;
+}
+.card-text {
+  align-self: center;
+  padding: 23px;
+}
+.card-top .card-text {
+  height: auto;
+  width: auto;
+  padding-bottom: 36.8px;
+}
+.card-right .card-text {
+  height: auto;
+  width: 50%;
+  padding-left: 36.8px;
+}
+.card-bottom .card-text {
+  height: auto;
+  width: auto;
+  padding-top: 36.8px;
+}
+.card-left .card-text {
+  height: auto;
+  width: 50%;
+  padding-right: 36.8px;
+}
+.card-text p {
+  margin: 0;
+  line-height: 1.35em;
+  color: #334455;
+}
+@media (max-width: 500px) {
+  .card-top {
+    flex-direction: row;
+    grid-column: auto / span 2;
+    grid-row: auto / span 1;
+  }
+  .card-bottom {
+    flex-direction: row-reverse;
+    grid-column: auto / span 2;
+    grid-row: auto / span 1;
+  }
+  .card-top .card-image, .card-bottom .card-image {
+    height: 100%;
+    width: 50%;
+  }
+  .card-top img {
+    border-radius: 95.2380952381px 0 0 95.2380952381px;
+  }
+  .card-bottom img {
+    border-radius: 0 95.2380952381px 95.2380952381px 0;
+  }
+  .card-top .card-text {
+    height: auto;
+    width: 50%;
+    padding-right: 36.8px;
+  }
+  .card-bottom .card-text {
+    height: auto;
+    width: 50%;
+    padding-left: 36.8px;
+  }
+}
+@media (max-width: 400px) {
+  .card-image {
+    width: 38% !important;
+  }
+  .card-text {
+    width: 62% !important;
+  }
+}
+
+</style>
+<!--https://codepen.io/abcretrograde/pen/oddaaa -->
+
+<div class="container">
+  <div class="card-left">
+    <div class="card-image">
+      <img src="https://images.pexels.com/photos/701855/pexels-photo-701855.jpeg"  ></img>
+    </div>
+    <div class="card-text">
+      <p>Student 1</p>
+    </div>
+  </div>
+  <div class="card-top">
+    <div class="card-image">
+      <img src="https://images.pexels.com/photos/701855/pexels-photo-701855.jpeg"  ></img>
+    </div>
+    <div class="card-text">
+      <p>Student 2</p>
+    </div>
+  </div>
+  <div class="card-right">
+    <div class="card-image">
+      <img src="https://images.pexels.com/photos/701855/pexels-photo-701855.jpeg"  ></img>
+    </div>
+    <div class="card-text">
+      <p>Student 3</p>
+    </div>
+  </div>
+  <div class="card-right">
+    <div class="card-image">
+      <img src="https://images.pexels.com/photos/701855/pexels-photo-701855.jpeg"  ></img>
+    </div>
+    <div class="card-text">
+      <p>Student 4</p>
+    </div>
+  </div>
+  <div class="card-top">
+    <div class="card-image">
+      <img src="https://images.pexels.com/photos/701855/pexels-photo-701855.jpeg"  ></img>
+    </div>
+    <div class="card-text">
+      <p>Student 5</p>
+    </div>
+  </div>
+  <div class="card-bottom">
+    <div class="card-image">
+      <img src="https://images.pexels.com/photos/701855/pexels-photo-701855.jpeg"  ></img>
+    </div>
+    <div class="card-text">
+      <p>Student 6</p>
+    </div>
+  </div>
+  <div class="card-left">
+    <div class="card-image">
+      <img src="https://images.pexels.com/photos/701855/pexels-photo-701855.jpeg"  ></img>
+    </div>
+    <div class="card-text">
+      <p>Student 7</p>
+    </div>
+  </div>
+  <div class="card-bottom">
+    <div class="card-image">
+      <img src="https://images.pexels.com/photos/701855/pexels-photo-701855.jpeg"  ></img>
+    </div>
+    <div class="card-text">
+      <p>Student 8</p>
+    </div>
+  </div>
+  <div class="card-right">
+    <div class="card-image">
+      <img src="https://images.pexels.com/photos/701855/pexels-photo-701855.jpeg"  ></img>
+    </div>
+    <div class="card-text">
+      <p>Student 9</p>
+    </div>
+  </div>
+  <div class="card-top">
+    <div class="card-image">
+      <img src="https://images.pexels.com/photos/701855/pexels-photo-701855.jpeg"  ></img>
+    </div>
+    <div class="card-text">
+      <p>Student 10</p>
+    </div>
+  </div>
+  <div class="card-left">
+    <div class="card-image">
+      <img src="https://images.pexels.com/photos/701855/pexels-photo-701855.jpeg"  ></img>
+    </div>
+    <div class="card-text">
+      <p>Student 11</p>
+    </div>
+  </div>
+  <div class="card-left">
+    <div class="card-image">
+      <img src="https://images.pexels.com/photos/701855/pexels-photo-701855.jpeg"  ></img>
+    </div>
+    <div class="card-text">
+      <p>Student 12</p>
+    </div>
+  </div>
+  <div class="card-top">
+    <div class="card-image">
+      <img src="https://images.pexels.com/photos/701855/pexels-photo-701855.jpeg"  ></img>
+    </div>
+    <div class="card-text">
+      <p>Student 13</p>
+    </div>
+  </div>
+  <div class="card-bottom">
+    <div class="card-image">
+      <img src="https://images.pexels.com/photos/701855/pexels-photo-701855.jpeg"  ></img>
+    </div>
+    <div class="card-text">
+      <p>Student 14</p>
+    </div>
+  </div>
+  <div class="card-top">
+    <div class="card-image">
+      <img src="https://images.pexels.com/photos/701855/pexels-photo-701855.jpeg"  ></img>
+    </div>
+    <div class="card-text">
+      <p>Student 15</p>
+    </div>
+  </div>
+  <div class="card-right">
+    <div class="card-image">
+      <img src="https://images.pexels.com/photos/701855/pexels-photo-701855.jpeg"  ></img>
+    </div>
+    <div class="card-text">
+      <p>Student 16</p>
+    </div>
+  </div>
+</div>
+
+
+
 <!-- Team Section -->
 <div class="w3-container" style="padding:128px 16px" id="team">
   <h3 class="w3-center">THE TEAM</h3>
@@ -138,7 +788,7 @@ body, html {
       <div class="w3-card">
         <img src="https://www.w3schools.com/w3images/team2.jpg" alt="John" style="width:100%">
         <div class="w3-container">
-          <h3>John Doe</h3>
+          <h3>Hariprasad Maurya</h3>
           <p class="w3-opacity">Chemistry Lecturer</p>
           <p>Kuch nahi aata, aaj se 20 saal pehle naali me mile the</p>
           <p><button class="w3-button w3-light-grey w3-block"><i class="fa fa-envelope"></i> Contact</button></p>
@@ -368,8 +1018,7 @@ body, html {
         </button>
       </p>
     </form>
-    <!-- Image of location/map -->
-    <img src="https://www.w3schools.com/w3images/map.jpg" class="w3-image w3-greyscale" style="width:100%;margin-top:48px">
+    
   </div>
 </div>
 
@@ -769,6 +1418,65 @@ footer#site-footer #footer-social-buttons img:hover {
 
 
 <script>
+
+//Tathasu Thingy
+var div = document.getElementById("test"),
+    div2 = document.getElementById("test2"),
+    btn = document.getElementById("btn"),
+    time,
+    trigger=200,
+    time2 = setInterval(typeDiv,trigger),
+    time3,
+    text = "TathastuClasses... Keeping the Dreams Alive!!",
+    text2=text,
+    clear,
+    clear2,
+    i = text.length - 1,
+    t = 0;
+
+
+function deleteDiv () {
+    
+    
+    text = text.substring(0,i);
+    
+    div.innerHTML = text;
+    div2.innerHTML = text;
+
+    if ( i == 0 ) {
+        clear = clearInterval(time);
+        text=text2;
+        t=0;
+        i=text.length-1;
+        time2 = setInterval(typeDiv,trigger);
+
+    }
+      if (i>0) {
+        i = i - 1;
+      }
+
+    
+}
+
+function typeDiv () {
+    
+    div.innerHTML += text[t];
+    div2.innerHTML += text[t];
+    
+    t = t + 1;
+    
+    if ( t == text.length ) {
+        clear2 = clearInterval(time2);
+        time3 = setTimeout(go,1000);
+    }
+    
+}
+
+function go () {
+    
+    time = setInterval(deleteDiv,trigger);
+}
+
 
 // Modal Image Gallery
 function onClick(element) {

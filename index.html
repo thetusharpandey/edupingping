@@ -88,7 +88,13 @@ body, html {
     trigger="loop"
     style="width:50px;height:50px">
     </lord-icon></div> 
-    <div class=" w3-bar-item w3-wide">Book a class now!!</div>
+    <script type="text/javascript">
+      function bookClass()
+      {
+        window.open("./dist/index.html", "_self", "scrollbars=NO");
+      }
+    </script>
+    <div class=" w3-bar-item w3-wide" onclick="bookClass()">Book a class now!!</div>
     </div>
 
 

@@ -53,7 +53,19 @@ body, html {
 
     
 </head>
-<body>
+<body onmousemove="reload__()">
+
+<!-- Debug switch -->
+
+<script type="text/javascript">
+  //for debugging, switch: "true" or "false"
+
+  if (true) {
+  function reload__(){
+    setTimeout( window.location.reload(), 5000);
+  }};
+  
+</script>
 
 <!-- Navbar (sit on top) -->
 <div class="w3-top">
@@ -66,7 +78,7 @@ body, html {
 
 
 
-    <a id="a_" class="" href="#">. Choose your Demo .</a>
+    <a id="a_" class="" href="#" >. Choose your Demo .</a>
 <style>
   
   #a_ {
@@ -132,7 +144,7 @@ body, html {
     <a href="javascript:void(0)" class="w3-bar-item w3-button w3-right w3-hide-large w3-hide-medium" onclick="w3_open()">
       <i class="fa fa-bars"></i>
     </a>
-  </div>hm 
+  </div>
 </div>
 
 <!-- Sidebar on small screens when clicking the menu icon -->
@@ -188,13 +200,13 @@ body, html {
     </div>
     <div class="w3-quarter">
       <img src="./pets.gif" width="40%">
-      <p class="w3-large">Tablet included</p>
+      <p class="w3-large">Learning Kit included</p>
       <p>Only have a mobile, or the laptop does not work? No Problem!! We give you a Screen Kit at NO EXTRA COST!!</p>
     </div>
     <div class="w3-quarter">
       <img src="./babay.gif" width="40%">
       <p class="w3-large">Clarity & Simplicity</p>
-      <p>The lessons are simple, taught by real teachers giving 100% result back to back...</p>
+      <p>The lessons are simple, taught by the best teachers giving amazing results back to back...</p>
     </div>
     <div class="w3-quarter">
       <img src="./easyConcept.gif" width="40%">
@@ -209,16 +221,19 @@ body, html {
 <div id="promo" class="w3-container w3-light-grey" style="padding:128px 16px">
   <div class="w3-row-padding">
     <div class="w3-col m6">
-      <h3>We know Education.</h3>
+      <h2>We know Education.</h2>
       <p>Experience teaches you so many things <br>Come join us in the journey to exploring the world of Knowledge!!</p>
-      <p><a href="#work" class="w3-button w3-black"><i class="fa fa-th"> </i>So many success stories, find yours one day!</a></p>
+      <p><a href="#work" class="w3-button w3-black"><i class="fa fa-th"> </i>So many success stories, Click and you may find yours one day!</a></p>
     </div>
 
     <div class="w3-col m6">
-      <img class="w3-image w3-round-large" src="https://www.w3schools.com/w3images/phone_buildings.jpg" alt="Buildings" width="700" height="394">
-      <p> This video, or GIF shows the setting of a student studying, and clarifying concepts. (Concept should be mapped to hardest of class of visitor)
+      <img class="w3-image w3-round-large" style="height:400px !important" loading="lazy" src="./tinyImages/image10.jpg" alt="We can trust the process of learning, because it's the purest forms of affection we express!" >
+      <br><br><br>
     </div>
-      <a id="a_" class="" href="#">. Choose your Demo .</a>
+    <div class="m6">
+      <p><h3 style="text-align: center !important;"><u>Never</u> ever in the history did someone learn anything without trusting the teacher, It develops respect, love and gratitude for the selfless act of making you better. Better than themselves <3 
+      </h3></p>
+    </div>
 
   </div>
 </div>
@@ -703,7 +718,7 @@ a {
 <div class="container">
   <div class="card-left">
     <div class="card-image">
-      <img src="https://images.pexels.com/photos/15304189/pexels-photo-15304189.jpeg?w=1000"  ></img>
+      <img src="https://images.pexels.com/photos/7849958/pexels-photo-7849958.jpeg?w=800"  ></img>
     </div>
     <div class="card-text">
       <p>Rohit Singhania</p>
@@ -888,7 +903,7 @@ a {
 <!-- Promo Section "Statistics" -->
 <div class="w3-container w3-row w3-center w3-dark-grey w3-padding-64">
   <div class="w3-quarter">
-    <span class="w3-xxlarge">90+</span>
+    <span class="w3-xxlarge">45+</span>
     <br>Teachers
   </div>
   <div class="w3-quarter">
@@ -900,50 +915,50 @@ a {
     <br>Students Helped
   </div>
   <div class="w3-quarter">
-    <span class="w3-xxlarge">3+</span>
+    <span class="w3-xxlarge">12+</span>
     <br>Languages
   </div>
 </div>
 
 <!-- Work Section -->
 <div class="w3-container" style="padding:128px 16px" id="work">
-  <h3 class="w3-center">Be the person you dream to become</h3>
+  <h1 class="w3-center">Be the person you dream to become</h1>
   <p class="w3-center w3-large" id="success">What we've done for Students...</p>
 
   <div class="w3-row-padding" style="margin-top:64px">
     <div class="w3-col l3 m6">
-      <img src="https://www.w3schools.com/w3images/tech_mic.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="A microphone">
+      <img src="./tinyImages/image24.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="A microphone">
       Mic got first prize.
     </div>
     <div class="w3-col l3 m6">
-      <img src="https://www.w3schools.com/w3images/tech_phone.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="A phone">
+      <img src="./tinyImages/image23.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="A phone">
       Phone qualified for NDA SSB
     </div>
     <div class="w3-col l3 m6">
-      <img src="https://www.w3schools.com/w3images/tech_drone.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="A drone">
+      <img src="./tinyImages/image22.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="A drone">
       Done won 2nd in State level flying Competition
     </div>
     <div class="w3-col l3 m6">
-      <img src="https://www.w3schools.com/w3images/tech_sound.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="Soundbox">
+      <img src="./tinyImages/image21.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="Soundbox">
       soundbox won Singing competition
     </div>
   </div>
 
   <div class="w3-row-padding w3-section">
     <div class="w3-col l3 m6">
-      <img src="https://www.w3schools.com/w3images/tech_tablet.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="A tablet">
+      <img src="./tinyImages/image20.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="A tablet">
       Tablet got 1st Rank in Abacus competition
     </div>
     <div class="w3-col l3 m6">
-      <img src="https://www.w3schools.com/w3images/tech_camera.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="A camera">
+      <img src="./tinyImages/image19.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="A camera">
       Camera won the Photo-realism painting competion
     </div>
     <div class="w3-col l3 m6">
-      <img src="https://www.w3schools.com/w3images/tech_typewriter.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="A typewriter">
+      <img src="./tinyImages/image18.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="A typewriter">
       Typewriter won the Essay writing champ in School.
     </div>
     <div class="w3-col l3 m6">
-      <img src="https://www.w3schools.com/w3images/tech_tableturner.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="A tableturner">
+      <img src="./tinyImages/image17.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="A tableturner">
       Table Turner performed in front of Pdt. Birju Maharaaj.
     </div>
   </div>

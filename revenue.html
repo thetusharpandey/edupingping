@@ -2,1582 +2,853 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Greedy Learning | Ops</title>
+<title>Revenue | Greedy Learning</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<style>
-body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
-
-body, html {
-  height: 100%;
-  line-height: 1.8;
-  scroll-behavior: smooth;
-}
-
-/* Full height image header */
-.bgimg-1 {
-  background-position: center;
-  background-size: cover;
-  background-image: url("https://images.pexels.com/photos/1102915/pexels-photo-1102915.jpeg"); 
-
-  min-height: 100%;
-}
-
-.w3-bar .w3-button {
-  padding: 16px;
-
-}
-
-
-</style>
-
-
-    <!-- favicons and Icons -->
-
-    <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="192x192" href="/favicon/android-chrome-192x192.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
-<link rel="icon" type="image/png" href="/favicon/favicon.ico">
-<link rel="manifest" href="/favicon/site.webmanifest">
-<link rel="mask-icon" href="/favicon/safari-pinned-tab.svg" color="#5bbad5">
-<link rel="shortcut icon" href="/favicon/favicon.ico">
-<meta name="msapplication-TileColor" content="#da532c">
-<meta name="msapplication-TileImage" content="/favicon/mstile-144x144.png">
-<meta name="msapplication-config" content="/favicon/browserconfig.xml">
-<meta name="theme-color" content="#ffffff">
-
-    <!-- Favicon definition Ends -->
-
-    
 </head>
-<body onmousemove="reload__()">
-
-<!-- Debug switch -->
-
-<script type="text/javascript">
-  //for debugging, switch: "true" or "false"
-
-  if (false) {
-  function reload__(){
-    setTimeout( window.location.reload(), 5000);
-  }};
-  
-</script>
-
-<!-- Navbar (sit on top) -->
-<div class="w3-top">
-  <div class="w3-bar w3-white w3-card" id="myNavbar" style="background-color:#8d2000 !important">
-    <a href="#home" class="w3-bar-item  w3-button w3-wide"><img src="./tathastu100.png" height="40px" width="40px" alt="GreedyLearning" ></a>
-    
-
-    <!-- test comment -->
-
-
-
-
-    <a id="a_" class="" href="#" >. Choose your Demo .</a>
-<style>
-  
-  #a_ {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  height: 60px;
-  text-align: center;
-  line-height: 60px;
-  color: #fff;
-  font-size: 24px;
-  text-decoration: none;
-  font-family: 'Open Sans';
-  box-sizing: border-box;
-  background: linear-gradient(90deg, brown, orange, red, violet, purple, blue, green);
-  background-size: 400%;
-  border-radius: 30px;
-  z-index: 1;
-}
-#a_:hover {
-  animation: animate 8s linear infinite;
-}
-@keyframes animate {
-  0% {
-    background-position: 0%;
-  }
-  100% {
-    background-position: 400%;
-  }
-}
-#a_:before {
-  content: "";
-  position: absolute;
-  top: -5px;
-  left: -5px;
-  right: -5px;
-  bottom: -5px;
-  z-index: -1;
-  background: linear-gradient(45deg, #f15523, #ef3224, #7c3697);
-  background-size: 400%;
-  border-radius: 40px;
-  opacity: 0;
-  transition: 0.5%;
-}
-#a_:hover:before {
-  filter: blur(20px);
-  opacity: 1;
-  animation: animate 8s linear infinite;
-}
-</style>
-
-    <!-- Right-sided navbar links -->
-    <div class="w3-right w3-hide-small">
-      <a href="#about" class="w3-bar-item w3-hide-medium w3-button"><i class="fa fa-book"></i> Our Story</a>
-      <a href="#team" class="w3-bar-item w3-button"><i class="fa fa-user"></i> Our Family</a>
-      <a href="#work" class="w3-bar-item w3-button"><i class="fa fa-th"></i> Courses</a>
-      <a href="#pricing" class="w3-bar-item w3-button"><i class="fa fa-inr"></i> PRICING</a>
-      <a href="#contact" class="w3-bar-item w3-hide-medium w3-button"><i class="fa fa-envelope"></i> Meet Us</a>
-    </div>
-    <!-- Hide right-floated links on small screens and replace them with a menu icon -->
-
-    <a href="javascript:void(0)" class="w3-bar-item w3-button w3-right w3-hide-large w3-hide-medium" onclick="w3_open()">
-      <i class="fa fa-bars"></i>
-    </a>
-  </div>
+<body>
+<canvas id='canvas' onmousedown="fadeFunc()"></canvas>
+<div class="clock" id="clockDiv">
+  <strong class="clock__word clock__word--bold"></strong>
+  <span class="clock__word"></span>
+  <strong class="clock__word clock__word--bold"></strong>
+  <strong class="clock__word clock__word--bold"></strong>
 </div>
+<nav class="menu" id='theMenuButton' style="display: none;">
+   <input type="checkbox" href="#" class="menu-open" name="menu-open" id="menu-open" />
+   <label class="menu-open-button" for="menu-open">
+    <span class="lines line-1"></span>
+    <span class="lines line-2"></span>
+    <span class="lines line-3"></span>
+  </label>
 
-<!-- Sidebar on small screens when clicking the menu icon -->
-<nav class="w3-sidebar w3-bar-block w3-black w3-card w3-animate-left w3-hide-medium w3-hide-large" style="display:none" id="mySidebar">
-  <a href="javascript:void(0)" onclick="w3_close()" class="w3-bar-item w3-button w3-large w3-padding-16">Close ×</a>
-  <a href="#about" onclick="w3_close()" class="w3-bar-item w3-button">Our Story</a>
-  <a href="#team" onclick="w3_close()" class="w3-bar-item w3-button">Our Family</a>
-  <a href="#work" onclick="w3_close()" class="w3-bar-item w3-button">Courses</a>
-  <a href="#pricing" onclick="w3_close()" class="w3-bar-item w3-button">PRICING</a>
-  <a href="#contact" onclick="w3_close()" class="w3-bar-item w3-button">Meet Us</a>
+   <a href="./myTrace.html" class="menu-item blue" onmouseover="nameFunc(1)"> <i class="fa fa-anchor"></i> </a>
+   <a href="./leads.html" class="menu-item green" onmouseover="nameFunc(2)"> <i class="fa fa-coffee"></i> </a>
+   <a href="./invoicesForThePussies.html" class="menu-item red" onmouseover="nameFunc(3)"><i class="fa fa-heart"></i> </a>
+   <a href="./quoteLikeAWolf.html" class="menu-item purple" onmouseover="nameFunc(4)"> <i class="fa fa-microphone"></i> </a>
+   <a href="./pipelines.html" class="menu-item orange" onmouseover="nameFunc(5)"> <i class="fa fa-star"></i> </a>
+   <a href="./utilityArea.html" class="menu-item lightblue" onmouseover="nameFunc(6)"> <i class="fa fa-diamond"></i> </a>
 </nav>
 
-<!-- Header with full-height image -->
-<!-- particles.js lib - https://github.com/VincentGarreau/particles.js --> 
-<script src="http://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script> 
-<!-- stats.js lib --> <script src="http://threejs.org/examples/js/libs/stats.min.js"></script>
 
-<header class="bgimg-1 w3-display-container w3-grayscale-min" id="home">
-  <div class="w3-display-left w3-text-white" style="padding:48px">
-    <span id="test" class="w3-xxxlarge w3-hide-small"> </span><br>
-    <span class="w3-jumbo w3-hide-small">Start one chapter, and become the best...</span><br>
-    <span id="test2" class="w3-xxlarge w3-hide-large w3-hide-medium"><!-- deleted the data, this is the tag that will be written by function--></span><br>
-    <span class="w3-large w3-hide-large w3-hide-medium">Start a chapter & become the best...</span><br>
-    <span class="w3-large">Trust me, I will be your best Friend in this Journey!! </span>
-    <p><a href="#about" class="w3-button w3-white w3-padding-large w3-large w3-margin-top w3-opacity w3-hover-opacity-off" style="border-radius:35px 30px 50px 70px;">Click Here, Welcome to the Room</a></p>
-  </div>
-  <div class="w3-display-bottomleft w3-text-grey w3-large" style="margin:25px 69px;">
-    <style>
-      .socialIcons{
-        padding-right: 14px;
+<div class="container" style="z-index: 3;" id="highlight">
+  <span style="display:none; " class='pulse-button' id="item_blue">MyTrace!</span>
+  <span style="display:none; " class='pulse-button' id="item_green">Leads</span>
+  <span style="display:none; " class='pulse-button' id="item_red">Invoices</span>
+  <span style="display:none; " class='pulse-button' id="item_purple">Quote</span>
+  <span style="display:none; " class='pulse-button' id="item_orange">Pipeline</span>
+  <span style="display:none; " class='pulse-button' id="item_lightblue">Tools</span>
+</div>
+<style type="text/css">
+   .container{
+      position: absolute;
+      right: 60px;
+   }
+</style>
+
+<script type="text/javascript">
+
+
+   function nameFunc(x){
+
+      if (x===1) {
+         document.getElementById("item_blue").style.display="block";
+         document.getElementById("item_green").style.display="none";
+         document.getElementById("item_red").style.display="none";
+         document.getElementById("item_purple").style.display="none";
+         document.getElementById("item_orange").style.display="none";
+         document.getElementById("item_lightblue").style.display="none";
+
       }
-    </style>
-    <a href="https://fb.com/TathastuClasses"><i class="socialIcons fa fa-facebook-official w3-hover-opacity"></i></a>
-    <a href="https://instagram.com/TathastuClasses"><i class="socialIcons fa fa-instagram w3-hover-opacity"></i></a> 
-    <a href="https://snapchat.com/add/TathastuClasses"><i class="socialIcons fa fa-snapchat w3-hover-opacity"></i></a>
-    <a href="https://pinterest.com/TathastuClasses"><i class="socialIcons fa fa-pinterest-p w3-hover-opacity"></i></a>
-    <a href="https://twitter.com/TathastuClasses"><i class="socialIcons fa fa-twitter w3-hover-opacity"></i></a>
-    <a href="https://linkedin.com/in/TathastuClasses"><i class="socialIcons fa fa-linkedin w3-hover-opacity"></i></a>
-  </div>
-</header>
+      else if (x===2) {
+         document.getElementById("item_blue").style.display="none";
+         document.getElementById("item_green").style.display="block";
+         document.getElementById("item_red").style.display="none";
+         document.getElementById("item_purple").style.display="none";
+         document.getElementById("item_orange").style.display="none";
+         document.getElementById("item_lightblue").style.display="none";      }
+      else if (x===3) {
+         document.getElementById("item_blue").style.display="none";
+         document.getElementById("item_green").style.display="none";
+         document.getElementById("item_red").style.display="block";
+         document.getElementById("item_purple").style.display="none";
+         document.getElementById("item_orange").style.display="none";
+         document.getElementById("item_lightblue").style.display="none";      }
+      else if (x===4) {
+         document.getElementById("item_blue").style.display="none";
+         document.getElementById("item_green").style.display="none";
+         document.getElementById("item_red").style.display="none";
+         document.getElementById("item_purple").style.display="block";
+         document.getElementById("item_orange").style.display="none";
+         document.getElementById("item_lightblue").style.display="none";      }
+      else if (x===5) {
+         document.getElementById("item_blue").style.display="none";
+         document.getElementById("item_green").style.display="none";
+         document.getElementById("item_red").style.display="none";
+         document.getElementById("item_purple").style.display="none";
+         document.getElementById("item_orange").style.display="block";
+         document.getElementById("item_lightblue").style.display="none";      }
+      else if (x===6) {
+         document.getElementById("item_blue").style.display="none";
+         document.getElementById("item_green").style.display="none";
+         document.getElementById("item_red").style.display="none";
+         document.getElementById("item_purple").style.display="none";
+         document.getElementById("item_orange").style.display="none";
+         document.getElementById("item_lightblue").style.display="block";      }
 
-<!-- About Section -->
-<div class="w3-container" style="padding:128px 16px" id="about">
-  <h3 class="w3-center">OUR STORY</h3>
-  <img src="./tathastu300.png" style="padding-left: 40%;"></img>
-  <p class="w3-center w3-large">Some Features Of Our Teaching Style</p>
-  <div class="w3-row-padding w3-center" style="margin-top:64px">
-    <div class="w3-quarter">
-      <img src="./moneySave.gif" width="40%">
-      <p class="w3-large">Low Cost, For All</p>
-      <!--<p>110 characters, one line 2 sentences mostly, no ENTER</p>-->
-      <p>The Lowest cost to be paid for the highest Quality of education!
-    </div>
-    <div class="w3-quarter">
-      <img src="./pets.gif" width="40%">
-      <p class="w3-large">Learning Kit included</p>
-      <p>Only have a mobile, or the laptop does not work? No Problem!! We give you a Screen Kit at NO EXTRA COST!!</p>
-    </div>
-    <div class="w3-quarter">
-      <img src="./babay.gif" width="40%">
-      <p class="w3-large">Clarity & Simplicity</p>
-      <p>The lessons are simple, taught by the best teachers giving amazing results back to back...</p>
-    </div>
-    <div class="w3-quarter">
-      <img src="./easyConcept.gif" width="40%">
-      <p class="w3-large">True Knowledge</p>
-      <p>Knowledge is important, but Understanding a concept is a step by step process. We help you with it.</p>
-    </div>
-    <a class="w3-center" href="#promo"><img onclick="#promo" src="./scroll.gif" height="120px" alt="ScrollUP" style="filter: invert();"></a>
-  </div>
-</div>
+         erase1 = document.getElementById("item_blue");
+         erase2 = document.getElementById("item_green");
+         erase3 = document.getElementById("item_red");
+         erase4 = document.getElementById("item_purple");
+         erase5 = document.getElementById("item_orange");
+         erase6 = document.getElementById("item_lightblue"); 
+         const n_ = setTimeout(clearFunc,600);
+         function clearFunc(){
+            document.getElementById("item_blue").style.display="none";
+         document.getElementById("item_green").style.display="none";
+         document.getElementById("item_red").style.display="none";
+         document.getElementById("item_purple").style.display="none";
+         document.getElementById("item_orange").style.display="none";
+         document.getElementById("item_lightblue").style.display="none"; 
+         }
 
-<!-- Soul Section - "We know how to teach, because we have been taught" -->
-<div id="promo" class="w3-container w3-light-grey" style="padding:128px 16px">
-  <div class="w3-row-padding">
-    <div class="w3-col m6">
-      <h2>We know Education.</h2>
-      <p>Experience teaches you so many things <br>Come join us in the journey to exploring the world of Knowledge!!</p>
-      <p><a href="#work" class="w3-button w3-black"><i class="fa fa-th"> </i>So many success stories, Click and you may find yours one day!</a></p>
-    </div>
+   }
+</script>
 
-    <div class="w3-col m6">
-      <img class="w3-image w3-round-large" style="height:400px !important" loading="lazy" src="./tinyImages/image10.jpg" alt="We can trust the process of learning, because it's the purest forms of affection we express!" >
-      <br><br><br>
-    </div>
-    <div class="m6">
-      <p><h3 style="text-align: center !important;"><u>Never</u> ever in the history did someone learn anything without trusting the teacher, It develops respect, love and gratitude for the selfless act of making you better. Better than themselves <3 
-      </h3></p>
-    </div>
-
-  </div>
-</div>
-
-
-<!--cardsWeOffer-->
-
-<section class="info">
-  <style type="text/css">
-    @import url('https://fonts.googleapis.com/css?family=Heebo:400,700|Open+Sans:400,700');
-
-:root {
-  --color: #3c3163;
-  --transition-time: 0.5s;
-}
-
-* {
-  box-sizing: border-box;
-}
-
-body {
-  margin: 0;
-  min-height: 100vh;
-  font-family: 'Open Sans';
-  background: #fafafa;
+<style type="text/css">
+  @media screen and (max-width: 700px) {
+   body {
+      padding: 170px 0 0 0;
+      width: 100%
+   }
 }
 
 a {
-  color: inherit;
+   color: inherit;
 }
 
-.cards-wrapper {
-  display: grid;
-  justify-content: center;
-  align-items: center;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-gap: 4rem;
-  padding: 4rem;
-  margin: 0 auto;
-  width: max-content;
+.menu-item{
+  opacity: 1;
+   background: #EEEEEE;
+   border-radius: 100%;
+   width: 80px;
+   height: 80px;
+   margin-left: -40px;
+   position: absolute;
+   color: #FFFFFF;
+   text-align: center;
+   line-height: 80px;
+   -webkit-transform: translate3d(0, 0, 0);
+   transform: translate3d(0, 0, 0);
+   -webkit-transition: -webkit-transform ease-out 200ms;
+   transition: -webkit-transform ease-out 200ms;
+   transition: transform ease-out 200ms;
+   transition: transform ease-out 200ms, -webkit-transform ease-out 200ms;
 }
 
-.card {
-  font-family: 'Heebo';
-  --bg-filter-opacity: 0.5;
-  background-image: linear-gradient(rgba(0,0,0,var(--bg-filter-opacity)),rgba(0,0,0,var(--bg-filter-opacity))), var(--bg-img);
-  height: 20em;
-  width: 15em;
-  font-size: 1.5em;
-  color: white;
-  border-radius: 1em;
-  padding: 1em;
-  /*margin: 2em;*/
-  display: flex;
-  align-items: flex-end;
-  background-size: cover;
-  background-position: center;
-  box-shadow: 0 0 5em -1em black;
-  transition: all, var(--transition-time);
-  position: relative;
-  overflow: hidden;
-  border: 10px solid #ccc;
-  text-decoration: none;
+.menu-open-button {
+  
+   background: #474747;
+   border-radius: 100%;
+   width: 80px;
+   height: 80px;
+   margin-left: -40px;
+   position: absolute;
+   color: #FFFFFF;
+   text-align: center;
+   line-height: 80px;
+   -webkit-transform: translate3d(0, 0, 0);
+   transform: translate3d(0, 0, 0);
+   -webkit-transition: -webkit-transform ease-out 200ms;
+   transition: -webkit-transform ease-out 200ms;
+   transition: transform ease-out 200ms;
+   transition: transform ease-out 200ms, -webkit-transform ease-out 200ms;
 }
 
-.card:hover {
-  transform: rotate(0);
+.menu-open {
+   display: none;
+   opacity: 1;
 }
 
-.card h1 {
-  margin: 0;
-  font-size: 1.5em;
-  line-height: 1.2em;
+.lines {
+   width: 25px;
+   height: 3px;
+   background: #596778;
+   display: block;
+   position: absolute;
+   top: 50%;
+   left: 50%;
+   margin-left: -12.5px;
+   margin-top: -1.5px;
+   -webkit-transition: -webkit-transform 200ms;
+   transition: -webkit-transform 200ms;
+   transition: transform 200ms;
+   transition: transform 200ms, -webkit-transform 200ms;
 }
 
-.card p {
-  font-size: 0.75em;
-  font-family: 'Open Sans';
-  margin-top: 0.5em;
-  line-height: 2em;
+.line-1 {
+   -webkit-transform: translate3d(0, -8px, 0);
+   transform: translate3d(0, -8px, 0);
 }
 
-.card .tags {
-  display: flex;
+.line-2 {
+   -webkit-transform: translate3d(0, 0, 0);
+   transform: translate3d(0, 0, 0);
 }
 
-.card .tags .tag {
-  font-size: 0.75em;
-  background: rgba(255,255,255,0.5);
-  border-radius: 0.3rem;
-  padding: 0 0.5em;
-  margin-right: 0.5em;
-  line-height: 1.5em;
-  transition: all, var(--transition-time);
+.line-3 {
+   -webkit-transform: translate3d(0, 8px, 0);
+   transform: translate3d(0, 8px, 0);
 }
 
-.card:hover .tags .tag {
-  background: var(--color);
-  color: white;
+.menu-open:checked + .menu-open-button .line-1 {
+   -webkit-transform: translate3d(0, 0, 0) rotate(45deg);
+   transform: translate3d(0, 0, 0) rotate(45deg);
 }
 
-.card .date {
-  position: absolute;
-  top: 0;
-  right: 0;
-  font-size: 0.75em;
-  padding: 1em;
-  line-height: 1em;
-  opacity: .8;
+.menu-open:checked + .menu-open-button .line-2 {
+   -webkit-transform: translate3d(0, 0, 0) scale(0.1, 1);
+   transform: translate3d(0, 0, 0) scale(0.1, 1);
 }
 
-.card:before, .card:after {
-  content: '';
-  transform: scale(0);
-  transform-origin: top left;
-  border-radius: 50%;
-  position: absolute;
-  left: -50%;
-  top: -50%;
-  z-index: -5;
-  transition: all, var(--transition-time);
-  transition-timing-function: ease-in-out;
+.menu-open:checked + .menu-open-button .line-3 {
+   -webkit-transform: translate3d(0, 0, 0) rotate(-45deg);
+   transform: translate3d(0, 0, 0) rotate(-45deg);
 }
 
-.card:before {
-  background: #ddd;
-  width: 250%;
-  height: 250%;
+.menu {
+   margin: auto;
+   position: absolute;
+   top: 100px;
+   left: 0;
+   right: 0;
+   width: 80px;
+   height: 80px;
+   text-align: center;
+   box-sizing: border-box;
+   font-size: 26px;
 }
 
-.card:after {
-  background: white;
-  width: 200%;
-  height: 200%;
+
+/* .menu-item {
+   transition: all 0.1s ease 0s;
+} */
+
+.menu-item:hover {
+   background: #EEEEEE;
+   color: #3290B1;
 }
 
-.card:hover {
-  color: var(--color);
+.menu-item:nth-child(3) {
+   -webkit-transition-duration: 180ms;
+   transition-duration: 180ms;
 }
 
-.card:hover:before, .card:hover:after {
-  transform: scale(1);
+.menu-item:nth-child(4) {
+   -webkit-transition-duration: 180ms;
+   transition-duration: 180ms;
 }
 
-.card-grid-space .num {
-  font-size: 3em;
-  margin-bottom: 1.2rem;
-  margin-left: 1rem;
+.menu-item:nth-child(5) {
+   -webkit-transition-duration: 180ms;
+   transition-duration: 180ms;
 }
 
-.info {
-  font-size: 1.2em;
-  display: flex;
-  padding: 1em 3em;
-  height: 3em;
+.menu-item:nth-child(6) {
+   -webkit-transition-duration: 180ms;
+   transition-duration: 180ms;
 }
 
-.info img {
-  height: 3em;
-  margin-right: 0.5em;
+.menu-item:nth-child(7) {
+   -webkit-transition-duration: 180ms;
+   transition-duration: 180ms;
 }
 
-.info h1 {
-  font-size: 1em;
-  font-weight: normal;
+.menu-item:nth-child(8) {
+   -webkit-transition-duration: 180ms;
+   transition-duration: 180ms;
 }
 
-/* MEDIA QUERIES */
-@media screen and (max-width: 1285px) {
-  .cards-wrapper {
-    grid-template-columns: 1fr 1fr;
-  }
+.menu-item:nth-child(9) {
+   -webkit-transition-duration: 180ms;
+   transition-duration: 180ms;
 }
 
-@media screen and (max-width: 900px) {
-  .cards-wrapper {
-    grid-template-columns: 1fr;
-  }
-  .info {
-    justify-content: center;
-  }
-  .card-grid-space .num {
-    /margin-left: 0;
-    /text-align: center;
-  }
+.menu-open-button {
+   z-index: 2;
+   -webkit-transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+   transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+   -webkit-transition-duration: 400ms;
+   transition-duration: 400ms;
+   -webkit-transform: scale(1.1, 1.1) translate3d(0, 0, 0);
+   transform: scale(1.1, 1.1) translate3d(0, 0, 0);
+   cursor: pointer;
+   box-shadow: 3px 3px 0 0 rgba(0, 0, 0, 0.14);
 }
 
-@media screen and (max-width: 500px) {
-  .cards-wrapper {
-    padding: 4rem 2rem;
-  }
-  .card {
-    max-width: calc(100vw - 4rem);
-  }
+.menu-open-button:hover {
+   -webkit-transform: scale(1.2, 1.2) translate3d(0, 0, 0);
+   transform: scale(1.2, 1.2) translate3d(0, 0, 0);
 }
 
-@media screen and (max-width: 450px) {
-  .info {
-    display: block;
-    text-align: center;
-  }
-  .info h1 {
-    margin: 0;
-  }
+.menu-open:checked + .menu-open-button {
+   -webkit-transition-timing-function: linear;
+   transition-timing-function: linear;
+   -webkit-transition-duration: 200ms;
+   transition-duration: 200ms;
+   -webkit-transform: scale(0.8, 0.8) translate3d(0, 0, 0);
+   transform: scale(0.8, 0.8) translate3d(0, 0, 0);
+}
+
+.menu-open:checked ~ .menu-item {
+   -webkit-transition-timing-function: cubic-bezier(0.935, 0, 0.34, 1.33);
+   transition-timing-function: cubic-bezier(0.935, 0, 0.34, 1.33);
+}
+
+.menu-open:checked ~ .menu-item:nth-child(3) {
+   transition-duration: 180ms;
+   -webkit-transition-duration: 180ms;
+   -webkit-transform: translate3d(0.08361px, -104.99997px, 0);
+   transform: translate3d(0.08361px, -104.99997px, 0);
+}
+
+.menu-open:checked ~ .menu-item:nth-child(4) {
+   transition-duration: 280ms;
+   -webkit-transition-duration: 280ms;
+   -webkit-transform: translate3d(90.9466px, -52.47586px, 0);
+   transform: translate3d(90.9466px, -52.47586px, 0);
+}
+
+.menu-open:checked ~ .menu-item:nth-child(5) {
+   transition-duration: 380ms;
+   -webkit-transition-duration: 380ms;
+   -webkit-transform: translate3d(90.9466px, 52.47586px, 0);
+   transform: translate3d(90.9466px, 52.47586px, 0);
+}
+
+.menu-open:checked ~ .menu-item:nth-child(6) {
+   transition-duration: 480ms;
+   -webkit-transition-duration: 480ms;
+   -webkit-transform: translate3d(0.08361px, 104.99997px, 0);
+   transform: translate3d(0.08361px, 104.99997px, 0);
+}
+
+.menu-open:checked ~ .menu-item:nth-child(7) {
+   transition-duration: 580ms;
+   -webkit-transition-duration: 580ms;
+   -webkit-transform: translate3d(-90.86291px, 52.62064px, 0);
+   transform: translate3d(-90.86291px, 52.62064px, 0);
+}
+
+.menu-open:checked ~ .menu-item:nth-child(8) {
+   transition-duration: 680ms;
+   -webkit-transition-duration: 680ms;
+   -webkit-transform: translate3d(-91.03006px, -52.33095px, 0);
+   transform: translate3d(-91.03006px, -52.33095px, 0);
+}
+
+.menu-open:checked ~ .menu-item:nth-child(9) {
+   transition-duration: 780ms;
+   -webkit-transition-duration: 780ms;
+   -webkit-transform: translate3d(-0.25084px, -104.9997px, 0);
+   transform: translate3d(-0.25084px, -104.9997px, 0);
+}
+
+.blue {
+   background-color: #669AE1;
+   box-shadow: 3px 3px 0 0 rgba(0, 0, 0, 0.14);
+   text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.12);
+}
+
+.blue:hover {
+   color: #669AE1;
+   text-shadow: none;
+}
+
+.green {
+   background-color: #70CC72;
+   box-shadow: 3px 3px 0 0 rgba(0, 0, 0, 0.14);
+   text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.12);
+}
+.green:click
+
+.green:hover {
+   color: #70CC75;
+   text-shadow: none;
+}
+
+.red {
+   background-color: #FE4365;
+   box-shadow: 3px 3px 0 0 rgba(0, 0, 0, 0.14);
+   text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.12);
+}
+
+.red:hover {
+   color: #FE4368;
+   text-shadow: none;
+}
+
+.purple {
+   background-color: #C49CDE;
+   box-shadow: 3px 3px 0 0 rgba(0, 0, 0, 0.14);
+   text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.12);
+}
+
+.purple:hover {
+   color: #C49CEB;
+   text-shadow: none;
+}
+
+.orange {
+   background-color: #FC913A;
+   box-shadow: 3px 3px 0 0 rgba(0, 0, 0, 0.14);
+   text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.12);
+}
+
+.orange:hover {
+   color: #FC913D;
+   text-shadow: none;
+}
+
+.lightblue {
+   background-color: #62C2E4;
+   box-shadow: 3px 3px 0 0 rgba(0, 0, 0, 0.14);
+   text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.12);
+}
+
+.lightblue:hover {
+   color: #62C2E7;
+   text-shadow: none;
+}
+
+.credit {
+   margin: 24px 20px 120px 0;
+   text-align: right;
+   color: #EEEEFB;
+}
+
+.credit a {
+   padding: 8px 0;
+   color: #C49CDE;
+   text-decoration: none;
+   transition: all 0.3s ease 0s;
+}
+
+.credit a:hover {
+   text-decoration: underline;
 }
 </style>
- <!-- Essay Writing, Speech Writing, Presentation Writing, Assignment Writing -->
-</section>
-<div>  
-  <h2 class="w3-center">Develop yourselves in various areas of life...</h2>
-  <p class="w3-center w3-large">Take a look at some of our amazing offerings.</p>
-</div>
-<section class="cards-wrapper">
-  <div class="card-grid-space">
-    <div class="num">01</div>
-    <a class="card" href="./dist/index.html" style="--bg-img: url(https://images.pexels.com/photos/35828/soap-bubble-colorful-ball-soapy-water.jpg?w=1000)">
-      <div>
-        <h1>ENGLISH</h1>
-        <p>The basics of a subject are important. Lets learn everything from reading to writing to Grammer</p>
-        <div class="date">next batch 25 Oct 2022</div>
-        <div class="tags">
-          <div class="tag">English</div>
-        </div>
-      </div>
-    </a>
-  </div>
-  <div class="card-grid-space">
-    <div class="num">02</div>
-    <a class="card" href="./dist/index.html" style="--bg-img: url('https://images.pexels.com/photos/63238/pexels-photo-63238.jpeg?w=1000')">
-      <div>
-        <h1>SCIENCE</h1>
-        <p>Learn about Science from the best Teachers in the Region, Easily</p>
-        <div class="date">next batch 25 Oct 2022</div>
-        <div class="tags">
-          <div class="tag">Science</div>
-        </div>
-      </div>
-    </a>
-  </div>
-  <div class="card-grid-space">
-    <div class="num">03</div>
-    <a class="card" href="./dist/index.html" style="--bg-img: url('https://images.pexels.com/photos/262577/pexels-photo-262577.jpeg?w=1000')">
-      <div>
-        <h1>Maths</h1>
-        <p>Numbers are not difficult, they're boring if the teacher is not smart. Not anymore!!</p>
-        <div class="date">next batch 25 Oct 2022</div>
-        <div class="tags">
-          <div class="tag">Maths</div>
-        </div>
-      </div>
-    </a>
-  </div>
-  <div class="card-grid-space">
-    <div class="num">04</div>
-    <a class="card" href="./dist/index.html" style="--bg-img: url('https://images.pexels.com/photos/269050/pexels-photo-269050.jpeg?w=1000')">
-      <div>
-        <h1>COMPUTERS</h1>
-        <p>Computers are the fastest, Closes and Cheapest way to become better than everyone on Planet!!!</p>
-        <div class="date">next batch 25 Oct 2022</div>
-        <div class="tags">
-          <div class="tag">Computer</div>
-        </div>
-      </div>
-    </a>
-  </div>
-  <div class="card-grid-space">
-    <div class="num">05</div>
-    <a class="card" href="./dist/index.html" style="--bg-img: url('https://images.pexels.com/photos/261577/pexels-photo-261577.jpeg?w=1000')">
-      <div>
-        <h1>SOCIAL SCIENCE</h1>
-        <p>Call it Planet, World or the Globe, Either way you have to study it!!</p>
-        <div class="date">next batch 25 Oct 2022</div>
-        <div class="tags">
-          <div class="tag">Social Science</div>
-        </div>
-      </div>
-    </a>
-  </div>
-  <div class="card-grid-space">
-    <div class="num">06</div>
-    <a class="card" href="./dist/index.html" style="--bg-img: url('https://images.pexels.com/photos/261497/pexels-photo-261497.jpeg?w=1000')">
-      <div>
-        <h1>Assignment Writing</h1>
-        <p>Your Assignment, Our Effort. Use this time for yourselves</p>
-        <div class="date">Get yours now</div>
-        <div class="tags">
-          <div class="tag">Assignment</div>
-        </div>
-      </div>
-    </a>
-  </div>
-    <div class="card-grid-space">
-    <div class="num">07</div>
-    <a class="card" href="./dist/index.html" style="--bg-img: url('https://images.pexels.com/photos/261327/pexels-photo-261327.jpeg?w=1000')">
-      <div>
-        <h1>Essay Writing</h1>
-        <p>Longs Paragraphs, Endless Research. We'll do it for you!</p>
-        <div class="date">Request Writing Anytime</div>
-        <div class="tags">
-          <div class="tag">Essay</div>
-        </div>
-      </div>
-    </a>
-  </div>
-      <div class="card-grid-space">
-    <div class="num">08</div>
-    <a class="card" href="./dist/index.html" style="--bg-img: url('https://images.pexels.com/photos/261377/pexels-photo-261377.jpeg?w=1000')">
-      <div>
-        <h1>Presentation Writing</h1>
-        <p>Presenting something is different from making a BORING Presentation, or sometimes You are just tired!</p>
-        <div class="date">Request Presentation Anytime</div>
-        <div class="tags">
-          <div class="tag">Presentation</div>
-        </div>
-      </div>
-    </a>
-  </div>
-      <div class="card-grid-space">
-    <div class="num">09</div>
-    <a class="card" href="./dist/index.html" style="--bg-img: url('https://images.pexels.com/photos/261477/pexels-photo-261477.jpeg?w=1000')">
-      <div>
-        <h1>Speech Writing</h1>
-        <p>Not everybody is a writer and Speaker together, Some people are Just EXCEPTIONAL..."Speakers"</p>
-        <div class="date">Get your historic Speech Written</div>
-        <div class="tags">
-          <div class="tag">Speech</div>
-        </div>
-      </div>
-    </a>
-  </div>
 
-</section>
-
-
-
-<!-- Experimental Cards-->
-<style type="text/css">
-  body {
-  font-family: "Trebuchet MS", sans-serif;
-  font-size: 15.5px;
+<style type="text/css" id="clock_style__">
+  :root {
+  --hue: 223;
+  --bg: hsl(var(--hue),10%,90%);
+  --fg: hsl(var(--hue),10%,10%);
+  --primary: hsl(var(--hue),90%,50%);
+  --trans-dur: 0.3s;
+  font-size: calc(20px + (60 - 20) * (100vw - 320px) / (2560 - 320));
 }
-* {
-  box-sizing: border-box;
-}
-.container {
-  width: 100%;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 200px));
-  grid-auto-rows: 200px;
-  grid-auto-flow: row dense;
-  grid-gap: 23px;
-  justify-content: center;
-}
-.card-top, .card-right, .card-bottom, .card-left {
-  display: flex;
-  flex-wrap: nowrap;
-  height: 100%;
-  width: 100%;
-  border-radius: 95.2380952381px;
-  box-shadow: 0px 3px 9px 1px rgba(0, 10, 20, 0.2);
-}
-.card-top {
-  flex-direction: column;
-  grid-column: auto / span 1;
-  grid-row: auto / span 2;
-}
-.card-right {
-  flex-direction: row-reverse;
-  grid-column: auto / span 2;
-  grid-row: auto / span 1;
-}
-.card-bottom {
-  flex-direction: column-reverse;
-  grid-column: auto / span 1;
-  grid-row: auto / span 2;
-}
-.card-left {
-  flex-direction: row;
-  grid-column: auto / span 2;
-  grid-row: auto / span 1;
-}
-.card-image {
-  display: flex;
-}
-.card-top .card-image, .card-bottom .card-image {
-  height: 50%;
-  width: 100%;
-}
-.card-left .card-image, .card-right .card-image {
-  height: 100%;
-  width: 50%;
-}
-.card-image img {
-  width: 100%;
-  object-fit: cover;
-}
-.card-top img {
-  border-radius: 95.2380952381px 95.2380952381px 0 0;
-}
-.card-right img {
-  border-radius: 0 95.2380952381px 95.2380952381px 0;
-}
-.card-bottom img {
-  border-radius: 0 0 95.2380952381px 95.2380952381px;
-}
-.card-left img {
-  border-radius: 95.2380952381px 0 0 95.2380952381px;
-}
-.card-text {
-  align-self: center;
-  padding: 23px;
-}
-.card-top .card-text {
-  height: auto;
-  width: auto;
-  padding-bottom: 36.8px;
-}
-.card-right .card-text {
-  height: auto;
-  width: 50%;
-  padding-left: 36.8px;
-}
-.card-bottom .card-text {
-  height: auto;
-  width: auto;
-  padding-top: 36.8px;
-}
-.card-left .card-text {
-  height: auto;
-  width: 50%;
-  padding-right: 36.8px;
-}
-.card-text p {
-  margin: 0;
-  line-height: 1.35em;
-  color: #334455;
-}
-@media (max-width: 500px) {
-  .card-top {
-    flex-direction: row;
-    grid-column: auto / span 2;
-    grid-row: auto / span 1;
-  }
-  .card-bottom {
-    flex-direction: row-reverse;
-    grid-column: auto / span 2;
-    grid-row: auto / span 1;
-  }
-  .card-top .card-image, .card-bottom .card-image {
-    height: 100%;
-    width: 50%;
-  }
-  .card-top img {
-    border-radius: 95.2380952381px 0 0 95.2380952381px;
-  }
-  .card-bottom img {
-    border-radius: 0 95.2380952381px 95.2380952381px 0;
-  }
-  .card-top .card-text {
-    height: auto;
-    width: 50%;
-    padding-right: 36.8px;
-  }
-  .card-bottom .card-text {
-    height: auto;
-    width: 50%;
-    padding-left: 36.8px;
-  }
-}
-@media (max-width: 400px) {
-  .card-image {
-    width: 38% !important;
-  }
-  .card-text {
-    width: 62% !important;
-  }
-}
-
-</style>
-<!--https://codepen.io/abcretrograde/pen/oddaaa -->
-
-<div class="container">
-  <div class="card-left">
-    <div class="card-image">
-      <img src="https://images.pexels.com/photos/7849958/pexels-photo-7849958.jpeg?w=800"  ></img>
-    </div>
-    <div class="card-text">
-      <p>Rohit Singhania</p>
-    </div>
-  </div>
-  <div class="card-top">
-    <div class="card-image">
-      <img src="https://images.pexels.com/photos/15240535/pexels-photo-15240535.jpeg?w=1000"  ></img>
-    </div>
-    <div class="card-text">
-      <p>Aryan Sharma</p>
-    </div>
-  </div>
-  <div class="card-right">
-    <div class="card-image">
-      <img src="https://images.pexels.com/photos/15222030/pexels-photo-15222030.jpeg?w=1000"  ></img>
-    </div>
-    <div class="card-text">
-      <p>Aarav Sharma</p>
-    </div>
-  </div>
-  <div class="card-right">
-    <div class="card-image">
-      <img src="https://images.pexels.com/photos/15206996/pexels-photo-15206996.jpeg?w=1000"  ></img>
-    </div>
-    <div class="card-text">
-      <p>Arnav Dasgupta</p>
-    </div>
-  </div>
-  <div class="card-top">
-    <div class="card-image">
-      <img src="https://images.pexels.com/photos/15167470/pexels-photo-15167470.jpeg?w=1000"  ></img>
-    </div>
-    <div class="card-text">
-      <p>Advait Patel</p>
-    </div>
-  </div>
-  <div class="card-bottom">
-    <div class="card-image">
-      <img src="https://images.pexels.com/photos/1212984/pexels-photo-1212984.jpeg?w=1000"  ></img>
-    </div>
-    <div class="card-text">
-      <p>Arjun Singh Rathore</p>
-    </div>
-  </div>
-  <div class="card-left">
-    <div class="card-image">
-      <img src="https://images.pexels.com/photos/12303644/pexels-photo-12303644.jpeg?w=1000"  ></img>
-    </div>
-    <div class="card-text">
-      <p>Vivaan Khanna</p>
-    </div>
-  </div>
-  <div class="card-bottom">
-    <div class="card-image">
-      <img src="https://images.pexels.com/photos/9450082/pexels-photo-9450082.jpeg?w=1000"  ></img>
-    </div>
-    <div class="card-text">
-      <p>Kabir Kapoor</p>
-    </div>
-  </div>
-  <div class="card-right">
-    <div class="card-image">
-      <img src="https://images.pexels.com/photos/1840992/pexels-photo-1840992.jpeg?w=1000"  ></img>
-    </div>
-    <div class="card-text">
-      <p>Manish Kumar</p>
-    </div>
-  </div>
-  <div class="card-top">
-    <div class="card-image">
-      <img src="https://images.pexels.com/photos/3812924/pexels-photo-3812924.jpeg?w=1000"  ></img>
-    </div>
-    <div class="card-text">
-      <p>Rohit Srivastava</p>
-    </div>
-  </div>
-  <div class="card-left">
-    <div class="card-image">
-      <img src="https://images.pexels.com/photos/13067381/pexels-photo-13067381.jpeg?w=1000"  ></img>
-    </div>
-    <div class="card-text">
-      <p>Aditya Patel</p>
-    </div>
-  </div>
-  <div class="card-left">
-    <div class="card-image">
-      <img src="https://images.pexels.com/photos/12732866/pexels-photo-12732866.jpeg?w=1000"  ></img>
-    </div>
-    <div class="card-text">
-      <p> Ritu Kumari</p>
-    </div>
-  </div>
-  <div class="card-top">
-    <div class="card-image">
-      <img src="https://images.pexels.com/photos/6936400/pexels-photo-6936400.jpeg?w=1000"  ></img>
-    </div>
-    <div class="card-text">
-      <p>Kavya Gupta</p>
-    </div>
-  </div>
-  <div class="card-bottom">
-    <div class="card-image">
-      <img src="https://images.pexels.com/photos/16034403/pexels-photo-16034403.jpeg?w=1000"  ></img>
-    </div>
-    <div class="card-text">
-      <p>Kavita Verma</p>
-    </div>
-  </div>
-  <div class="card-top">
-    <div class="card-image">
-      <img src="https://images.pexels.com/photos/16110778/pexels-photo-16110778.jpeg?w=1000"  ></img>
-    </div>
-    <div class="card-text">
-      <p>Aditi Khanna</p>
-    </div>
-  </div>
-  <div class="card-right">
-    <div class="card-image">
-      <img src="https://images.pexels.com/photos/5905497/pexels-photo-5905497.jpeg?w=1000"  ></img>
-    </div>
-    <div class="card-text">
-      <p>Srikant Krishnan</p>
-    </div>
-  </div>
-</div>
-
-
-
-<!-- Team Section -->
-<div class="w3-container" style="padding:128px 16px" id="team">
-  <h3 class="w3-center">THE TEAM</h3>
-  <p class="w3-center w3-large">The teachers who define true meaning of Education</p>
-  <div class="w3-row-padding w3-grayscale" style="margin-top:64px">
-    <div class="w3-col l3 m6 w3-margin-bottom">
-      <div class="w3-card">
-        <img src="https://www.w3schools.com/w3images/team2.jpg" alt="John" style="width:100%">
-        <div class="w3-container">
-          <h3>Hariprasad Maurya</h3>
-          <p class="w3-opacity">Chemistry Lecturer</p>
-          <p>A good teacher never fails to surprise.</p>
-          <p><button class="w3-button w3-light-grey w3-block"><i class="fa fa-envelope"></i> Contact</button></p>
-        </div>
-      </div>
-    </div>
-    <div class="w3-col l3 m6 w3-margin-bottom">
-      <div class="w3-card">
-        <img src="https://www.w3schools.com/w3images/team1.jpg" alt="Jane" style="width:100%">
-        <div class="w3-container">
-          <h3>Sunanda Kumari</h3>
-          <p class="w3-opacity">Maths Lecturer</p>
-          <p>Much like the Solitary nightangle, She's been the pillar of exellence among girls especially!</p>
-          <p><button class="w3-button w3-light-grey w3-block"><i class="fa fa-envelope"></i> Contact</button></p>
-        </div>
-      </div>
-    </div>
-    <div class="w3-col l3 m6 w3-margin-bottom">
-      <div class="w3-card">
-        <img src="https://www.w3schools.com/w3images/team4.jpg" alt="Mike" style="width:100%">
-        <div class="w3-container">
-          <h3>Mahendar Rana</h3>
-          <p class="w3-opacity">SSc teacher</p>
-          <p>Maths was never the same after he stepped inn!!</p>
-          <p><button class="w3-button w3-light-grey w3-block"><i class="fa fa-envelope"></i> Contact</button></p>
-        </div>
-      </div>
-    </div>
-    <div class="w3-col l3 m6 w3-margin-bottom">
-      <div class="w3-card">
-        <img src="https://www.w3schools.com/w3images/team3.jpg" alt="Dan" style="width:100%">
-        <div class="w3-container">
-          <h3>Dan Thomas</h3>
-          <p class="w3-opacity">English Lecturer</p>
-          <p>If something isn't comprehensible, It's because he hasn't taught it.</p>
-          <p><button class="w3-button w3-light-grey w3-block"><i class="fa fa-envelope"></i> Contact</button></p>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- Promo Section "Statistics" -->
-<div class="w3-container w3-row w3-center w3-dark-grey w3-padding-64">
-  <div class="w3-quarter">
-    <span class="w3-xxlarge">45+</span>
-    <br>Teachers
-  </div>
-  <div class="w3-quarter">
-    <span class="w3-xxlarge">230+</span>
-    <br>Batches running
-  </div>
-  <div class="w3-quarter">
-    <span class="w3-xxlarge">8000+</span>
-    <br>Students Helped
-  </div>
-  <div class="w3-quarter">
-    <span class="w3-xxlarge">12+</span>
-    <br>Languages
-  </div>
-</div>
-
-<!-- Work Section -->
-<div class="w3-container" style="padding:128px 16px" id="work">
-  <h1 class="w3-center">Be the person you dream to become</h1>
-  <p class="w3-center w3-large" id="success">What we've done for Students...</p>
-
-  <div class="w3-row-padding" style="margin-top:64px">
-    <div class="w3-col l3 m6">
-      <img src="./tinyImages/image24.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="A microphone">
-      Mic got first prize.
-    </div>
-    <div class="w3-col l3 m6">
-      <img src="./tinyImages/image23.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="A phone">
-      Phone qualified for NDA SSB
-    </div>
-    <div class="w3-col l3 m6">
-      <img src="./tinyImages/image22.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="A drone">
-      Done won 2nd in State level flying Competition
-    </div>
-    <div class="w3-col l3 m6">
-      <img src="./tinyImages/image21.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="Soundbox">
-      soundbox won Singing competition
-    </div>
-  </div>
-
-  <div class="w3-row-padding w3-section">
-    <div class="w3-col l3 m6">
-      <img src="./tinyImages/image20.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="A tablet">
-      Tablet got 1st Rank in Abacus competition
-    </div>
-    <div class="w3-col l3 m6">
-      <img src="./tinyImages/image19.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="A camera">
-      Camera won the Photo-realism painting competion
-    </div>
-    <div class="w3-col l3 m6">
-      <img src="./tinyImages/image18.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="A typewriter">
-      Typewriter won the Essay writing champ in School.
-    </div>
-    <div class="w3-col l3 m6">
-      <img src="./tinyImages/image17.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="A tableturner">
-      Table Turner performed in front of Pdt. Birju Maharaaj.
-    </div>
-  </div>
-</div>
-
-<!-- Modal for full size images on click-->
-<div id="modal01" class="w3-modal w3-black" onclick="this.style.display='none'">
-  <span class="w3-button w3-xxlarge w3-black w3-padding-large w3-display-topright" title="Close Modal Image">×</span>
-  <div class="w3-modal-content w3-animate-zoom w3-center w3-transparent w3-padding-64">
-    <img id="img01" class="w3-image">
-    <p id="caption" class="w3-opacity w3-large"></p>
-  </div>
-</div>
-
-<!-- Skills Section -->
-<div id="skillsSection" class="w3-container w3-light-grey w3-padding-64">
-  <div class="w3-row-padding">
-    <div class="w3-col m6">
-      <h3>Improving Our Skills will make a difference!!</h3>
-      <p>One child taught right can change the face of a family.</p>
-      <p>Every child taught right can change destiny of the world<br></p>
-      <p> This is how much a an average student improves with us... Just Imagine the change in you!
-    </div>
-    <div class="w3-col m6">
-      <p class="w3-wide"><i class="fa fa-camera w3-margin-right"></i>Concerntration (increases to)</p>
-      <div class="w3-grey">
-        <div class="w3-container w3-dark-grey w3-center" style="width:85%">116%</div>
-      </div>
-      <p class="w3-wide"><i class="fa fa-desktop w3-margin-right"></i>Understanding of Syllabus (increases to)</p>
-      <div class="w3-grey">
-        <div class="w3-container w3-dark-grey w3-center" style="width:66%">150%</div>
-      </div>
-      <p class="w3-wide"><i class="fa fa-photo w3-margin-right"></i>Retention (increases to) </p>
-      <div class="w3-grey">
-        <div class="w3-container w3-dark-grey w3-center" style="width:75%">175%</div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- Pricing Section -->
-<!-- vishal suggesiton
-1. partys variation
-  -get together,
-  -Nonstop party
-  -concert/ fest/ fair/ fullon Party
-
-2. Animals
-  -Little Sparrow
-  -Pretty Peacock
-  -Awesome Ostrich.
-  .
-  .
-  .
-  And So on!!
--->
-<div class="w3-container w3-center w3-dark-grey" style="padding:128px 16px" id="pricing">
-  <h3>PRICING</h3>
-  <h4>Lowest in the segment with highest quality education at offer</h4>
-  <p class="w3-large">Choose a study plan that fits your needs.</p>
-  <div class="w3-row-padding" style="margin-top:64px">
-    <div class="w3-third w3-section">
-      <ul class="w3-ul w3-white w3-hover-shadow">
-        <li class="w3-black w3-xlarge w3-padding-32">Little Candy Plan</li>
-        <li class="w3-padding-16"><b>10GB</b> Tablet</li>
-        <li class="w3-padding-16"><b>Any 2 </b>Subjects with Live Videos</li>
-        <li class="w3-padding-16"><b>All</b> Syllabus covered</li>
-        <li class="w3-padding-16"><b>15 minutes Per day</b> Doubt Support</li>
-        <li class="w3-padding-16">
-          <h2 class="w3-wide">₹478</h2>
-          <span class="w3-opacity">per month</span>
-        </li>
-        <li class="w3-light-grey w3-padding-24">
-          <button class="w3-button w3-black w3-padding-large">Enroll Now</button>
-        </li>
-      </ul>
-    </div>
-    <div class="w3-third">
-      <ul class="w3-ul w3-white w3-hover-shadow">
-        <li class="w3-red w3-xlarge w3-padding-48">Big Pie Plan</li>
-        <li class="w3-padding-16"><b>10GB</b> Tablet</li>
-        <li class="w3-padding-16"><b>Any 5 </b>Subjects with Live Videos</li>
-        <li class="w3-padding-16"><b>All</b> Syllabus covered</li>
-        <li class="w3-padding-16"><b>Unlimited</b> Doubt Clearing Support</li>
-        <li class="w3-padding-16">
-          <h2 class="w3-wide">₹778</h2>
-          <span class="w3-opacity">per month</span>
-        </li>
-        <li class="w3-light-grey w3-padding-24">
-          <button class="w3-button w3-black w3-padding-large">Enroll now</button>
-        </li>
-      </ul>
-    </div>
-    <div class="w3-third w3-section">
-      <ul class="w3-ul w3-white w3-hover-shadow">
-        <li class="w3-black w3-xlarge w3-padding-32">Mega Mania Plan</li>
-        <li class="w3-padding-16"><b>10GB</b> Tablet</li>
-        <li class="w3-padding-16"><b>Any 6 </b>Subjects with Live Videos</li>
-        <li class="w3-padding-16"><b>All</b> Syllabus covered</li>
-        <li class="w3-padding-16"><b>Unlimited</b> Doubt Clearing Support</li>
-        <li class="w3-padding-16"><b>Weekly</b> Hobby Skill Classes</li>
-        <li class="w3-padding-16">
-          <h2 class="w3-wide">₹978</h2>
-          <span class="w3-opacity">per month</span>
-        </li>
-        <li class="w3-light-grey w3-padding-24">
-          <button class="w3-button w3-black w3-padding-large">Enroll Now</button>
-        </li>
-      </ul>
-    </div>
-  </div>
-</div>
-
-<!-- Contact Section -->
-<div class="w3-container w3-light-grey" style="padding:128px 16px" id="contact">
-  <h3 class="w3-center">Meet Us</h3>
-  <p class="w3-center w3-large">Don't be scared, talk to a polite counsellor now, or Request a polite callback later :-)</p>
-  <div style="margin-top:48px">
-    <p><i class="fa fa-map-marker fa-fw w3-xxlarge w3-margin-right"></i> Rohini, Delhi</p>
-    <p><i class="fa fa-phone fa-fw w3-xxlarge w3-margin-right"></i> Phone: +91 151515</p>
-    <p><i class="fa fa-envelope fa-fw w3-xxlarge w3-margin-right"> </i> Email: god@puncturebuddy.com</p>
-    <br>
-    <form action="/action_page.php" target="_blank">
-      <p><input class="w3-input w3-border" type="text" placeholder="Name" required name="Name"></p>
-      <p><input class="w3-input w3-border" type="text" placeholder="Email" required name="Email"></p>
-      <p><input class="w3-input w3-border" type="text" placeholder="Subject" required name="Subject"></p>
-      <p><input class="w3-input w3-border" type="text" placeholder="Message" required name="Message"></p>
-      <p>
-        <button class="w3-button w3-black" type="submit">
-          <i class="fa fa-paper-plane"></i> Talk to our sweet counsellors :-)
-        </button>
-      </p>
-    </form>
-    
-  </div>
-</div>
-
-<!-- footer -->
-<footer id="site-footer">
-
-    <section class="horizontal-footer-section" id="footer-top-section">
-        <div id="footer-logo">
-            <picture>
-    <a href="#home" class="w3-bar-item w3-button w3-wide" style="border-radius:5px; ">TathastuClasses</a>
-            </picture>
-        </div>
-        <div id="footer-top-menu-container" role="menubar">
-            <ul id="footer-top-menu" role="menu">
-                <li class="footer-top-menu-item footer-top-menu-item-active" role="menuitem">
-                    <a href="#" class="footer-top-menu-link">Who We are</a>
-                </li>
-                <li class="footer-top-menu-item footer-top-menu-item-active" role="menuitem">
-                    <a href="#" class="footer-top-menu-link">Our family</a>
-                </li>
-                <li class="footer-top-menu-item footer-top-menu-item-active" role="menuitem">
-                    <a href="#" class="footer-top-menu-link">Courses</a>
-                </li>
-                <li class="footer-top-menu-item footer-top-menu-item-active" role="menuitem">
-                    <a href="#pricing" class="footer-top-menu-link footer-top-menu-item-active">Pricing</a>
-                </li>
-            </ul>
-        </div>
-        <div id="footer-buttons-container">
-            <a href="#success" class="footer-button" role="button">View our Success Stories.</a>
-        </div>
-    </section>
-
-    <section class="horizontal-footer-section" id="footer-middle-section">
-        <div id="footer-about" class="footer-columns footer-columns-large">
-            <h1>Our Address</h1>
-            <address>
-                <p><img src="https://img.icons8.com/ios-filled/14/eeeeee/marker.png">30/20, Verkhy street, GurGaon, Haryana, India</p>
-                <p><img src="https://img.icons8.com/ios-filled/14/eeeeee/phone.png">7 (800) 555–35–35</p>
-                <p><img src="https://img.icons8.com/ios-filled/14/eeeeee/mail.png">god@puncturebuddy.com</p>
-                <p><img src="https://img.icons8.com/ios-filled/14/eeeeee/clock.png">8:00 AM – 8:00 PM</p>
-            </address>
-            <h1> Our Newsletter</h1>
-            <a href="#" class="footer-button" role="button">Click here for more info</a>
-        </div>
-        <div class="footer-columns">
-            <h1>Overview</h1>
-            <ul class="footer-column-menu" role="menu">
-                <li class="footer-column-menu-item" role="menuitem">
-                    <a href="#" class="footer-column-menu-item-link">About Us </a>
-                </li>
-                <li class="footer-column-menu-item" role="menuitem">
-                    <a href="#" class="footer-column-menu-item-link">Out Teachers</a>
-                </li>
-                <li class="footer-column-menu-item" role="menuitem">
-                    <a href="#" class="footer-column-menu-item-link">Courses</a>
-                </li>
-                <li class="footer-column-menu-item" role="menuitem">
-                    <a href="#" class="footer-column-menu-item-link">Pricing</a>
-                </li>
-            </ul>
-        </div>
-        <div class="footer-columns">
-            <h1>Resources</h1>
-            <ul class="footer-column-menu" role="menu">
-                <li class="footer-column-menu-item" role="menuitem">
-                    <a href="#" class="footer-column-menu-item-link">FAQ</a>
-                </li>
-                <li class="footer-column-menu-item" role="menuitem">
-                    <a href="#" class="footer-column-menu-item-link">Media</a>
-                </li>
-                <li class="footer-column-menu-item" role="menuitem">
-                    <a href="#" class="footer-column-menu-item-link">Guides</a>
-                </li>
-                <li class="footer-column-menu-item" role="menuitem">
-                    <a href="#" class="footer-column-menu-item-link">Free Resources</a>
-                </li>
-                <li class="footer-column-menu-item" role="menuitem">
-                    <a href="#" class="footer-column-menu-item-link footer-top-menu-item-active">Careers</a>
-                </li>
-            </ul>
-        </div>
-        
-    </section>
-    
-    <section class="horizontal-footer-section" id="footer-bottom-section">
-        <div id="footer-copyright-info">
-            &copy; Tathastu Classes Inc. 2022. All rights reserved.
-        </div>
-        <div id="footer-social-buttons">
-            <img src="https://img.icons8.com/ios-filled/25/999999/facebook--v1.png"/>
-            <img src="https://img.icons8.com/ios-filled/25/999999/telegram-app.png"/>
-            <img src="https://img.icons8.com/ios-filled/25/999999/pinterest--v1.png"/>
-            <img src="https://img.icons8.com/ios-filled/25/999999/instagram--v1.png"/>
-        </div>
-    </section>
-<style type="text/css">
-  @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,700;0,800;1,400;1,700;1,800&display=swap');
-
-* {
-    box-sizing: border-box;
-    transition: all 0.3s ease;
-}
-
 body {
-    background: #fafafa;
-    font-family: "Open Sans", "Noto Sans", HelveticaNeueCyr, Helvetica, sans-serif;
-    font-size: 11pt;
+  background-color: var(--bg);
+  color: var(--fg);
+  display: flex;
+  font: 1em/1.5 "DM Sans", sans-serif;
+  height: 100vh;
+  transition:
+    background-color var(--trans-dur),
+    color var(--trans-dur);
 }
+.clock {
+  z-index: 1;
+  margin: auto;
+  text-align: center;
+  overflow: hidden;
 
-footer#site-footer {
-    margin: 0 auto;
-    background: #1e3138;
-    padding: 1rem;
-    color: #a8a8a8;
 }
-
-footer#site-footer a {
-    color: #a8a8a8;
+.clock__word {
+  z-index: 1;
+  display: inline-block;
+  font-weight: 200;
 }
-
-footer#site-footer a:hover {
-    color: #00c3ce;
+.clock__word:empty {
+  z-index: 1;
+  display: none;
 }
-
-footer#site-footer h1 {
-    color: #cecece;
+.clock__word--bold {
+  z-index: 1;
+  font-weight: 600;
 }
-
-footer#site-footer section.horizontal-footer-section {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    align-items: center;
-    padding: 2.38rem 2rem;
+.clock__word--fade-fly-in {
+  z-index: 1;
+  animation: fade-fly-in 0.6s cubic-bezier(0.65,0,0.35,1);
 }
-
-footer#site-footer section.horizontal-footer-section#footer-top-section {
-    justify-content: center;
-}
-
-footer#site-footer #footer-logo {
-    margin-right: auto;
-    flex-shrink: 0;
-}
-
-footer#site-footer #footer-logo img {
-    height: 2.28rem;
-}
-
-footer#site-footer ul#footer-top-menu {
-    padding: 0;
-    margin: 0;
-}
-
-footer#site-footer ul#footer-top-menu li {
-    display: inline;
-    list-style-type: none;
-    margin-right: 1.32rem;
-    font-weight: bold;
-}
-
-footer#site-footer ul#footer-top-menu li a {
-    text-decoration: none;
-}
-
-footer#site-footer .footer-top-menu-item-active {
-    position: relative;
-}
-
-footer#site-footer .footer-top-menu-item-active a {
-    color: #007ba6;
-}
-
-footer#site-footer .footer-top-menu-item-active a:hover {
-    color: #00c3ce;
-}
-
-footer#site-footer .footer-top-menu-item-active::before {
-    content: "";
-    background: #007ba6;
-    padding: 0.15rem 0;
-    width: 100%;
-    position: absolute;
-    top: 1.68em;
-}
-
-footer#site-footer .footer-top-menu-item-active:hover::before {
-    background: #00c3ce;
-    transition-duration: 0.6s;
-}
-
-footer#site-footer #footer-buttons-container {
-    margin-left: auto;
-    flex-shrink: 0;
-}
-
-footer#site-footer a.footer-button {
-    background: transparent;
-    border: 0.15rem solid #a8a8a8;
-    border-radius: 1.38rem;
-    padding: 0.5rem 1rem;
-    font-weight: bold;
-    text-decoration: none;
-    display: inline-block;
-}
-
-footer#site-footer a.footer-button:hover {
-    border-color: #00c3ce;
-}
-
-footer#site-footer section.horizontal-footer-section#footer-middle-section {
-    align-items: flex-start;
-}
-
-footer#site-footer .footer-columns {
-    flex-basis: 18%;
-    padding-right: 1rem;
-}
-
-footer#site-footer .footer-columns-large {
-    flex-basis: 46%;
-    padding-right: 2rem;
-}
-
-footer#site-footer .footer-columns h1 {
-    font-size: 1rem;
-    margin-top: 0;
-    margin-bottom: 1rem;
-    font-weight: 800;
-}
-
-footer#site-footer .footer-columns.footer-columns-large h1 {
-    font-size: 1.28rem;
-    margin-top: 3rem;
-    margin-bottom: 1.32rem;
-}
-
-footer#site-footer .footer-columns.footer-columns-large h1:first-child {
-    margin-top: 0;
-}
-
-footer#site-footer ul.footer-column-menu {
-    margin: 0;
-    padding: 0;
-}
-
-footer#site-footer ul.footer-column-menu li {
-    list-style-type: none;
-    margin-bottom: 0.68rem;
-    font-size: 0.88rem;
-}
-
-footer#site-footer #footer-about address {
-    font-style: normal;
-    font-weight: bold;
-}
-
-footer#site-footer #footer-about address p img {
-    margin-right: 0.68rem;
-}
-
-footer#site-footer #footer-about a.footer-button {
-    margin-top: 0.32rem;
-}
-
-footer#site-footer section.horizontal-footer-section#footer-bottom-section {
-    padding: 1.32rem 0;
-    margin: 2rem 2rem 1.32rem 2rem;
-    border-top: 0.05rem solid #666666;
-}
-
-footer#site-footer #footer-social-buttons {
-    justify-self: flex-end;
-    margin-left: auto;
-}
-
-footer#site-footer #footer-social-buttons img {
-    margin-left: 0.68rem;
-}
-
-footer#site-footer #footer-social-buttons img:hover {
-    cursor: pointer;
-}
-
-
-
-
-
-
-@media screen and (max-width: 959px) {
-
-    footer#site-footer {
-        width: 100%;
-    }
-
-    footer#site-footer section.horizontal-footer-section {
-        flex-direction: column;
-        flex-wrap: wrap;
-    }
-
-    footer#site-footer section.horizontal-footer-section div {
-        flex-basis: 100%;
-        width: 100%;
-    }
-
-    footer#site-footer ul li {
-        display: block !important;
-        padding: 1em !important;
-        border-top: 1px solid #555555;
-        border-bottom: none;
-        border-left: none;
-        border-right: none;
-        font-size: 1.15rem !important;
-    }
-
-    footer#site-footer ul li:first-child {
-        border-top: none;
-    }
-
-    footer#site-footer a.footer-button {
-        display: block;
-        text-align: center;
-        max-width: 350px;
-        margin: 0.32rem auto;
-    }
-
-    footer#site-footer section.horizontal-footer-section#footer-top-section div {
-        margin-top: 0;
-        margin-bottom: 1.68rem;
-    }
-
-    footer#site-footer #footer-logo {
-        margin-right: 0;
-    }
-
-    footer#site-footer #footer-buttons-container {
-        margin-left: 0;
-    }
-
-    footer#site-footer ul#footer-top-menu {
-        width: 100%;
-        margin: 2rem 0 0 0;
-    }
-
-    footer#site-footer .footer-top-menu-item-active::before {
-        display: none;
-    }
-
-    footer#site-footer #footer-about {
-        margin-bottom: 3rem;
-    }
-
-    footer#site-footer .footer-columns-large,
-    footer#site-footer .footer-columns {
-        padding-right: 0;
-    }
-
-    footer#site-footer .footer-columns {
-        margin-top: 0;
-        margin-bottom: 4rem;
-    }
-
-    footer#site-footer .footer-columns:last-child {
-        margin-bottom: 0;
-    }
-
-    footer#site-footer .footer-columns h1 {
-        text-align: center;
-        font-size: 1.3rem;
-        text-transform: uppercase;
-        letter-spacing: 0.15rem;
-    }
-
-    footer#site-footer ul.footer-column-menu li {
-        margin-bottom: 0;
-        display: block;
-        text-align: center;
-    }
-
-    footer#site-footer section#footer-bottom-section div {
-        text-align: center;
-    }
-
-    footer#site-footer section.horizontal-footer-section#footer-bottom-section {
-        margin: 1.32rem 0;
-        padding: 0;
-        border-top: 0;
-    }
-
-    footer#site-footer section#footer-bottom-section #footer-social-buttons {
-        margin-top: 1.32rem;
-    }
-}
-</style>
-</footer>
-
-
-<script>
-
-//Tathasu Thingy
-var div = document.getElementById("test"),
-    div2 = document.getElementById("test2"),
-    btn = document.getElementById("btn"),
-    time,
-    trigger=200,
-    time2 = setInterval(typeDiv,trigger),
-    time3,
-    text = "TathastuClasses... Keeping the Dreams Alive!!",
-    text2=text,
-    clear,
-    clear2,
-    i = text.length - 1,
-    t = 0;
-
-
-function deleteDiv () {
-    
-    
-    text = text.substring(0,i);
-    
-    div.innerHTML = text;
-    div2.innerHTML = text;
-
-    if ( i == 0 ) {
-        clear = clearInterval(time);
-        text=text2;
-        t=0;
-        i=text.length-1;
-        time2 = setInterval(typeDiv,trigger);
-
-    }
-      if (i>0) {
-        i = i - 1;
-      }
-
-    
-}
-
-function typeDiv () {
-    
-    div.innerHTML += text[t];
-    div2.innerHTML += text[t];
-    
-    t = t + 1;
-    
-    if ( t == text.length ) {
-        clear2 = clearInterval(time2);
-        time3 = setTimeout(go,1000);
-    }
-    
-}
-
-function go () {
-    
-    time = setInterval(deleteDiv,trigger);
-}
-
-
-// Modal Image Gallery
-function onClick(element) {
-  document.getElementById("img01").src = element.src;
-  document.getElementById("modal01").style.display = "block";
-  var captionText = document.getElementById("caption");
-  captionText.innerHTML = element.alt;
-}
-
-
-// Toggle between showing and hiding the sidebar when clicking the menu icon
-var mySidebar = document.getElementById("mySidebar");
-
-function w3_open() {
-  if (mySidebar.style.display === 'block') {
-    mySidebar.style.display = 'none';
-  } else {
-    mySidebar.style.display = 'block';
+/* Dark theme */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: hsl(var(--hue),10%,10%);
+    --fg: hsl(var(--hue),10%,90%);
   }
 }
+/* Animations */
+@keyframes fade-fly-in {
+  from { opacity: 0; transform: translateY(100%); }
+  to { opacity: 1; transform: translateY(0); }
+}
 
-// Close the sidebar with the close button
-function w3_close() {
-    mySidebar.style.display = "none";
+</style>
+<script type="text/javascript">
+  window.addEventListener("DOMContentLoaded",() => {
+  const c = new Clock30(".clock");
+});
+
+class Clock30 {
+  time = [];
+
+  constructor(el) {
+    this.el = document.querySelector(el);
+
+    this.init();
+  }
+  init() {
+    this.timeUpdate();
+  }
+  get timeAsObject() {
+    const date = new Date();
+    const h = date.getHours();
+    const m = date.getMinutes();
+    const ss = date.getSeconds();
+
+    return {h,m,ss};
+  }
+  get timeInWords() {
+    let {h} = this.timeAsObject;
+    const {m} = this.timeAsObject;
+    const {ss} = this.timeAsObject;
+    // hour
+    if (h > 12) h -= 12;
+    else if (h === 0) h = 12;
+
+    const hrDigits = `${h}`.split("");
+    if (h < 10) hrDigits.unshift("0");
+    // minute
+    const minDigits = `${m}`.split("");
+    if (m < 10) minDigits.unshift("0");
+
+    const secDigits = `${ss}`.split("");
+    if (ss < 10) secDigits.unshift("0");
+
+    const numbers = {
+      _1: "one",
+      _2: "two",
+      _3: "three",
+      _4: "four",
+      _5: "five",
+      _6: "six",
+      _7: "seven",
+      _8: "eight",
+      _9: "nine",
+      _10: "ten",
+      _11: "eleven",
+      _12: "twelve",
+      _13: "thirteen",
+      _14: "fourteen",
+      _15: "fifteen",
+      _16: "sixteen",
+      _17: "seventeen",
+      _18: "eighteen",
+      _19: "nineteen",
+      _20: "twenty"
+    };
+
+    const numbersSec = {
+      _1: "one",
+      _2: "two",
+      _3: "three",
+      _4: "four",
+      _5: "five",
+      _6: "six",
+      _7: "seven",
+      _8: "eight",
+      _9: "nine",
+      _10: "ten",
+      _11: "eleven",
+      _12: "twelve",
+      _13: "thirteen",
+      _14: "fourteen",
+      _15: "fifteen",
+      _16: "sixteen",
+      _17: "seventeen",
+      _18: "eighteen",
+      _19: "nineteen",
+      _20: "twenty",
+      _21: "twenty-one",
+      _22: "twenty-two",
+      _23: "twenty-three",
+      _24: "twenty-four",
+      _25: "twenty-five",
+      _26: "twenty-six",
+      _27: "twenty-seven",
+      _28: "twenty-eight",
+      _29: "twenty-nine",
+      _30: "thirty",
+      _31: "thirty-one",
+      _32: "thirty-two",
+      _33: "thirty-three",
+      _34: "thirty-four",
+      _35: "thirty-five",
+      _36: "thirty-six",
+      _37: "thirty-seven",
+      _38: "thirty-eight",
+      _39: "thirty-nine",
+      _40: "forty",
+      _41: "forty-one",
+      _42: "forty-two",
+      _43: "forty-three",
+      _44: "forty-four",
+      _45: "forty-five",
+      _46: "forty-six",
+      _47: "forty-seven",
+      _48: "forty-eight",
+      _49: "forty-nine",
+      _50: "fifty",
+      _51: "fifty-one",
+      _52: "fifty-two",
+      _53: "fifty-three",
+      _54: "fifty-four",
+      _55: "fifty-five",
+      _56: "fifty-six",
+      _57: "fifty-seven",
+      _58: "fifty-eight",
+      _59: "fifty-nine",
+      _0: "HEHEHEHE"
+    };
+
+    let words = "";
+    const hour = numbers[`_${h}`];
+    let nextHourProp = h + 1;
+    let sec = numbersSec[`_${ss}`];
+
+    if (nextHourProp > 12) nextHourProp %= 12;
+  
+    const nextHour = numbers[`_${nextHourProp}`];
+
+    if (m === 0) {
+      words = `${hour} o’clock, ${sec} seconds_GONE!`;
+    } else if (m === 15) {
+      words = `quarter past ${hour},_${sec} seconds_GONE!`;
+    } else if (m < 30) {
+      let min = numbers[`_${m}`];
+      let sec = numbersSec[`_${ss}`];
+
+      // values higher than 20 won’t be found
+      if (!min) {
+        const minFirstDigit = +minDigits[0];
+        const minLastDigit = +minDigits[1];
+        const firstWord = numbers[`_${minFirstDigit}0`];
+        const lastWord = numbers[`_${minLastDigit}`];
+        min = `${firstWord}-${lastWord}`;
+      }
+      words = `${min} minutes past ${hour},_${sec}_seconds_GONE!`;
+    } else if (m === 30) {
+      words = `half past ${hour},_${sec}_seconds_GONE!`;
+    } else if (m === 45) {
+      words = `quarter to ${nextHour},_${sec}_seconds_GONE!`;
+    } else if (m > 30) {
+      const minsLeft = 60 - m;
+      let min = numbers[`_${minsLeft}`];
+      let sec = numbersSec[`_${ss}`];
+
+      // values higher than 20 won’t be found
+      if (!min) {
+        const digitString = `${minsLeft}`;
+        const minsLeftFirstDigit = +digitString[0];
+        const minsLeftLastDigit = +digitString[1];
+        const firstWord = numbers[`_${minsLeftFirstDigit}0`];
+        const lastWord = numbers[`_${minsLeftLastDigit}`];
+        min = `${firstWord}-${lastWord}`;
+      }
+      words = `${min} minutes to ${nextHour},_${sec}_seconds_GONE!`;
+    }
+
+    return words;
+  }
+  timeUpdate() {
+    const flyInClass = "clock__word--fade-fly-in";
+    const time = this.timeInWords.split(" ");
+    // if half past, insert a space between “half” and “past” so “past” is boldfaced
+    if (time.indexOf("half") > -1) {
+      time.splice(1,0,"");
+    }
+    // display the time
+    const timeWordEls = Array.from(this.el.querySelectorAll(".clock__word"));
+
+    for (let i = 0; i < timeWordEls.length; ++i) {
+      const wordEl = timeWordEls[i];
+      wordEl.innerText = time[i] || "";
+
+      if (time[i] !== this.time[i]) {
+        wordEl.classList.add(flyInClass);
+      } else {
+        wordEl.classList.remove(flyInClass);
+      }
+    }
+
+    this.time = time;
+    // loop
+    clearTimeout(this.timeUpdateLoop);
+    this.timeUpdateLoop = setTimeout(this.timeUpdate.bind(this),1e3);
+  }
 }
 </script>
 
+<style type="text/css">
+  body {
+  margin: 0;
+  height: 100vh;
+}
+#canvas {
+  z-index: -1;
+  background: transparent;
+}
+</style>
+
+<script type="text/javascript">
+  /*--------------------
+Utils
+--------------------*/
+const scale = (v, x1, y1, x2, y2) => (v - x1) * (y2 - x2) / (y1 - x1) + x2;
+const lerp = (a, b, t) => a + t * (b - a)
+
+/*--------------------
+Settings
+--------------------*/
+const settings = {
+  letters: 'DO NOT FUCKING STOP. STACK MONEY, GO UNDERGROUND, FOLLOW YOUR FUCKING DREAMS!',
+  minDistance: 12,
+  resetTimer: 20000,
+}
+
+/*--------------------
+Setup
+--------------------*/
+const canvas = document.getElementById('canvas')
+const ctx = canvas.getContext('2d')
+const win = {
+  w: window.innerWidth,
+  h: window.innerHeight
+}
+const mouse = {
+  x: win.w / 2,
+  y: win.h / 2,
+}
+let time = 0
+const devicePixelRatio = window.devicePixelRatio || 1
+const chain = []
+const letters = settings.letters.split('').reverse()
+for(let i = 0; i < letters.length; i++) {
+  chain.push({ letter: letters[i], x: 0, y: 0 })
+}
+
+
+/*--------------------
+Resize
+--------------------*/
+const onResize = () => {
+  win.w = window.innerWidth
+  win.h = window.innerHeight
+  canvas.width = win.w * devicePixelRatio
+  canvas.height = win.h * devicePixelRatio
+  canvas.style.width = `${win.w}px`
+  canvas.style.height = `${win.h}px`
+  ctx.scale(devicePixelRatio, devicePixelRatio)
+}
+onResize()
+
+
+/*--------------------
+MouseMove
+--------------------*/
+let isMouseMoving = false
+let timeoutID
+const onMouseMove = (e) => {
+  isMouseMoving = true
+  mouse.x = e.touches ? e.touches[0].clientX : e.clientX
+  mouse.y = e.touches ? e.touches[0].clientY : e.clientY
+
+  chain[0].x = mouse.x
+  chain[0].y = mouse.y
+
+  clearTimeout(timeoutID)
+  timeoutID = setTimeout(() => {
+    isMouseMoving = false
+  }, settings.resetTimer)
+}
+
+const fuckOff = (e) => {
+  canvas.style.display= "none";
+  document.getElementById("theMenuButton").style.display="block";
+
+}
+/*--------------------
+Listeners
+--------------------*/
+window.addEventListener('resize', onResize)
+window.addEventListener('mousemove', onMouseMove)
+window.addEventListener('touchmove', onMouseMove)
+window.addEventListener('click', fuckOff)
+/*--------------------
+Clear
+--------------------*/
+const clear = () => {
+  ctx.clearRect(0, 0, canvas.width, canvas.height)
+}
+
+
+/*--------------------
+Draw
+--------------------*/
+const draw = () => {
+  clear()    
+
+  chain.forEach((link, index) => {
+    if (isMouseMoving) {
+      ctx.fillStyle = "white";
+      ctx.fillText(link.letter, link.x - settings.minDistance, link.y)
+
+      if(index > 0) {
+        let prevLink = chain[index - 1]
+        let dx = link.x - prevLink.x
+        let dy = link.y - prevLink.y
+        let distance = Math.sqrt(dx * dx + dy * dy)
+
+        if(distance > settings.minDistance) {
+          let ratio = settings.minDistance / distance
+          link.x = lerp(link.x, prevLink.x + dx * ratio, .4)
+          link.y = lerp(link.y, prevLink.y + dy * ratio, .4)
+        }
+      }
+    } else {
+      const theta = scale(index, 0, chain.length, .3, .06)
+
+      link.x = lerp(link.x, mouse.x - (index + 1) * settings.minDistance, theta)
+      link.y = lerp(link.y, mouse.y + Math.sin(time * .3 + index * .5) * 3, theta)
+      ctx.fillText(link.letter, link.x, link.y)
+    }
+  })
+}
+
+
+/*--------------------
+Animate
+--------------------*/
+const animate = () => {
+  time += 0.1
+  clear()
+  requestAnimationFrame(animate)
+
+  draw()
+}
+animate()
+</script>
 </body>
 </html>

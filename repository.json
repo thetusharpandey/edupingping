@@ -1,0 +1,44 @@
+//master JsON
+{
+	"parentName": "FullNameString",
+	"memberParam":{"memberNameString":"MemberAgeValueFromFunction","i-timesNames":"i-timesDates"}, //this new key-value has to have a zero member, if not found, i assume -> "Child":"01-01-2020"
+	"countryCode":"valueChosenFromCountryListFunction",//searcheable list of countries
+	"phoneNumber":"valueInputFromFormField",
+	"email":"valueInputFromFormField",
+	"timezone":"defaultForTheCountryChosen", //the user is indicated that the timezone is thiss. and current time is mentioned in the form when you select the country and location. But they can change it. 
+	"SMValue":"employeeCode",
+	"EventLog":{"eventComment":"concatenatedStringOf_date_time_employeeCode","...i'th_Appended_eventComment":"...i'th_Appended_concatenatedStringOf_date_time_employeeCode"},
+	"probe":{"probeHeaderFromAllowedPrompts":"probeSummary","i'th-ProbeSummary":"i'th-ProbeComment"},
+	"sessionList":{"sessionID":"cost","sessionID":"cost","...appendedIDs":"appendedCosts"},
+	"moneyData":["invoiceID", "...", "i-thInvoice"], //initially Value is Null, or invoice #0000
+	"refer":{"receivedFrom":"phoneNumber", "givenTo":"phoneNumber", "...i-thGivenTo":"i-thPhoneNumber"},
+	"campaign":"campaignTheyCameFrom"
+}
+
+
+
+//sessionID
+/*
+{
+	"bookingList":{"phoneNumber":"memberIndex", "i-thPhoneNumber":"i-thMemberIndex"},
+	"currentTrainer":"employeeCode",
+	"eventLog":{"eventComment":"concatenatedStringOf_date_time_employeeCode","...i'th_Appended_eventComment":"...i'th_Appended_concatenatedStringOf_date_time_employeeCode"},
+}
+*/
+
+
+
+javascript-> async : http request is linear and page can wait for its request while loading things on its end. 
+			api might take sometime but the API is not having its own issues at all. 
+
+
+			but the api will have delay issues. 
+
+intended thing: 
+page sends a request -> request received at pending register -> free arduino chosen to complete it->
+once done, result is updated and the program sends it back to the requester.  
+
+
+shared realtime storage X
+request queue and responding to the person who requested X
+

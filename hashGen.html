@@ -1,0 +1,1745 @@
+<!--hashGen-->
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+<!--script src="https://cdn.lordicon.com/lordicon.js"></script-->
+
+	<title>hashGen Agent</title>
+</head>
+<body>
+	<div style="display:flex; gap: 15px;">
+		<div class='wrapper'>
+  			<input type='text' placeholder=''>
+  			<span>namePiece</span>
+		</div>
+		<div class='wrapper'>
+ 			<input type='text' placeholder=''>
+  			<span>employeeCode</span>
+		</div>
+		<div class='wrapper'>
+  			<input type='text' placeholder=''>
+  			<span>emailPiece</span>
+		</div>
+		<div style="display: block;">
+			<div id="tag" style="filter: invert(100%);">Active?</div>
+			<div class="control-knob" style="margin-bottom: 10px;">
+  				<input type="checkbox" >
+  				<div class="control-position on">
+    				<span>Ya</span>    
+  				</div>
+  				<div class="control-position off">
+    				<span>No</span>
+  				</div>
+  				<div class="knob">
+    				<div class="knob-center"></div>
+  				</div>
+			</div>
+		</div>
+<button onclick="dippy()" type="button">
+  <i>
+<svg viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <!-- Neon Glow Circle -->
+    <circle cx="21" cy="21" r="15" stroke="#00ff00" stroke-width="3" fill="none" stroke-linecap="round">
+        <animate attributeName="stroke-opacity" values="1;0.3;1" dur="2s" repeatCount="indefinite"/>
+    </circle>
+    <!-- Neon Glow Handle -->
+    <line x1="28" y1="28" x2="40" y2="40" stroke="#00ff00" stroke-width="5" stroke-linecap="round">
+        <animate attributeName="stroke-opacity" values="1;0.3;1" dur="2s" repeatCount="indefinite"/>
+    </line>
+</svg>
+ </i>
+  <span>
+    <p>
+      🔘
+    </p>
+    <svg viewBox="0 0 74 74" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="37" cy="37" r="36" stroke="#7afffb" stroke-width="2" stroke-dasharray="0,0,0,0,0,225.8292694091797">
+        <animate attributeType="XML" attributeName="stroke-dasharray" repeatCount="indefinite" dur="5.43653642049062s" values="0,0,0,0,0,225.8292694091797; 
+          0,0,0,45.59790218816986,89.0355628446701,91.19580437633972; 
+          0,0,75.27642313639323,0,150.55284627278647,225.8292694091797; 
+          0,0,150.55284627278647,0,75.27642313639323,225.8292694091797; 
+          0,0,188.19105784098306,37.63821156819662,0,0; 
+          0,225.8292694091797,0,75.27642313639323,0,225.8292694091797" keyTimes="0; 0.16666666666666666; 0.3333; 0.6666; 0.8333; 1" begin="0.935907495683864s"></animate>
+      </circle>
+    </svg>
+  </span>
+  <svg viewBox="0 0 74 74" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="37" cy="37" r="36" stroke="black" stroke-width="2" stroke-dasharray="0,0,0,0,0,225.8292694091797">
+      <animate attributeType="XML" attributeName="stroke-dasharray" repeatCount="indefinite" dur="5.43653642049062s" values="0,0,0,0,0,225.8292694091797; 
+          0,0,0,45.59790218816986,89.0355628446701,91.19580437633972; 
+          0,0,75.27642313639323,0,150.55284627278647,225.8292694091797; 
+          0,0,150.55284627278647,0,75.27642313639323,225.8292694091797; 
+          0,0,188.19105784098306,37.63821156819662,0,0; 
+          0,225.8292694091797,0,75.27642313639323,0,225.8292694091797" keyTimes="0; 0.16666666666666666; 0.3333; 0.6666; 0.8333; 1" begin="0.935907495683864s"></animate>
+    </circle>
+  </svg>
+</button>
+	</div>
+
+<style type="text/css">
+
+body {
+  height: 100vh;
+  height: 100svh;
+  display: grid;
+  place-items: center;
+  background-color: var(--bg);
+}
+
+.wrapper {
+  width: min(325px,80vw);
+  display: grid;
+  align-items: center;
+  padding-bottom: 10px;
+  margin-top: 10px;
+
+  & > * {
+    grid-column: 1;
+    grid-row: 1;
+    font: 1.1rem futura,helvetica,sans-serif;
+    color: var(--white);
+  }
+
+  & input {
+    position: relative;
+    border: 1.5px solid var(--white);
+    border-radius: 0.25rem;
+    outline: none;
+    background-color: transparent;
+    color: var(--white);
+    padding: 1rem;
+    z-index: 1;
+    transition: border-color 0.5s;
+
+    &:focus { border-color: var(--primary); }
+
+    &:focus ~ span, 
+    &:not(:placeholder-shown) ~ span {
+      transform: translateY(-1.8rem) scale(0.75);
+      padding: 0 0.25rem;
+      color: var(--white);
+    }
+  }
+
+  & span {
+    width: max-content;
+    background-color: var(--bg);
+    margin-left: 1rem;
+    color: var(--placeholder);
+    transition: transform 0.5s;
+  }
+}	
+button {
+  position: relative;
+  width: 60px;
+  height: 60px;
+  background-image: linear-gradient(
+    120deg,
+    #7afffb,
+    #79fcff,
+    #75eaff,
+    #6eccff,
+    #67a4ff,
+    #5f73ff,
+    #7156ff,
+    #9b4eff,
+    #c547ff,
+    #e940ff,
+    #ff3cfc,
+    #ff3bf2
+  );
+  background-position: top left;
+  background-size: 100%;
+  box-shadow: 0px 0px 400px rgba(255, 59, 242, 1),
+    0px 0px 200px rgba(255, 59, 242, 0.75), 0px 0px 100px rgba(255, 59, 242, 0.5),
+    0px 0px 50px rgba(255, 59, 242, 0.35), 0px 0px 25px rgba(255, 59, 242, 0.2);
+  border-radius: 100%;
+  border: none;
+  margin-top: 2.4%;
+  margin-left: 1%;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  box-shadow: 0px 0px 400px rgba(122, 255, 251, 1),
+    0px 0px 200px rgba(122, 255, 251, 0.75),
+    0px 0px 100px rgba(122, 255, 251, 0.5), 0px 0px 50px rgba(122, 255, 251, 0.35),
+    0px 0px 25px rgba(122, 255, 251, 0.2);
+  padding: 20px;
+  background-size: 180%;
+  transition: all 0.3s ease;
+}
+
+button:active {
+  transform: scale(0.9);
+  transition: all 0.05s ease;
+}
+
+button::before {
+  position: absolute;
+  width: calc(100% + 20px);
+  height: calc(100% + 20px);
+  border: 1px solid rgba(255, 59, 242, 0.8);
+  border-radius: 100%;
+  pointer-events: none;
+  content: "";
+  transition: all 0.3s ease;
+}
+
+button:hover::before {
+  border: 1px solid rgba(122, 255, 251, 0.6);
+  width: calc(100% + 40px);
+  height: calc(100% + 40px);
+  transition: all 0.3s ease;
+}
+
+button:active::before {
+  width: calc(100% + 20px);
+  height: calc(100% + 20px);
+  transition: all 0.07s ease;
+}
+
+button::after {
+  position: absolute;
+  width: calc(100% + 40px);
+  height: calc(100% + 40px);
+  border: 2px dashed rgba(255, 59, 242, 0.4);
+  box-shadow: 0px 0px 100px rgba(122, 255, 251, 0.1);
+  border-radius: 100%;
+  pointer-events: none;
+  animation: rotate 30s linear infinite;
+  content: "";
+  transition: all 0.3s ease;
+}
+
+@keyframes rotate {
+  to {
+    transform: rotateZ(-360deg);
+  }
+}
+
+button:hover::after {
+  border: 2px dashed rgba(122, 255, 251, 0.3);
+  width: calc(100% + 80px);
+  height: calc(100% + 80px);
+  transition: all 0.3s ease;
+}
+
+button:active::after {
+  width: calc(100% + 40px);
+  height: calc(100% + 40px);
+  transition: all 0.07s ease;
+}
+
+button > svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  mix-blend-mode: overlay;
+  transition: all 0.3s ease;
+}
+
+button i {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+button i svg {
+  position: relative;
+  width: 100%;
+  height: auto;
+  filter: drop-shadow(0px 0px 5px white);
+  mix-blend-mode: overlay;
+}
+
+button:hover i svg {
+  animation: shake 0.5s linear infinite;
+}
+
+@keyframes shake {
+  0% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(15deg);
+  }
+  75% {
+    transform: rotate(-15deg);
+  }
+}
+
+button span {
+  position: absolute;
+  top: -7px;
+  right: -11px;
+  width: 40px;
+  height: 40px;
+  border-radius: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(5px);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  z-index: 2;
+}
+
+button:hover span {
+  background-color: #333;
+  transition: all 0.3s ease;
+}
+
+button span p {
+  font: normal normal 400 14pt / 2cap "Roboto Mono", monospace;
+  color: #ccc;
+  margin: 0;
+  position: relative;
+  left: 1px;
+}
+
+button span svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+aside {
+  position: absolute;
+  font: normal normal 900 14pt / 2cap "Architects Daughter", cursive;
+  bottom: 10%;
+  color: #777;
+  transition: all 0.3s ease;
+}
+
+button:hover ~ aside {
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+@media (max-height: 80px) {
+  aside {
+    display: none;
+  }
+}
+</style>
+<div style="display: flex;">
+<i style="height:50px; width:50px" onclick = "bumpfunc()"class="fa-solid fa-barcode"></i>
+<div class="button-container" onclick="codeCreate()" style="display: none;">
+	<div class="container">
+		<div class="btn">
+			<a id="sleepMadi" class="buttonValue">Create Hash</a>
+  		</div>
+  	</div>
+</div>
+<div class="button-container" style="display: none;">
+	<div class="container">
+		<div class="btn">
+			<a id="sleepMadi2" class="buttonValue">for</a>
+  		</div>
+  	</div>
+</div>
+<div class="button-container" onclick="codeCreate()" style="display: none;">
+	<div class="container">
+		<div class="btn">
+			<a id="sleepMadiMain" class="buttonValue">Create Hash</a>
+  		</div>
+  	</div>
+</div>
+</div>
+
+<div id="cards">
+
+	<!-- card start -->
+<div class="card" onclick="functTemp()" onmouseout="foldIt()" style="position: relative;">
+    <div class="card-content">
+        <div class="card-image">
+            <i class="fa-solid fa-user-secret"><img src="https://images.pexels.com/photos/8382612/pexels-photo-8382612.jpeg?h=450"></i>
+        </div>
+        <div class="card-info-wrapper">
+            <div class="card-info">
+                <i class="fa-solid fa-forward"></i>
+                <div class="card-info-title">
+                    <h3 class="name">Bullshit</h3>
+                    <div class="cross" style="display: flex;">
+                        <div class="card-info-content" style="flex-grow: 1; font-size: auto;">
+                            <h4 class="post">Shitty Associate</h4>
+                            <h4 class="employeeID" style="display:list-item;">696</h4>
+                            <h4 class="dateJoin" style="display:none;">01-04-2024</h4>
+                            <h4 class="emailGiven" style="display:none;">lottery@bakedGems.com</h4>
+                            <h4 class="phoneGiven" style="display:none;">9868323819</h4>
+                            <h4 class="idGivenNum" style="display:none;">278645373562561</h4>
+                            <h4 class="salaryAgreed" style="display:none;">18000</h4>
+                            <h4 class="upiVpa" style="display:none;">mockery@ybl</h4>
+                            <h4 class="shift" style="display:none;">IN</h4>
+                        </div>
+
+                    </div>
+                </div>    
+            </div>
+        </div>
+    </div>
+</div>
+		<!-- **********Card End***********-->
+<!-- card start -->
+<div class="card" onclick="functTemp()" onmouseout="foldIt()" style="position: relative;">
+    <div class="card-content">
+        <div class="card-image">
+            <i class="fa-solid fa-user-secret"><img src="https://images.pexels.com/photos/8382612/pexels-photo-8382612.jpeg?h=450"></i>
+        </div>
+        <div class="card-info-wrapper">
+            <div class="card-info">
+                <i class="fa-solid fa-forward"></i>
+                <div class="card-info-title">
+                    <h3 class="name">Bullshit</h3>
+                    <div class="cross" style="display: flex;">
+                        <div class="card-info-content" style="flex-grow: 1; font-size: auto;">
+                            <h4 class="post">Shitty Associate</h4>
+                            <h4 class="employeeID" style="display:list-item;">696</h4>
+                            <h4 class="dateJoin" style="display:none;">01-04-2024</h4>
+                            <h4 class="emailGiven" style="display:none;">lottery@bakedGems.com</h4>
+                            <h4 class="phoneGiven" style="display:none;">9868323819</h4>
+                            <h4 class="idGivenNum" style="display:none;">278645373562561</h4>
+                            <h4 class="salaryAgreed" style="display:none;">18000</h4>
+                            <h4 class="upiVpa" style="display:none;">mockery@ybl</h4>
+                            <h4 class="shift" style="display:none;">IN</h4>
+                        </div>
+
+                    </div>
+                </div>    
+            </div>
+        </div>
+    </div>
+</div>
+		<!-- **********Card End***********-->
+		<!-- card start -->
+<div class="card" onclick="functTemp()" onmouseout="foldIt()" style="position: relative;">
+    <div class="card-content">
+        <div class="card-image">
+            <i class="fa-solid fa-user-secret"><img src="https://images.pexels.com/photos/8382612/pexels-photo-8382612.jpeg?h=450"></i>
+        </div>
+        <div class="card-info-wrapper">
+            <div class="card-info">
+                <i class="fa-solid fa-forward"></i>
+                <div class="card-info-title">
+                    <h3 class="name">Bullshit</h3>
+                    <div class="cross" style="display: flex;">
+                        <div class="card-info-content" style="flex-grow: 1; font-size: auto;">
+                            <h4 class="post">Shitty Associate</h4>
+                            <h4 class="employeeID" style="display:list-item;">696</h4>
+                            <h4 class="dateJoin" style="display:none;">01-04-2024</h4>
+                            <h4 class="emailGiven" style="display:none;">lottery@bakedGems.com</h4>
+                            <h4 class="phoneGiven" style="display:none;">9868323819</h4>
+                            <h4 class="idGivenNum" style="display:none;">278645373562561</h4>
+                            <h4 class="salaryAgreed" style="display:none;">18000</h4>
+                            <h4 class="upiVpa" style="display:none;">mockery@ybl</h4>
+                            <h4 class="shift" style="display:none;">IN</h4>
+                        </div>
+
+                    </div>
+                </div>    
+            </div>
+        </div>
+    </div>
+</div>
+		<!-- **********Card End***********-->
+		<!-- card start -->
+<div class="card" onclick="functTemp()" onmouseout="foldIt()" style="position: relative;">
+    <div class="card-content">
+        <div class="card-image">
+            <i class="fa-solid fa-user-secret"><img src="https://images.pexels.com/photos/8382612/pexels-photo-8382612.jpeg?h=450"></i>
+        </div>
+        <div class="card-info-wrapper">
+            <div class="card-info">
+                <i class="fa-solid fa-forward"></i>
+                <div class="card-info-title">
+                    <h3 class="name">Bullshit</h3>
+                    <div class="cross" style="display: flex;">
+                        <div class="card-info-content" style="flex-grow: 1; font-size: auto;">
+                            <h4 class="post">Shitty Associate</h4>
+                            <h4 class="employeeID" style="display:list-item;">696</h4>
+                            <h4 class="dateJoin" style="display:none;">01-04-2024</h4>
+                            <h4 class="emailGiven" style="display:none;">lottery@bakedGems.com</h4>
+                            <h4 class="phoneGiven" style="display:none;">9868323819</h4>
+                            <h4 class="idGivenNum" style="display:none;">278645373562561</h4>
+                            <h4 class="salaryAgreed" style="display:none;">18000</h4>
+                            <h4 class="upiVpa" style="display:none;">mockery@ybl</h4>
+                            <h4 class="shift" style="display:none;">IN</h4>
+                        </div>
+
+                    </div>
+                </div>    
+            </div>
+        </div>
+    </div>
+</div>
+		<!-- **********Card End***********-->
+		<!-- card start -->
+<div class="card" onclick="functTemp()" onmouseout="foldIt()" style="position: relative;">
+    <div class="card-content">
+        <div class="card-image">
+            <i class="fa-solid fa-user-secret"><img src="https://images.pexels.com/photos/8382612/pexels-photo-8382612.jpeg?h=450"></i>
+        </div>
+        <div class="card-info-wrapper">
+            <div class="card-info">
+                <i class="fa-solid fa-forward"></i>
+                <div class="card-info-title">
+                    <h3 class="name">Bullshit</h3>
+                    <div class="cross" style="display: flex;">
+                        <div class="card-info-content" style="flex-grow: 1; font-size: auto;">
+                            <h4 class="post">Shitty Associate</h4>
+                            <h4 class="employeeID" style="display:list-item;">696</h4>
+                            <h4 class="dateJoin" style="display:none;">01-04-2024</h4>
+                            <h4 class="emailGiven" style="display:none;">lottery@bakedGems.com</h4>
+                            <h4 class="phoneGiven" style="display:none;">9868323819</h4>
+                            <h4 class="idGivenNum" style="display:none;">278645373562561</h4>
+                            <h4 class="salaryAgreed" style="display:none;">18000</h4>
+                            <h4 class="upiVpa" style="display:none;">mockery@ybl</h4>
+                            <h4 class="shift" style="display:none;">IN</h4>
+                        </div>
+
+                    </div>
+                </div>    
+            </div>
+        </div>
+    </div>
+</div>
+		<!-- **********Card End***********-->
+		<!-- card start -->
+<div class="card" onclick="functTemp()" onmouseout="foldIt()" style="position: relative;">
+    <div class="card-content">
+        <div class="card-image">
+            <i class="fa-solid fa-user-secret"><img src="https://images.pexels.com/photos/8382612/pexels-photo-8382612.jpeg?h=450"></i>
+        </div>
+        <div class="card-info-wrapper">
+            <div class="card-info">
+                <i class="fa-solid fa-forward"></i>
+                <div class="card-info-title">
+                    <h3 class="name">Bullshit</h3>
+                    <div class="cross" style="display: flex;">
+                        <div class="card-info-content" style="flex-grow: 1; font-size: auto;">
+                            <h4 class="post">Shitty Associate</h4>
+                            <h4 class="employeeID" style="display:list-item;">696</h4>
+                            <h4 class="dateJoin" style="display:none;">01-04-2024</h4>
+                            <h4 class="emailGiven" style="display:none;">lottery@bakedGems.com</h4>
+                            <h4 class="phoneGiven" style="display:none;">9868323819</h4>
+                            <h4 class="idGivenNum" style="display:none;">278645373562561</h4>
+                            <h4 class="salaryAgreed" style="display:none;">18000</h4>
+                            <h4 class="upiVpa" style="display:none;">mockery@ybl</h4>
+                            <h4 class="shift" style="display:none;">IN</h4>
+                        </div>
+
+                    </div>
+                </div>    
+            </div>
+        </div>
+    </div>
+</div>
+		<!-- **********Card End***********-->
+		<!-- card start -->
+<div class="card" onclick="functTemp()" onmouseout="foldIt()" style="position: relative;">
+    <div class="card-content">
+        <div class="card-image">
+            <i class="fa-solid fa-user-secret"><img src="https://images.pexels.com/photos/8382612/pexels-photo-8382612.jpeg?h=450"></i>
+        </div>
+        <div class="card-info-wrapper">
+            <div class="card-info">
+                <i class="fa-solid fa-forward"></i>
+                <div class="card-info-title">
+                    <h3 class="name">Bullshit</h3>
+                    <div class="cross" style="display: flex;">
+                        <div class="card-info-content" style="flex-grow: 1; font-size: auto;">
+                            <h4 class="post">Shitty Associate</h4>
+                            <h4 class="employeeID" style="display:list-item;">696</h4>
+                            <h4 class="dateJoin" style="display:none;">01-04-2024</h4>
+                            <h4 class="emailGiven" style="display:none;">lottery@bakedGems.com</h4>
+                            <h4 class="phoneGiven" style="display:none;">9868323819</h4>
+                            <h4 class="idGivenNum" style="display:none;">278645373562561</h4>
+                            <h4 class="salaryAgreed" style="display:none;">18000</h4>
+                            <h4 class="upiVpa" style="display:none;">mockery@ybl</h4>
+                            <h4 class="shift" style="display:none;">IN</h4>
+                        </div>
+
+                    </div>
+                </div>    
+            </div>
+        </div>
+    </div>
+</div>
+		<!-- **********Card End***********-->
+		<!-- card start -->
+<div class="card" onclick="functTemp()" onmouseout="foldIt()" style="position: relative;">
+    <div class="card-content">
+        <div class="card-image">
+            <i class="fa-solid fa-user-secret"><img src="https://images.pexels.com/photos/8382612/pexels-photo-8382612.jpeg?h=450"></i>
+        </div>
+        <div class="card-info-wrapper">
+            <div class="card-info">
+                <i class="fa-solid fa-forward"></i>
+                <div class="card-info-title">
+                    <h3 class="name">Bullshit</h3>
+                    <div class="cross" style="display: flex;">
+                        <div class="card-info-content" style="flex-grow: 1; font-size: auto;">
+                            <h4 class="post">Shitty Associate</h4>
+                            <h4 class="employeeID" style="display:list-item;">696</h4>
+                            <h4 class="dateJoin" style="display:none;">01-04-2024</h4>
+                            <h4 class="emailGiven" style="display:none;">lottery@bakedGems.com</h4>
+                            <h4 class="phoneGiven" style="display:none;">9868323819</h4>
+                            <h4 class="idGivenNum" style="display:none;">278645373562561</h4>
+                            <h4 class="salaryAgreed" style="display:none;">18000</h4>
+                            <h4 class="upiVpa" style="display:none;">mockery@ybl</h4>
+                            <h4 class="shift" style="display:none;">IN</h4>
+                        </div>
+
+                    </div>
+                </div>    
+            </div>
+        </div>
+    </div>
+</div>
+		<!-- **********Card End***********-->
+		<!-- card start -->
+<div class="card" onclick="functTemp()" onmouseout="foldIt()" style="position: relative;">
+    <div class="card-content">
+        <div class="card-image">
+            <i class="fa-solid fa-user-secret"><img src="https://images.pexels.com/photos/8382612/pexels-photo-8382612.jpeg?h=450"></i>
+        </div>
+        <div class="card-info-wrapper">
+            <div class="card-info">
+                <i class="fa-solid fa-forward"></i>
+                <div class="card-info-title">
+                    <h3 class="name">Bullshit</h3>
+                    <div class="cross" style="display: flex;">
+                        <div class="card-info-content" style="flex-grow: 1; font-size: auto;">
+                            <h4 class="post">Shitty Associate</h4>
+                            <h4 class="employeeID" style="display:list-item;">696</h4>
+                            <h4 class="dateJoin" style="display:none;">01-04-2024</h4>
+                            <h4 class="emailGiven" style="display:none;">lottery@bakedGems.com</h4>
+                            <h4 class="phoneGiven" style="display:none;">9868323819</h4>
+                            <h4 class="idGivenNum" style="display:none;">278645373562561</h4>
+                            <h4 class="salaryAgreed" style="display:none;">18000</h4>
+                            <h4 class="upiVpa" style="display:none;">mockery@ybl</h4>
+                            <h4 class="shift" style="display:none;">IN</h4>
+                        </div>
+
+                    </div>
+                </div>    
+            </div>
+        </div>
+    </div>
+</div>
+		<!-- **********Card End***********-->
+		<!-- card start -->
+<div class="card" onclick="functTemp()" onmouseout="foldIt()" style="position: relative;">
+    <div class="card-content">
+        <div class="card-image">
+            <i class="fa-solid fa-user-secret"><img src="https://images.pexels.com/photos/8382612/pexels-photo-8382612.jpeg?h=450"></i>
+        </div>
+        <div class="card-info-wrapper">
+            <div class="card-info">
+                <i class="fa-solid fa-forward"></i>
+                <div class="card-info-title">
+                    <h3 class="name">Bullshit</h3>
+                    <div class="cross" style="display: flex;">
+                        <div class="card-info-content" style="flex-grow: 1; font-size: auto;">
+                            <h4 class="post">Shitty Associate</h4>
+                            <h4 class="employeeID" style="display:list-item;">696</h4>
+                            <h4 class="dateJoin" style="display:none;">01-04-2024</h4>
+                            <h4 class="emailGiven" style="display:none;">lottery@bakedGems.com</h4>
+                            <h4 class="phoneGiven" style="display:none;">9868323819</h4>
+                            <h4 class="idGivenNum" style="display:none;">278645373562561</h4>
+                            <h4 class="salaryAgreed" style="display:none;">18000</h4>
+                            <h4 class="upiVpa" style="display:none;">mockery@ybl</h4>
+                            <h4 class="shift" style="display:none;">IN</h4>
+                        </div>
+
+                    </div>
+                </div>    
+            </div>
+        </div>
+    </div>
+</div>
+		<!-- **********Card End***********-->
+		<!-- card start -->
+<div class="card" onclick="functTemp()" onmouseout="foldIt()" style="position: relative;">
+    <div class="card-content">
+        <div class="card-image">
+            <i class="fa-solid fa-user-secret"><img src="https://images.pexels.com/photos/8382612/pexels-photo-8382612.jpeg?h=450"></i>
+        </div>
+        <div class="card-info-wrapper">
+            <div class="card-info">
+                <i class="fa-solid fa-forward"></i>
+                <div class="card-info-title">
+                    <h3 class="name">Bullshit</h3>
+                    <div class="cross" style="display: flex;">
+                        <div class="card-info-content" style="flex-grow: 1; font-size: auto;">
+                            <h4 class="post">Shitty Associate</h4>
+                            <h4 class="employeeID" style="display:list-item;">696</h4>
+                            <h4 class="dateJoin" style="display:none;">01-04-2024</h4>
+                            <h4 class="emailGiven" style="display:none;">lottery@bakedGems.com</h4>
+                            <h4 class="phoneGiven" style="display:none;">9868323819</h4>
+                            <h4 class="idGivenNum" style="display:none;">278645373562561</h4>
+                            <h4 class="salaryAgreed" style="display:none;">18000</h4>
+                            <h4 class="upiVpa" style="display:none;">mockery@ybl</h4>
+                            <h4 class="shift" style="display:none;">IN</h4>
+                        </div>
+
+                    </div>
+                </div>    
+            </div>
+        </div>
+    </div>
+</div>
+		<!-- **********Card End***********-->
+		<!-- card start -->
+<div class="card" onclick="functTemp()" onmouseout="foldIt()" style="position: relative;">
+    <div class="card-content">
+        <div class="card-image">
+            <i class="fa-solid fa-user-secret"><img src="https://images.pexels.com/photos/8382612/pexels-photo-8382612.jpeg?h=450"></i>
+        </div>
+        <div class="card-info-wrapper">
+            <div class="card-info">
+                <i class="fa-solid fa-forward"></i>
+                <div class="card-info-title">
+                    <h3 class="name">Bullshit</h3>
+                    <div class="cross" style="display: flex;">
+                        <div class="card-info-content" style="flex-grow: 1; font-size: auto;">
+                            <h4 class="post">Shitty Associate</h4>
+                            <h4 class="employeeID" style="display:list-item;">696</h4>
+                            <h4 class="dateJoin" style="display:none;">01-04-2024</h4>
+                            <h4 class="emailGiven" style="display:none;">lottery@bakedGems.com</h4>
+                            <h4 class="phoneGiven" style="display:none;">9868323819</h4>
+                            <h4 class="idGivenNum" style="display:none;">278645373562561</h4>
+                            <h4 class="salaryAgreed" style="display:none;">18000</h4>
+                            <h4 class="upiVpa" style="display:none;">mockery@ybl</h4>
+                            <h4 class="shift" style="display:none;">IN</h4>
+                        </div>
+
+                    </div>
+                </div>    
+            </div>
+        </div>
+    </div>
+</div>
+		<!-- **********Card End***********-->
+		<!-- card start -->
+<div class="card" onclick="functTemp()" onmouseout="foldIt()" style="position: relative;">
+    <div class="card-content">
+        <div class="card-image">
+            <i class="fa-solid fa-user-secret"><img src="https://images.pexels.com/photos/8382612/pexels-photo-8382612.jpeg?h=450"></i>
+        </div>
+        <div class="card-info-wrapper">
+            <div class="card-info">
+                <i class="fa-solid fa-forward"></i>
+                <div class="card-info-title">
+                    <h3 class="name">Bullshit</h3>
+                    <div class="cross" style="display: flex;">
+                        <div class="card-info-content" style="flex-grow: 1; font-size: auto;">
+                            <h4 class="post">Shitty Associate</h4>
+                            <h4 class="employeeID" style="display:list-item;">696</h4>
+                            <h4 class="dateJoin" style="display:none;">01-04-2024</h4>
+                            <h4 class="emailGiven" style="display:none;">lottery@bakedGems.com</h4>
+                            <h4 class="phoneGiven" style="display:none;">9868323819</h4>
+                            <h4 class="idGivenNum" style="display:none;">278645373562561</h4>
+                            <h4 class="salaryAgreed" style="display:none;">18000</h4>
+                            <h4 class="upiVpa" style="display:none;">mockery@ybl</h4>
+                            <h4 class="shift" style="display:none;">IN</h4>
+                        </div>
+
+                    </div>
+                </div>    
+            </div>
+        </div>
+    </div>
+</div>
+		<!-- **********Card End***********-->
+		<!-- card start -->
+<div class="card" onclick="functTemp()" onmouseout="foldIt()" style="position: relative;">
+    <div class="card-content">
+        <div class="card-image">
+            <i class="fa-solid fa-user-secret"><img src="https://images.pexels.com/photos/8382612/pexels-photo-8382612.jpeg?h=450"></i>
+        </div>
+        <div class="card-info-wrapper">
+            <div class="card-info">
+                <i class="fa-solid fa-forward"></i>
+                <div class="card-info-title">
+                    <h3 class="name">Bullshit</h3>
+                    <div class="cross" style="display: flex;">
+                        <div class="card-info-content" style="flex-grow: 1; font-size: auto;">
+                            <h4 class="post">Shitty Associate</h4>
+                            <h4 class="employeeID" style="display:list-item;">696</h4>
+                            <h4 class="dateJoin" style="display:none;">01-04-2024</h4>
+                            <h4 class="emailGiven" style="display:none;">lottery@bakedGems.com</h4>
+                            <h4 class="phoneGiven" style="display:none;">9868323819</h4>
+                            <h4 class="idGivenNum" style="display:none;">278645373562561</h4>
+                            <h4 class="salaryAgreed" style="display:none;">18000</h4>
+                            <h4 class="upiVpa" style="display:none;">mockery@ybl</h4>
+                            <h4 class="shift" style="display:none;">IN</h4>
+                        </div>
+
+                    </div>
+                </div>    
+            </div>
+        </div>
+    </div>
+</div>
+		<!-- **********Card End***********-->
+		<!-- card start -->
+<div class="card" onclick="functTemp()" onmouseout="foldIt()" style="position: relative;">
+    <div class="card-content">
+        <div class="card-image">
+            <i class="fa-solid fa-user-secret"><img src="https://images.pexels.com/photos/8382612/pexels-photo-8382612.jpeg?h=450"></i>
+        </div>
+        <div class="card-info-wrapper">
+            <div class="card-info">
+                <i class="fa-solid fa-forward"></i>
+                <div class="card-info-title">
+                    <h3 class="name">Bullshit</h3>
+                    <div class="cross" style="display: flex;">
+                        <div class="card-info-content" style="flex-grow: 1; font-size: auto;">
+                            <h4 class="post">Shitty Associate</h4>
+                            <h4 class="employeeID" style="display:list-item;">696</h4>
+                            <h4 class="dateJoin" style="display:none;">01-04-2024</h4>
+                            <h4 class="emailGiven" style="display:none;">lottery@bakedGems.com</h4>
+                            <h4 class="phoneGiven" style="display:none;">9868323819</h4>
+                            <h4 class="idGivenNum" style="display:none;">278645373562561</h4>
+                            <h4 class="salaryAgreed" style="display:none;">18000</h4>
+                            <h4 class="upiVpa" style="display:none;">mockery@ybl</h4>
+                            <h4 class="shift" style="display:none;">IN</h4>
+                        </div>
+
+                    </div>
+                </div>    
+            </div>
+        </div>
+    </div>
+</div>
+		<!-- **********Card End***********-->
+		<!-- card start -->
+<div class="card" onclick="functTemp()" onmouseout="foldIt()" style="position: relative;">
+    <div class="card-content">
+        <div class="card-image">
+            <i class="fa-solid fa-user-secret"><img src="https://images.pexels.com/photos/8382612/pexels-photo-8382612.jpeg?h=450"></i>
+        </div>
+        <div class="card-info-wrapper">
+            <div class="card-info">
+                <i class="fa-solid fa-forward"></i>
+                <div class="card-info-title">
+                    <h3 class="name">Bullshit</h3>
+                    <div class="cross" style="display: flex;">
+                        <div class="card-info-content" style="flex-grow: 1; font-size: auto;">
+                            <h4 class="post">Shitty Associate</h4>
+                            <h4 class="employeeID" style="display:list-item;">696</h4>
+                            <h4 class="dateJoin" style="display:none;">01-04-2024</h4>
+                            <h4 class="emailGiven" style="display:none;">lottery@bakedGems.com</h4>
+                            <h4 class="phoneGiven" style="display:none;">9868323819</h4>
+                            <h4 class="idGivenNum" style="display:none;">278645373562561</h4>
+                            <h4 class="salaryAgreed" style="display:none;">18000</h4>
+                            <h4 class="upiVpa" style="display:none;">mockery@ybl</h4>
+                            <h4 class="shift" style="display:none;">IN</h4>
+                        </div>
+
+                    </div>
+                </div>    
+            </div>
+        </div>
+    </div>
+</div>
+		<!-- **********Card End***********-->
+		<!-- card start -->
+<div class="card" onclick="functTemp()" onmouseout="foldIt()" style="position: relative;">
+    <div class="card-content">
+        <div class="card-image">
+            <i class="fa-solid fa-user-secret"><img src="https://images.pexels.com/photos/8382612/pexels-photo-8382612.jpeg?h=450"></i>
+        </div>
+        <div class="card-info-wrapper">
+            <div class="card-info">
+                <i class="fa-solid fa-forward"></i>
+                <div class="card-info-title">
+                    <h3 class="name">Bullshit</h3>
+                    <div class="cross" style="display: flex;">
+                        <div class="card-info-content" style="flex-grow: 1; font-size: auto;">
+                            <h4 class="post">Shitty Associate</h4>
+                            <h4 class="employeeID" style="display:list-item;">696</h4>
+                            <h4 class="dateJoin" style="display:none;">01-04-2024</h4>
+                            <h4 class="emailGiven" style="display:none;">lottery@bakedGems.com</h4>
+                            <h4 class="phoneGiven" style="display:none;">9868323819</h4>
+                            <h4 class="idGivenNum" style="display:none;">278645373562561</h4>
+                            <h4 class="salaryAgreed" style="display:none;">18000</h4>
+                            <h4 class="upiVpa" style="display:none;">mockery@ybl</h4>
+                            <h4 class="shift" style="display:none;">IN</h4>
+                        </div>
+
+                    </div>
+                </div>    
+            </div>
+        </div>
+    </div>
+</div>
+		<!-- **********Card End***********-->
+		<!-- card start -->
+<div class="card" onclick="functTemp()" onmouseout="foldIt()" style="position: relative;">
+    <div class="card-content">
+        <div class="card-image">
+            <i class="fa-solid fa-user-secret"><img src="https://images.pexels.com/photos/8382612/pexels-photo-8382612.jpeg?h=450"></i>
+        </div>
+        <div class="card-info-wrapper">
+            <div class="card-info">
+                <i class="fa-solid fa-forward"></i>
+                <div class="card-info-title">
+                    <h3 class="name">Bullshit</h3>
+                    <div class="cross" style="display: flex;">
+                        <div class="card-info-content" style="flex-grow: 1; font-size: auto;">
+                            <h4 class="post">Shitty Associate</h4>
+                            <h4 class="employeeID" style="display:list-item;">696</h4>
+                            <h4 class="dateJoin" style="display:none;">01-04-2024</h4>
+                            <h4 class="emailGiven" style="display:none;">lottery@bakedGems.com</h4>
+                            <h4 class="phoneGiven" style="display:none;">9868323819</h4>
+                            <h4 class="idGivenNum" style="display:none;">278645373562561</h4>
+                            <h4 class="salaryAgreed" style="display:none;">18000</h4>
+                            <h4 class="upiVpa" style="display:none;">mockery@ybl</h4>
+                            <h4 class="shift" style="display:none;">IN</h4>
+                        </div>
+
+                    </div>
+                </div>    
+            </div>
+        </div>
+    </div>
+</div>
+		<!-- **********Card End***********-->
+		<!-- card start -->
+<div class="card" onclick="functTemp()" onmouseout="foldIt()" style="position: relative;">
+    <div class="card-content">
+        <div class="card-image">
+            <i class="fa-solid fa-user-secret"><img src="https://images.pexels.com/photos/8382612/pexels-photo-8382612.jpeg?h=450"></i>
+        </div>
+        <div class="card-info-wrapper">
+            <div class="card-info">
+                <i class="fa-solid fa-forward"></i>
+                <div class="card-info-title">
+                    <h3 class="name">Bullshit</h3>
+                    <div class="cross" style="display: flex;">
+                        <div class="card-info-content" style="flex-grow: 1; font-size: auto;">
+                            <h4 class="post">Shitty Associate</h4>
+                            <h4 class="employeeID" style="display:list-item;">696</h4>
+                            <h4 class="dateJoin" style="display:none;">01-04-2024</h4>
+                            <h4 class="emailGiven" style="display:none;">lottery@bakedGems.com</h4>
+                            <h4 class="phoneGiven" style="display:none;">9868323819</h4>
+                            <h4 class="idGivenNum" style="display:none;">278645373562561</h4>
+                            <h4 class="salaryAgreed" style="display:none;">18000</h4>
+                            <h4 class="upiVpa" style="display:none;">mockery@ybl</h4>
+                            <h4 class="shift" style="display:none;">IN</h4>
+                        </div>
+
+                    </div>
+                </div>    
+            </div>
+        </div>
+    </div>
+</div>
+		<!-- **********Card End***********-->
+		<!-- card start -->
+<div class="card" onclick="functTemp()" onmouseout="foldIt()" style="position: relative;">
+    <div class="card-content">
+        <div class="card-image">
+            <i class="fa-solid fa-user-secret"><img src="https://images.pexels.com/photos/8382612/pexels-photo-8382612.jpeg?h=450"></i>
+        </div>
+        <div class="card-info-wrapper">
+            <div class="card-info">
+                <i class="fa-solid fa-forward"></i>
+                <div class="card-info-title">
+                    <h3 class="name">Bullshit</h3>
+                    <div class="cross" style="display: flex;">
+                        <div class="card-info-content" style="flex-grow: 1; font-size: auto;">
+                            <h4 class="post">Shitty Associate</h4>
+                            <h4 class="employeeID" style="display:list-item;">696</h4>
+                            <h4 class="dateJoin" style="display:none;">01-04-2024</h4>
+                            <h4 class="emailGiven" style="display:none;">lottery@bakedGems.com</h4>
+                            <h4 class="phoneGiven" style="display:none;">9868323819</h4>
+                            <h4 class="idGivenNum" style="display:none;">278645373562561</h4>
+                            <h4 class="salaryAgreed" style="display:none;">18000</h4>
+                            <h4 class="upiVpa" style="display:none;">mockery@ybl</h4>
+                            <h4 class="shift" style="display:none;">IN</h4>
+                        </div>
+
+                    </div>
+                </div>    
+            </div>
+        </div>
+    </div>
+</div>
+		<!-- **********Card End***********-->
+		<!-- card start -->
+<div class="card" onclick="functTemp()" onmouseout="foldIt()" style="position: relative;">
+    <div class="card-content">
+        <div class="card-image">
+            <i class="fa-solid fa-user-secret"><img src="https://images.pexels.com/photos/8382612/pexels-photo-8382612.jpeg?h=450"></i>
+        </div>
+        <div class="card-info-wrapper">
+            <div class="card-info">
+                <i class="fa-solid fa-forward"></i>
+                <div class="card-info-title">
+                    <h3 class="name">Bullshit</h3>
+                    <div class="cross" style="display: flex;">
+                        <div class="card-info-content" style="flex-grow: 1; font-size: auto;">
+                            <h4 class="post">Shitty Associate</h4>
+                            <h4 class="employeeID" style="display:list-item;">696</h4>
+                            <h4 class="dateJoin" style="display:none;">01-04-2024</h4>
+                            <h4 class="emailGiven" style="display:none;">lottery@bakedGems.com</h4>
+                            <h4 class="phoneGiven" style="display:none;">9868323819</h4>
+                            <h4 class="idGivenNum" style="display:none;">278645373562561</h4>
+                            <h4 class="salaryAgreed" style="display:none;">18000</h4>
+                            <h4 class="upiVpa" style="display:none;">mockery@ybl</h4>
+                            <h4 class="shift" style="display:none;">IN</h4>
+                        </div>
+
+                    </div>
+                </div>    
+            </div>
+        </div>
+    </div>
+</div>
+		<!-- **********Card End***********-->
+
+
+
+  </div>
+
+<style id = "justTobalanceOrder" type="text/css">
+	.button-container{
+	z-index: 301;
+	padding-right: 60px;
+}
+
+	.btn{
+	transition-delay: 0.5s;
+	transition: width 3000ms, height 1000ms, opacity 900ms !important;
+	}
+</style>
+
+
+<script type="text/javascript">
+function bumpfunc(){
+	
+	var duck = document.getElementsByClassName('btn');
+    for (var i = 0; i < duck.length; i++) {
+    	duck[i].style.width = "155px";
+    	duck[i].style.height = "50px";
+    	duck[i].style.opacity = "1";
+    }
+}
+
+function functTemp() {
+
+	const cardVar = document.getElementsByClassName('card');
+    
+    // Loop through each card and change its width
+    for (let i = 0; i < cardVar.length; i++) {
+        cardVar[i].style.width = "254px";
+    }
+
+    // Find the closest card element that was clicked
+
+    const cardContext = event.currentTarget;
+
+    // Select the content for each class
+    const name = cardContext.querySelector('.name').textContent;
+    const post = cardContext.querySelector('.post').textContent;
+    const employeeID = cardContext.querySelector('.employeeID').textContent;
+    const dateJoin = cardContext.querySelector('.dateJoin').textContent;
+    const emailGiven = cardContext.querySelector('.emailGiven').textContent;
+    const phoneGiven = cardContext.querySelector('.phoneGiven').textContent;
+    const idGivenNum = cardContext.querySelector('.idGivenNum').textContent;
+    const salaryAgreed = cardContext.querySelector('.salaryAgreed').textContent;
+    const upiVpa = cardContext.querySelector('.upiVpa').textContent;
+    const shift = cardContext.querySelector('.shift').textContent;
+
+    // Do something with the values
+    console.log('Name:', name);
+    console.log('Post:', post);
+    console.log('Employee ID:', employeeID);
+    console.log('Date Joined:', dateJoin);
+    console.log('Email Given:', emailGiven);
+    console.log('Phone Given:', phoneGiven);
+    console.log('ID Given Number:', idGivenNum);
+    console.log('Salary Agreed:', salaryAgreed);
+    console.log('UPI/VPA:', upiVpa);
+    console.log('Shift:', shift);
+
+
+    //Since it is double click, Got to enlarge the element by a lot and show all details, cross icon to reset
+
+    cardContext.style.transition = "1000ms";
+    cardContext.style.width = "500px";
+    cardContext.style.height = "400px";
+    
+    // Change display style for each element
+    cardContext.querySelector('.name').style.display = "list-item";
+    cardContext.querySelector('.post').style.display = "list-item";
+    cardContext.querySelector('.employeeID').style.display = "list-item";
+    cardContext.querySelector('.dateJoin').style.display = "list-item";
+    cardContext.querySelector('.emailGiven').style.display = "list-item";
+    cardContext.querySelector('.phoneGiven').style.display = "list-item";
+    cardContext.querySelector('.idGivenNum').style.display = "list-item";
+    cardContext.querySelector('.salaryAgreed').style.display = "list-item";
+    cardContext.querySelector('.upiVpa').style.display = "list-item";
+    cardContext.querySelector('.shift').style.display = "list-item";
+    var flaggg = document.getElementsByClassName('button-container')[0];
+    flaggg.style.display = "block";
+    var flaggg = document.getElementsByClassName('button-container')[1];
+    flaggg.style.display = "block";
+    var flaggg = document.getElementsByClassName('button-container')[2];
+    flaggg.style.display = "block";
+    var chuck = document.getElementsByClassName('btn');
+    for (var i = 0; i < chuck.length; i++) {
+    	chuck[i].style.width = "155px";
+    	chuck[i].style.height = "50px";
+    	chuck[i].style.opacity = "1";
+    }
+
+    flaggg = document.getElementById("sleepMadi");
+    flaggg.setAttribute("name", name);
+    flaggg.setAttribute("employeeID", employeeID);   
+    flaggg = document.getElementById("sleepMadiMain");
+    flaggg.innerHTML = name;
+    flaggg.setAttribute("name", name);
+    flaggg.setAttribute("employeeID", employeeID);
+
+
+
+
+}
+
+function foldIt(){
+	
+	const cardVar = document.getElementsByClassName('card');
+    
+    // Loop through each card and change its width
+    for (let i = 0; i < cardVar.length; i++) {
+        cardVar[i].style.width = "300px";
+    }
+
+    const cardContext = event.currentTarget;
+
+	// Change display style for each element to "none"
+	cardContext.querySelector('.dateJoin').style.display = "none";
+	cardContext.querySelector('.emailGiven').style.display = "none";
+	cardContext.querySelector('.phoneGiven').style.display = "none";
+	cardContext.querySelector('.idGivenNum').style.display = "none";
+	cardContext.querySelector('.salaryAgreed').style.display = "none";
+	cardContext.querySelector('.upiVpa').style.display = "none";
+	cardContext.querySelector('.shift').style.display = "none";
+    //cardContext.querySelector('.button-container').style.display = "none";
+    /* cardContext.style.width = "300px"; /* The code to resize all other cards will do this thing anyway! */
+
+	cardContext.style.height = "260px";
+	function squeezingButtons(){
+		const glassButtons = document.getElementsByClassName('btn');
+		for (let j = 0; j <glassButtons.length; j++) {
+			glassButtons[j].style.width = "0px";
+			glassButtons[j].style.height = "0px";
+			glassButtons[j].style.opacity = "0";
+		}
+	}
+	squeezingButtons();
+	function myStopFunction() {
+  		clearTimeout(shrinkButtons);
+		}
+
+	console.log("mouseOut");
+}
+	function codeCreate(){
+		const buttonContext = event.currentTarget;
+		const gg = buttonContext.parentElement;
+		const ss = gg.closest('.card');
+		console.log(ss, "behenchod");
+	}
+
+</script>
+
+<a id="source-link" class="link" href="https://linear.app/features" target="_blank">
+  <i class="fa-solid fa-wand-magic-sparkles"></i>
+  <span class="roboto-mono">Onboard New Employee</span>
+</a>
+
+<style type="text/css">
+
+
+/* --------------------------------------------------------*/
+/* these 2 segments manage the cursor and the border glow */
+/* --------------------------------------------------------*/
+
+.card::before {
+  background: radial-gradient(
+    600px circle at var(--mouse-x) var(--mouse-y), 
+    rgba(255, 255, 255, 0.40),
+    transparent 50%
+  );
+  z-index: 3;
+}
+
+.card::after {  
+  background: radial-gradient(
+    600px circle at var(--mouse-x) var(--mouse-y), 
+    rgba(255, 255, 255, 3.0),
+    transparent 50%
+  );
+  z-index: 1;
+}
+
+
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.container > .btn {
+  position: relative;
+  width: 155px;
+  height: 50px;
+  margin: 20px;
+}
+
+.container > .btn > a {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.05);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 30px;
+  color: #fff;
+  z-index: 300;
+  font-weight: 400;
+  letter-spacing: 1px;
+  text-decoration: none;
+  overflow: hidden;
+  transition: 0.75s;
+  backdrop-filter: blur(15px);
+}
+
+.container > .btn:hover > a {
+  letter-spacing: 3px;
+}
+
+.container > .btn > a::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(to left, rgba(255, 255, 255, 0.15), transparent);
+  transform: skewX(45deg) translateX(0);
+  transition: 0.75s;
+}
+
+.container > .btn:hover > a::before {
+  transform: skewX(45deg) translateX(200%);
+}
+
+.container > .btn::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: -5px;
+  width: 30px;
+  height: 10px;
+  background: #f00;
+  border-radius: 10px;
+  transition: 0.75s;
+}
+
+.container > .btn:hover::before {
+  bottom: 0;
+  height: 50%;
+  width: 80%;
+  border-radius: 30px;
+  transition-delay: 0.25s;
+}
+
+.container > .btn::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: -5px;
+  width: 30px;
+  height: 10px;
+  background: #f00;
+  border-radius: 10px;
+  transition: 0.35s;
+}
+
+.container > .btn:hover::after {
+  top: 0;
+  height: 50%;
+  width: 80%;
+  border-radius: 30px;
+  transition-delay: 0.25s;
+}
+
+.container > .btn::before,
+.container > .btn::after {
+  background: #1eff45;
+  box-shadow: 0 0 5px #1eff45, 0 0 15px #1eff45, 0 0 30px #1eff45,
+    0 0 60px #1eff45;
+}
+
+
+	.name{
+		transition: opacity 1000ms;
+	}
+
+	.post{
+		transition: opacity 1000ms;
+	}
+
+	.employeeID{
+		transition: opacity 1000ms;
+	}
+
+  	.dark {
+    --white: #000;
+    --black: #fff;
+    --baseColor: #e1e1e1;
+    --baseColorBorder: #f1f1f1;
+    --knobBorder: #303030;
+    --knobColor: #e8e8e8;
+    --knobHightlight: #ee5529;
+  }
+
+  .control-knob {
+  background-color: var(--baseColor);
+  padding: 10px;
+  display: flex;
+  position: relative;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 100px;
+  height: 70px;
+  border: 1px solid var(--baseColorBorder);
+  border-radius: 3px;
+  &:first-child {
+    margin-right: 20px;
+  }
+  & input {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    opacity: 0;
+    cursor: pointer;
+    z-index: 10;
+    &:checked ~ .knob .knob-center {
+      transform: rotate(40deg);
+      &:after {
+        transform: rotate(-90deg)
+      }
+    }
+  }
+  & .knob {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    & .knob-center {
+      width: 40px;
+      height: 40px;
+      background-color: var(--knobColor);
+      border-radius: 100%;
+      z-index: 2;
+      position: relative;
+      left: -2px;
+      border: 5px solid var(--knobBorder);
+      outline: 1px solid #303030;
+      transform: rotate(-45deg);
+      transition: all 0.1s ease;
+      &:before {
+        content: "";
+        height: 50%;
+        width: 3px;
+        display: block;
+        position: absolute;
+        top: -1px;
+        left: 50%;
+        transform: translateX(-50%);
+        border-radius: 3px;
+        box-shadow: 1px 1px 2px rgba(0,0,0,0.4);
+        background-color: var(--knobHightlight);
+      }
+      &:after {
+        content: "";
+        display: block;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: transparent;
+        border-radius: 100%;
+        box-shadow: inset 1px 1px 2px rgba(255,255,255,0.5);
+        transition: all 0.1s ease;
+      }
+    }
+  }
+  & .control-position {
+    width: 50%;
+    color: var(--white);
+    text-transform: uppercase;
+    position: relative;
+    font-weight: 500;
+    letter-spacing: 1px;
+    &.on {
+      & span {
+        position: relative;
+        padding-bottom: 3px;
+        &:before {
+          content: "";
+          position: absolute;
+          display: block;
+          width: 2px;
+          height: 15px;
+          background-color: var(--white);
+          transform: rotate(-45deg);
+          bottom: -0.75em;
+          right: -0.5em;
+        }
+        &:after {
+          content: "";
+          position: absolute;
+          display: block;
+          width: 22px;
+          height: 0px;
+          background-color: var(--white);
+          border-top: 2px solid var(--white);
+          box-shadow: inset 0px -0.03em 0px black;
+          bottom: -0.05em;
+          right: -0.1em;
+          z-index: 3;
+        }
+      }
+    }
+    &.off {
+      text-align: right;
+      & span {
+        position: relative;
+        &:before {
+          content: "";
+          position: absolute;
+          display: block;
+          width: 2px;
+          height: 15px;
+          background-color: var(--white);
+          transform: rotate(45deg);
+          bottom: -0.7em;
+          left: -0.5em;
+        }
+      }
+    }
+  }
+}
+  	:root {
+  --bg-color: rgb(20, 20, 20);
+  --card-color: rgb(23, 23, 23);
+  --white: rgb(190, 190, 190);
+  --primary: rgb(50, 206, 154);
+  --placeholder: rgb(106, 102, 108);
+  --baseColor: #101010;
+  --baseColorBorder: #202020;
+  --knobBorder: #000;
+  --knobColor: #505050;
+  --knobHightlight: #fff;
+	}
+
+body {
+  align-items: center; 
+  background-color: var(--bg-color);
+  display: block;
+/*  height: 100vh; */
+/*  justify-content: center; */
+/*  margin: auto; */
+  overflow-x: auto;
+  padding-left: calc((100vw - 1200px)/2);
+}
+
+#cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;  
+  /* max-width: 916px; */
+  /*width: calc(100% - 20px);*/
+}
+
+#cards:hover > .card::after {
+  opacity: 1;
+}
+
+.card {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  cursor: pointer;
+  display: flex;
+  height: 260px;
+  flex-direction: column;
+  position: relative;
+  width: 300px;  
+  transition: opacity 1000ms, width 1000ms;
+}
+
+.card:hover::before {
+  opacity: 1;
+}
+
+.card::before,
+.card::after {
+  border-radius: inherit;
+  content: "";
+  height: 100%;
+  left: 0px;
+  opacity: 0;
+  position: absolute;
+  top: 0px;
+  transition: opacity 500ms;
+  width: 100%;
+}
+
+
+.card > .card-content {
+  background-color: var(--card-color);
+  border-radius: inherit;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  inset: 1px;
+  padding: 10px;
+  position: absolute;
+  z-index: 2;
+}
+
+/* -- ↓ ↓ ↓ extra card content styles ↓ ↓ ↓ -- */
+
+h1, h2, h3, h4, span {
+  color: rgb(240, 240, 240);
+  font-family: "Rubik", sans-serif;
+  font-weight: 400;
+  margin: 0px;
+}
+
+i {  
+  color: rgb(240, 240, 240);
+}
+
+.card-image {
+  align-items: center;
+  display: flex;
+  height: 140px;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.card-image > i {
+  font-size: 6em;
+  opacity: 0.25;
+}
+
+.card-info-wrapper {
+  align-items: center;
+  display: flex;
+  flex-grow: 1;
+  justify-content: flex-start;
+  padding: 0px 20px;
+}
+
+.card-info {
+  align-items: flex-start;
+  display: flex;
+  gap: 10px;
+}
+
+.card-info > i {  
+  font-size: 1em;
+  height: 20px;
+  line-height: 20px;
+}
+
+.card-info-title > h3 {
+  font-size: 1.1em;
+  line-height: 20px;
+}
+
+.card-info-content > h4 {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.9em;
+}
+
+/* -- ↓ ↓ ↓ some responsiveness ↓ ↓ ↓ -- */
+
+@media(max-width: 1000px) {
+  body {
+    align-items: flex-start;  
+    overflow: auto;
+  }
+  
+  #cards {    
+    max-width: 1000px;
+    padding: 10px 0px;
+  }
+  
+  .card {
+    flex-shrink: 1;
+    width: calc(50% - 4px);
+  }
+}
+
+@media(max-width: 500px) {
+  .card {
+    height: 180px;
+  }
+  
+  .card-image {
+    height: 80px;  
+  }
+  
+  .card-image > i {
+    font-size: 3em;
+  }
+    
+  .card-info-wrapper {
+    padding: 0px 10px;
+  }
+  
+  .card-info > i { 
+    font-size: 0.8em; 
+  }
+  
+  .card-info-title > h3 {
+    font-size: 0.9em;
+  }
+
+  .card-info-content > h4 {
+    font-size: 0.8em;
+    margin-top: 10px;
+  }
+}
+
+@media(max-width: 320px) {
+  .card {
+    width: 100%;
+  }
+}
+
+/* -- ↓ ↓ ↓ YouTube link styles ↓ ↓ ↓ -- */
+
+
+
+#source-link {
+  bottom: 10px;
+}
+
+#source-link > i {
+  color: rgb(94, 106, 210);
+}
+
+.link {
+  align-items: center;
+  backdrop-filter: blur(3px);
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1);
+  cursor: pointer;  
+  display: inline-flex;
+  gap: 5px;
+  left: 10px;
+  padding: 10px 20px;
+  position: fixed;
+  text-decoration: none;
+  z-index: 15;
+}
+
+.link:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.link > i, .link > span {
+  height: 20px;
+  line-height: 20px;
+}
+
+.link > span {
+  color: white;
+}
+  </style>
+<script type="text/javascript">
+  // Flag to track if a key is pressed
+  let isKeyPressed = false;
+
+  // Function to handle mouse movement
+  function handleMouseMove(e) {
+    if (isKeyPressed) return; // Exit if a key is pressed
+
+    for (const card of document.getElementsByClassName("card")) {
+      const rect = card.getBoundingClientRect(),
+            x = e.clientX - rect.left,
+            y = e.clientY - rect.top;
+
+      card.style.setProperty("--mouse-x", `${x}px`);
+      card.style.setProperty("--mouse-y", `${y}px`);
+    }
+  }
+
+  // Set the mousemove event handler
+  document.getElementById("cards").onmousemove = handleMouseMove;
+
+  // Set keydown and keyup event handlers to update the flag
+  document.addEventListener("keydown", () => {
+    isKeyPressed = true;
+    for (const card of document.getElementsByClassName("card")) {
+    card.style.removeProperty("--mouse-x");
+    card.style.removeProperty("--mouse-y");
+    }
+  });
+
+  document.addEventListener("keyup", () => {
+    isKeyPressed = false;
+  });
+</script>
+
+
+</body>
+</html>

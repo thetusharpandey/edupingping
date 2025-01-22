@@ -1,18 +1,37 @@
-//master JsON
+//master JsON 
+~TESTS written~
 {
 	"parentName": "FullNameString",
-	"memberParam":{"memberNameString":"MemberAgeValueFromFunction","i-timesNames":"i-timesDates"}, //this new key-value has to have a zero member, if not found, i assume -> "Child":"01-01-2020"
-	"countryCode":"valueChosenFromCountryListFunction",//searcheable list of countries
+		~input should not have '' or "" or ,~
+	"memberParam":{"memberNameString":"MemberAgeValueFromFunction","i-timesNames":"i-timesDates"}, 
+		~this new key-value has to have a zero member, if not found, i assume -> "Child":"01-01-2020"~
+		~input should not have '' or "" or , and strict alphabet only~ 
+		~age Value is strict numeral over zero, less than 100~
+	"countryCode":"valueChosenFromCountryListFunction"
+		~country is searcheable from dropdown list, but needs confirmation before submitting~
+		~country code is separate box and value~
 	"phoneNumber":"valueInputFromFormField",
+		~phone number is separate~
 	"email":"valueInputFromFormField",
-	"timezone":"defaultForTheCountryChosen", //the user is indicated that the timezone is thiss. and current time is mentioned in the form when you select the country and location. But they can change it. 
+		~email once entered, when on first call, team will send a confirmation and try to verify~
+	"timezone":"defaultForTheCountryChosen", 
+		~the user is indicated that the timezone is thiss. and current time is mentioned in the form when you select the country and location. But they can change it.~ 
 	"SMValue":"employeeCode",
+		~updated ONLY by SM filters and admin controls, on submission~
 	"EventLog":{"eventComment":"concatenatedStringOf_date_time_employeeCode","...i'th_Appended_eventComment":"...i'th_Appended_concatenatedStringOf_date_time_employeeCode"},
+		~eventComment is standard from the list of events, 
+		~on submission, check for value change and event comment similarity~ 
+		~in event of badEdit employee code is added in the logs anyway~
 	"probe":{"probeHeaderFromAllowedPrompts":"probeSummary","i'th-ProbeSummary":"i'th-ProbeComment"},
+		~logs note this change~
 	"sessionList":{"sessionID":"cost","sessionID":"cost","...appendedIDs":"appendedCosts"},
+		~session booking list, log of booking agent~
 	"moneyData":["invoiceID", "...", "i-thInvoice"], //initially Value is Null, or invoice #0000
+		~no change allowed~
 	"refer":{"receivedFrom":"phoneNumber", "givenTo":"phoneNumber", "...i-thGivenTo":"i-thPhoneNumber"},
+		~no change, customer submission form comes to server, function will add it to lead~
 	"campaign":"campaignTheyCameFrom"
+		~campaign text input, no change in variable accepted, local functions will make changes if needed~
 }
 
 
@@ -28,17 +47,4 @@
 
 
 
-javascript-> async : http request is linear and page can wait for its request while loading things on its end. 
-			api might take sometime but the API is not having its own issues at all. 
-
-
-			but the api will have delay issues. 
-
-intended thing: 
-page sends a request -> request received at pending register -> free arduino chosen to complete it->
-once done, result is updated and the program sends it back to the requester.  
-
-
-shared realtime storage X
-request queue and responding to the person who requested X
 

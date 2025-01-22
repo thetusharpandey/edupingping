@@ -1,0 +1,34 @@
+[{
+  "campaign": "campaignTheyCameFrom",
+  "SMValue": "employeeCode",
+ 
+  "countryCode": "valueChosenFromCountryListFunction",
+  "timezone": "defaultForTheCountryChosen",
+  "countryName": "nameFromList",
+
+  "email": "valueInputFromFormField",
+  "parentName": "FullNameString",
+  "phoneNumber": "valueInputFromFormField",
+ 
+  "memberParam": {
+    "memberNameString": "MemberAgeValueFromFunction",
+    "i-timesNames"    : "i-timesDates"
+  },
+  "refer": {
+    "receivedFrom"  : "phoneNumber"    ,
+    "givenTo"       : "phoneNumber"    ,
+    "...i-thGivenTo": "i-thPhoneNumber"
+  },
+  "probe": {
+    "probeHeaderFromAllowedPrompts": "probeSummary"     ,
+    "i'th-ProbeSummary"            : "i'th-ProbeComment"
+  },
+  "EventLog": {
+    "eventComment": "concatenatedStringOf_date_time_employeeCode",
+    "...i'th_Appended_eventComment": "...i'th_Appended_concatenatedStringOf_date_time_employeeCode"
+  },
+  "moneyData": ["invoiceID", "...", "i-thInvoice"],
+  "sessionList": {"sessionID": "cost", "...appendedIDs": "appendedCosts"}
+}
+,{"":""}]
+

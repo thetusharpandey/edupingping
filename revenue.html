@@ -761,6 +761,7 @@ const onResize = () => {
   canvas.style.width = `${win.w}px`
   canvas.style.height = `${win.h}px`
   ctx.scale(devicePixelRatio, devicePixelRatio)
+  
 }
 onResize()
 
@@ -782,6 +783,7 @@ const onMouseMove = (e) => {
   timeoutID = setTimeout(() => {
     isMouseMoving = false
   }, settings.resetTimer)
+
 }
 
 const fuckOff = (e) => {
@@ -800,7 +802,8 @@ window.addEventListener('click', fuckOff)
 Clear
 --------------------*/
 const clear = () => {
-  ctx.clearRect(0, 0, canvas.width, canvas.height)
+
+  ctx.clearRect(0, 0, canvas.width*2, canvas.height*2)
 }
 
 

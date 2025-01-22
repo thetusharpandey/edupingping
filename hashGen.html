@@ -14,15 +14,15 @@
 <body>
 	<div style="display:flex; gap: 15px;">
 		<div class='wrapper'>
-  			<input type='text' placeholder=''>
+  			<input type='text' id = "namefield" placeholder=''>
   			<span>namePiece</span>
 		</div>
 		<div class='wrapper'>
- 			<input type='text' placeholder=''>
+ 			<input type='text' id = "codeField" placeholder=''>
   			<span>employeeCode</span>
 		</div>
 		<div class='wrapper'>
-  			<input type='text' placeholder=''>
+  			<input type='text' id = "emailField" placeholder=''>
   			<span>emailPiece</span>
 		</div>
 		<div style="display: block;">
@@ -40,7 +40,65 @@
   				</div>
 			</div>
 		</div>
-<button onclick="dippy()" type="button">
+
+<script type="text/javascript">
+	function dippy(){
+		var x = document.getElementById("namefield").value;
+		console.log(x);
+		var x1 = x.toLowerCase();
+
+		var thingy = document.getElementsByClassName('card');
+		for (var i =0; i < thingy.length; i++) {
+			const nameValue = thingy[i].querySelector('.name').textContent.toLowerCase();
+			if(nameValue.includes(x1)){
+				;
+			} else{
+				thingy[i].style.display = "none";
+				//for the error where elements were still active on hovering after searching, I was hiding the inner element :lol, i had to display:none the card element, I was doing its innner child xD
+		}
+	}
+}
+	function dippy2(){
+		var x = document.getElementById("codeField").value;
+		console.log(x);
+		var x1 = x.toLowerCase();
+
+		var thingy = document.getElementsByClassName('card');
+		for (var i =0; i < thingy.length; i++) {
+			const nameValue = thingy[i].querySelector('.employeeID').textContent.toLowerCase();
+			if(nameValue.includes(x1)){
+				;
+			} else{
+				thingy[i].style.display = "none";
+				//for the error where elements were still active on hovering after searching, I was hiding the inner element :lol, i had to display:none the card element, I was doing its innner child xD
+		}
+	}
+}
+	function dippy3(){
+		var x = document.getElementById("emailField").value;
+		console.log(x);
+		var x1 = x.toLowerCase();
+
+		var thingy = document.getElementsByClassName('card');
+		for (var i =0; i < thingy.length; i++) {
+			const nameValue = thingy[i].querySelector('.emailGiven').textContent.toLowerCase();
+			if(nameValue.includes(x1)){
+				;
+			} else{
+				thingy[i].style.display = "none";
+				//for the error where elements were still active on hovering after searching, I was hiding the inner element :lol, i had to display:none the card element, I was doing its innner child xD
+		}
+	}
+}
+
+	function dippyTrue(){
+		var ll = dippy();
+		var ll1 = dippy2();
+		var ll2 = dippy3();
+	}
+</script>
+
+<button onclick="dippyTrue()" type="button">
   <i>
 <svg viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
     <!-- Neon Glow Circle -->
@@ -80,6 +138,7 @@
   </svg>
 </button>
 	</div>
+
 
 <style type="text/css">
 
@@ -346,7 +405,7 @@ button:hover ~ aside {
 </style>
 <div style="display: flex;">
 <i style="height:50px; width:50px" onclick = "bumpfunc()"class="fa-solid fa-barcode"></i>
-<div class="button-container" onclick="codeCreate()" style="display: none;">
+<div class="button-container" phone = '0' employeeID= '0' onclick="generateHashFromStringInput(phone,employeeID)" style="display: none;">
 	<div class="container">
 		<div class="btn">
 			<a id="sleepMadi" class="buttonValue">Create Hash</a>
@@ -360,9 +419,9 @@ button:hover ~ aside {
   		</div>
   	</div>
 </div>
-<div class="button-container" onclick="codeCreate()" style="display: none;">
+<div class="button-container" phone = '0' employeeID= '0' onclick="generateHashFromStringInput(phone,employeeID)" style="display: none;">
 	<div class="container">
-		<div class="btn">
+		<div id = "btn3" class="btn">
 			<a id="sleepMadiMain" class="buttonValue">Create Hash</a>
   		</div>
   	</div>
@@ -371,37 +430,6 @@ button:hover ~ aside {
 
 <div id="cards">
 
-	<!-- card start -->
-<div class="card" onclick="functTemp()" onmouseout="foldIt()" style="position: relative;">
-    <div class="card-content">
-        <div class="card-image">
-            <i class="fa-solid fa-user-secret"><img src="https://images.pexels.com/photos/8382612/pexels-photo-8382612.jpeg?h=450"></i>
-        </div>
-        <div class="card-info-wrapper">
-            <div class="card-info">
-                <i class="fa-solid fa-forward"></i>
-                <div class="card-info-title">
-                    <h3 class="name">Bullshit</h3>
-                    <div class="cross" style="display: flex;">
-                        <div class="card-info-content" style="flex-grow: 1; font-size: auto;">
-                            <h4 class="post">Shitty Associate</h4>
-                            <h4 class="employeeID" style="display:list-item;">696</h4>
-                            <h4 class="dateJoin" style="display:none;">01-04-2024</h4>
-                            <h4 class="emailGiven" style="display:none;">lottery@bakedGems.com</h4>
-                            <h4 class="phoneGiven" style="display:none;">9868323819</h4>
-                            <h4 class="idGivenNum" style="display:none;">278645373562561</h4>
-                            <h4 class="salaryAgreed" style="display:none;">18000</h4>
-                            <h4 class="upiVpa" style="display:none;">mockery@ybl</h4>
-                            <h4 class="shift" style="display:none;">IN</h4>
-                        </div>
-
-                    </div>
-                </div>    
-            </div>
-        </div>
-    </div>
-</div>
-		<!-- **********Card End***********-->
 <!-- card start -->
 <div class="card" onclick="functTemp()" onmouseout="foldIt()" style="position: relative;">
     <div class="card-content">
@@ -412,28 +440,29 @@ button:hover ~ aside {
             <div class="card-info">
                 <i class="fa-solid fa-forward"></i>
                 <div class="card-info-title">
-                    <h3 class="name">Bullshit</h3>
+                    <h3 class="name">John Doe</h3>
                     <div class="cross" style="display: flex;">
                         <div class="card-info-content" style="flex-grow: 1; font-size: auto;">
-                            <h4 class="post">Shitty Associate</h4>
-                            <h4 class="employeeID" style="display:list-item;">696</h4>
-                            <h4 class="dateJoin" style="display:none;">01-04-2024</h4>
-                            <h4 class="emailGiven" style="display:none;">lottery@bakedGems.com</h4>
-                            <h4 class="phoneGiven" style="display:none;">9868323819</h4>
-                            <h4 class="idGivenNum" style="display:none;">278645373562561</h4>
-                            <h4 class="salaryAgreed" style="display:none;">18000</h4>
-                            <h4 class="upiVpa" style="display:none;">mockery@ybl</h4>
-                            <h4 class="shift" style="display:none;">IN</h4>
+                            <h4 class="post">Software Engineer</h4>
+                            <h4 class="employeeID" style="display:list-item;">123</h4>
+                            <h4 class="isActive" style="display:none;">Yes</h4>
+                            <h4 class="dateJoin" style="display:none;">12-01-2023</h4>
+                            <h4 class="emailGiven" style="display:none;">johndoe@example.com</h4>
+                            <h4 class="phoneGiven" style="display:none;">555-1234</h4>
+                            <h4 class="idGivenNum" style="display:none;">9876543210</h4>
+                            <h4 class="salaryAgreed" style="display:none;">85000</h4>
+                            <h4 class="upiVpa" style="display:none;">johndoe@ybl</h4>
+                            <h4 class="shift" style="display:none;">Morning</h4>
                         </div>
-
                     </div>
                 </div>    
             </div>
         </div>
     </div>
 </div>
-		<!-- **********Card End***********-->
-		<!-- card start -->
+<!-- **********Card End***********-->
+
+<!-- card start -->
 <div class="card" onclick="functTemp()" onmouseout="foldIt()" style="position: relative;">
     <div class="card-content">
         <div class="card-image">
@@ -443,28 +472,29 @@ button:hover ~ aside {
             <div class="card-info">
                 <i class="fa-solid fa-forward"></i>
                 <div class="card-info-title">
-                    <h3 class="name">Bullshit</h3>
+                    <h3 class="name">Jane Smith</h3>
                     <div class="cross" style="display: flex;">
                         <div class="card-info-content" style="flex-grow: 1; font-size: auto;">
-                            <h4 class="post">Shitty Associate</h4>
-                            <h4 class="employeeID" style="display:list-item;">696</h4>
-                            <h4 class="dateJoin" style="display:none;">01-04-2024</h4>
-                            <h4 class="emailGiven" style="display:none;">lottery@bakedGems.com</h4>
-                            <h4 class="phoneGiven" style="display:none;">9868323819</h4>
-                            <h4 class="idGivenNum" style="display:none;">278645373562561</h4>
-                            <h4 class="salaryAgreed" style="display:none;">18000</h4>
-                            <h4 class="upiVpa" style="display:none;">mockery@ybl</h4>
-                            <h4 class="shift" style="display:none;">IN</h4>
+                            <h4 class="post">Marketing Specialist</h4>
+                            <h4 class="employeeID" style="display:list-item;">456</h4>
+                            <h4 class="isActive" style="display:none;">Yes</h4>
+                            <h4 class="dateJoin" style="display:none;">23-05-2022</h4>
+                            <h4 class="emailGiven" style="display:none;">janesmith@example.com</h4>
+                            <h4 class="phoneGiven" style="display:none;">555-5678</h4>
+                            <h4 class="idGivenNum" style="display:none;">1234567890</h4>
+                            <h4 class="salaryAgreed" style="display:none;">72000</h4>
+                            <h4 class="upiVpa" style="display:none;">janesmith@ybl</h4>
+                            <h4 class="shift" style="display:none;">Evening</h4>
                         </div>
-
                     </div>
                 </div>    
             </div>
         </div>
     </div>
 </div>
-		<!-- **********Card End***********-->
-		<!-- card start -->
+<!-- **********Card End***********-->
+
+<!-- card start -->
 <div class="card" onclick="functTemp()" onmouseout="foldIt()" style="position: relative;">
     <div class="card-content">
         <div class="card-image">
@@ -474,28 +504,29 @@ button:hover ~ aside {
             <div class="card-info">
                 <i class="fa-solid fa-forward"></i>
                 <div class="card-info-title">
-                    <h3 class="name">Bullshit</h3>
+                    <h3 class="name">Noah Martinez</h3>
                     <div class="cross" style="display: flex;">
                         <div class="card-info-content" style="flex-grow: 1; font-size: auto;">
-                            <h4 class="post">Shitty Associate</h4>
-                            <h4 class="employeeID" style="display:list-item;">696</h4>
-                            <h4 class="dateJoin" style="display:none;">01-04-2024</h4>
-                            <h4 class="emailGiven" style="display:none;">lottery@bakedGems.com</h4>
-                            <h4 class="phoneGiven" style="display:none;">9868323819</h4>
-                            <h4 class="idGivenNum" style="display:none;">278645373562561</h4>
-                            <h4 class="salaryAgreed" style="display:none;">18000</h4>
-                            <h4 class="upiVpa" style="display:none;">mockery@ybl</h4>
-                            <h4 class="shift" style="display:none;">IN</h4>
+                            <h4 class="post">Project Manager</h4>
+                            <h4 class="employeeID" style="display:list-item;">408</h4>
+                            <h4 class="isActive" style="display:none;">Yes</h4>
+                            <h4 class="dateJoin" style="display:none;">11-22-2021</h4>
+                            <h4 class="emailGiven" style="display:none;">noahm@example.com</h4>
+                            <h4 class="phoneGiven" style="display:none;">555-6543</h4>
+                            <h4 class="idGivenNum" style="display:none;">3210987654</h4>
+                            <h4 class="salaryAgreed" style="display:none;">95000</h4>
+                            <h4 class="upiVpa" style="display:none;">noahmartinez@ybl</h4>
+                            <h4 class="shift" style="display:none;">Night</h4>
                         </div>
-
                     </div>
                 </div>    
             </div>
         </div>
     </div>
 </div>
-		<!-- **********Card End***********-->
-		<!-- card start -->
+<!-- **********Card End***********-->
+
+<!-- card start -->
 <div class="card" onclick="functTemp()" onmouseout="foldIt()" style="position: relative;">
     <div class="card-content">
         <div class="card-image">
@@ -505,28 +536,29 @@ button:hover ~ aside {
             <div class="card-info">
                 <i class="fa-solid fa-forward"></i>
                 <div class="card-info-title">
-                    <h3 class="name">Bullshit</h3>
+                    <h3 class="name">Michael Johnson</h3>
                     <div class="cross" style="display: flex;">
                         <div class="card-info-content" style="flex-grow: 1; font-size: auto;">
-                            <h4 class="post">Shitty Associate</h4>
-                            <h4 class="employeeID" style="display:list-item;">696</h4>
-                            <h4 class="dateJoin" style="display:none;">01-04-2024</h4>
-                            <h4 class="emailGiven" style="display:none;">lottery@bakedGems.com</h4>
-                            <h4 class="phoneGiven" style="display:none;">9868323819</h4>
-                            <h4 class="idGivenNum" style="display:none;">278645373562561</h4>
-                            <h4 class="salaryAgreed" style="display:none;">18000</h4>
-                            <h4 class="upiVpa" style="display:none;">mockery@ybl</h4>
-                            <h4 class="shift" style="display:none;">IN</h4>
+                            <h4 class="post">Project Manager</h4>
+                            <h4 class="employeeID" style="display:list-item;">789</h4>
+                            <h4 class="isActive" style="display:none;">Yes</h4>
+                            <h4 class="dateJoin" style="display:none;">15-09-2021</h4>
+                            <h4 class="emailGiven" style="display:none;">michaelj@example.com</h4>
+                            <h4 class="phoneGiven" style="display:none;">555-9876</h4>
+                            <h4 class="idGivenNum" style="display:none;">4561237890</h4>
+                            <h4 class="salaryAgreed" style="display:none;">95000</h4>
+                            <h4 class="upiVpa" style="display:none;">michaeljohnson@ybl</h4>
+                            <h4 class="shift" style="display:none;">Night</h4>
                         </div>
-
                     </div>
                 </div>    
             </div>
         </div>
     </div>
 </div>
-		<!-- **********Card End***********-->
-		<!-- card start -->
+<!-- **********Card End***********-->
+
+<!-- card start -->
 <div class="card" onclick="functTemp()" onmouseout="foldIt()" style="position: relative;">
     <div class="card-content">
         <div class="card-image">
@@ -536,28 +568,29 @@ button:hover ~ aside {
             <div class="card-info">
                 <i class="fa-solid fa-forward"></i>
                 <div class="card-info-title">
-                    <h3 class="name">Bullshit</h3>
+                    <h3 class="name">Emily Davis</h3>
                     <div class="cross" style="display: flex;">
                         <div class="card-info-content" style="flex-grow: 1; font-size: auto;">
-                            <h4 class="post">Shitty Associate</h4>
-                            <h4 class="employeeID" style="display:list-item;">696</h4>
-                            <h4 class="dateJoin" style="display:none;">01-04-2024</h4>
-                            <h4 class="emailGiven" style="display:none;">lottery@bakedGems.com</h4>
-                            <h4 class="phoneGiven" style="display:none;">9868323819</h4>
-                            <h4 class="idGivenNum" style="display:none;">278645373562561</h4>
-                            <h4 class="salaryAgreed" style="display:none;">18000</h4>
-                            <h4 class="upiVpa" style="display:none;">mockery@ybl</h4>
-                            <h4 class="shift" style="display:none;">IN</h4>
+                            <h4 class="post">HR Coordinator</h4>
+                            <h4 class="employeeID" style="display:list-item;">101</h4>
+                            <h4 class="isActive" style="display:none;">Yes</h4>
+                            <h4 class="dateJoin" style="display:none;">30-06-2020</h4>
+                            <h4 class="emailGiven" style="display:none;">emilyd@example.com</h4>
+                            <h4 class="phoneGiven" style="display:none;">555-2468</h4>
+                            <h4 class="idGivenNum" style="display:none;">3216549870</h4>
+                            <h4 class="salaryAgreed" style="display:none;">60000</h4>
+                            <h4 class="upiVpa" style="display:none;">emilydavis@ybl</h4>
+                            <h4 class="shift" style="display:none;">Morning</h4>
                         </div>
-
                     </div>
                 </div>    
             </div>
         </div>
     </div>
 </div>
-		<!-- **********Card End***********-->
-		<!-- card start -->
+<!-- **********Card End***********-->
+
+<!-- card start -->
 <div class="card" onclick="functTemp()" onmouseout="foldIt()" style="position: relative;">
     <div class="card-content">
         <div class="card-image">
@@ -567,28 +600,29 @@ button:hover ~ aside {
             <div class="card-info">
                 <i class="fa-solid fa-forward"></i>
                 <div class="card-info-title">
-                    <h3 class="name">Bullshit</h3>
+                    <h3 class="name">David Lee</h3>
                     <div class="cross" style="display: flex;">
                         <div class="card-info-content" style="flex-grow: 1; font-size: auto;">
-                            <h4 class="post">Shitty Associate</h4>
-                            <h4 class="employeeID" style="display:list-item;">696</h4>
-                            <h4 class="dateJoin" style="display:none;">01-04-2024</h4>
-                            <h4 class="emailGiven" style="display:none;">lottery@bakedGems.com</h4>
-                            <h4 class="phoneGiven" style="display:none;">9868323819</h4>
-                            <h4 class="idGivenNum" style="display:none;">278645373562561</h4>
-                            <h4 class="salaryAgreed" style="display:none;">18000</h4>
-                            <h4 class="upiVpa" style="display:none;">mockery@ybl</h4>
-                            <h4 class="shift" style="display:none;">IN</h4>
+                            <h4 class="post">Data Analyst</h4>
+                            <h4 class="employeeID" style="display:list-item;">202</h4>
+                            <h4 class="isActive" style="display:none;">Yes</h4>
+                            <h4 class="dateJoin" style="display:none;">18-03-2023</h4>
+                            <h4 class="emailGiven" style="display:none;">davidl@example.com</h4>
+                            <h4 class="phoneGiven" style="display:none;">555-3698</h4>
+                            <h4 class="idGivenNum" style="display:none;">7890123456</h4>
+                            <h4 class="salaryAgreed" style="display:none;">70000</h4>
+                            <h4 class="upiVpa" style="display:none;">davidlee@ybl</h4>
+                            <h4 class="shift" style="display:none;">Evening</h4>
                         </div>
-
                     </div>
                 </div>    
             </div>
         </div>
     </div>
 </div>
-		<!-- **********Card End***********-->
-		<!-- card start -->
+<!-- **********Card End***********-->
+
+<!-- card start -->
 <div class="card" onclick="functTemp()" onmouseout="foldIt()" style="position: relative;">
     <div class="card-content">
         <div class="card-image">
@@ -598,28 +632,29 @@ button:hover ~ aside {
             <div class="card-info">
                 <i class="fa-solid fa-forward"></i>
                 <div class="card-info-title">
-                    <h3 class="name">Bullshit</h3>
+                    <h3 class="name">Sophia Wilson</h3>
                     <div class="cross" style="display: flex;">
                         <div class="card-info-content" style="flex-grow: 1; font-size: auto;">
-                            <h4 class="post">Shitty Associate</h4>
-                            <h4 class="employeeID" style="display:list-item;">696</h4>
-                            <h4 class="dateJoin" style="display:none;">01-04-2024</h4>
-                            <h4 class="emailGiven" style="display:none;">lottery@bakedGems.com</h4>
-                            <h4 class="phoneGiven" style="display:none;">9868323819</h4>
-                            <h4 class="idGivenNum" style="display:none;">278645373562561</h4>
-                            <h4 class="salaryAgreed" style="display:none;">18000</h4>
-                            <h4 class="upiVpa" style="display:none;">mockery@ybl</h4>
-                            <h4 class="shift" style="display:none;">IN</h4>
+                            <h4 class="post">Content Writer</h4>
+                            <h4 class="employeeID" style="display:list-item;">303</h4>
+                            <h4 class="isActive" style="display:none;">Yes</h4>
+                            <h4 class="dateJoin" style="display:none;">12-11-2022</h4>
+                            <h4 class="emailGiven" style="display:none;">sophiaw@example.com</h4>
+                            <h4 class="phoneGiven" style="display:none;">555-2587</h4>
+                            <h4 class="idGivenNum" style="display:none;">6543210987</h4>
+                            <h4 class="salaryAgreed" style="display:none;">65000</h4>
+                            <h4 class="upiVpa" style="display:none;">sophiawilson@ybl</h4>
+                            <h4 class="shift" style="display:none;">Night</h4>
                         </div>
-
                     </div>
                 </div>    
             </div>
         </div>
     </div>
 </div>
-		<!-- **********Card End***********-->
-		<!-- card start -->
+<!-- **********Card End***********-->
+
+<!-- card start -->
 <div class="card" onclick="functTemp()" onmouseout="foldIt()" style="position: relative;">
     <div class="card-content">
         <div class="card-image">
@@ -629,28 +664,29 @@ button:hover ~ aside {
             <div class="card-info">
                 <i class="fa-solid fa-forward"></i>
                 <div class="card-info-title">
-                    <h3 class="name">Bullshit</h3>
+                    <h3 class="name">Sophia Wilson</h3>
                     <div class="cross" style="display: flex;">
                         <div class="card-info-content" style="flex-grow: 1; font-size: auto;">
-                            <h4 class="post">Shitty Associate</h4>
-                            <h4 class="employeeID" style="display:list-item;">696</h4>
-                            <h4 class="dateJoin" style="display:none;">01-04-2024</h4>
-                            <h4 class="emailGiven" style="display:none;">lottery@bakedGems.com</h4>
-                            <h4 class="phoneGiven" style="display:none;">9868323819</h4>
-                            <h4 class="idGivenNum" style="display:none;">278645373562561</h4>
-                            <h4 class="salaryAgreed" style="display:none;">18000</h4>
-                            <h4 class="upiVpa" style="display:none;">mockery@ybl</h4>
-                            <h4 class="shift" style="display:none;">IN</h4>
+                            <h4 class="post">Content Writer</h4>
+                            <h4 class="employeeID" style="display:list-item;">303</h4>
+                            <h4 class="isActive" style="display:none;">Yes</h4>
+                            <h4 class="dateJoin" style="display:none;">12-11-2022</h4>
+                            <h4 class="emailGiven" style="display:none;">sophiaw@example.com</h4>
+                            <h4 class="phoneGiven" style="display:none;">555-2587</h4>
+                            <h4 class="idGivenNum" style="display:none;">6543210987</h4>
+                            <h4 class="salaryAgreed" style="display:none;">65000</h4>
+                            <h4 class="upiVpa" style="display:none;">sophiawilson@ybl</h4>
+                            <h4 class="shift" style="display:none;">Night</h4>
                         </div>
-
                     </div>
                 </div>    
             </div>
         </div>
     </div>
 </div>
-		<!-- **********Card End***********-->
-		<!-- card start -->
+<!-- **********Card End***********-->
+
+<!-- card start -->
 <div class="card" onclick="functTemp()" onmouseout="foldIt()" style="position: relative;">
     <div class="card-content">
         <div class="card-image">
@@ -660,28 +696,29 @@ button:hover ~ aside {
             <div class="card-info">
                 <i class="fa-solid fa-forward"></i>
                 <div class="card-info-title">
-                    <h3 class="name">Bullshit</h3>
+                    <h3 class="name">Michael Brown</h3>
                     <div class="cross" style="display: flex;">
                         <div class="card-info-content" style="flex-grow: 1; font-size: auto;">
-                            <h4 class="post">Shitty Associate</h4>
-                            <h4 class="employeeID" style="display:list-item;">696</h4>
-                            <h4 class="dateJoin" style="display:none;">01-04-2024</h4>
-                            <h4 class="emailGiven" style="display:none;">lottery@bakedGems.com</h4>
-                            <h4 class="phoneGiven" style="display:none;">9868323819</h4>
-                            <h4 class="idGivenNum" style="display:none;">278645373562561</h4>
-                            <h4 class="salaryAgreed" style="display:none;">18000</h4>
-                            <h4 class="upiVpa" style="display:none;">mockery@ybl</h4>
-                            <h4 class="shift" style="display:none;">IN</h4>
+                            <h4 class="post">Marketing Specialist</h4>
+                            <h4 class="employeeID" style="display:list-item;">604</h4>
+                            <h4 class="isActive" style="display:none;">Yes</h4>
+                            <h4 class="dateJoin" style="display:none;">08-15-2021</h4>
+                            <h4 class="emailGiven" style="display:none;">michaelb@example.com</h4>
+                            <h4 class="phoneGiven" style="display:none;">555-9876</h4>
+                            <h4 class="idGivenNum" style="display:none;">7896541230</h4>
+                            <h4 class="salaryAgreed" style="display:none;">75000</h4>
+                            <h4 class="upiVpa" style="display:none;">michaelbrown@ybl</h4>
+                            <h4 class="shift" style="display:none;">Day</h4>
                         </div>
-
                     </div>
                 </div>    
             </div>
         </div>
     </div>
 </div>
-		<!-- **********Card End***********-->
-		<!-- card start -->
+<!-- **********Card End***********-->
+
+<!-- card start -->
 <div class="card" onclick="functTemp()" onmouseout="foldIt()" style="position: relative;">
     <div class="card-content">
         <div class="card-image">
@@ -691,28 +728,29 @@ button:hover ~ aside {
             <div class="card-info">
                 <i class="fa-solid fa-forward"></i>
                 <div class="card-info-title">
-                    <h3 class="name">Bullshit</h3>
+                    <h3 class="name">Emma Johnson</h3>
                     <div class="cross" style="display: flex;">
                         <div class="card-info-content" style="flex-grow: 1; font-size: auto;">
-                            <h4 class="post">Shitty Associate</h4>
-                            <h4 class="employeeID" style="display:list-item;">696</h4>
-                            <h4 class="dateJoin" style="display:none;">01-04-2024</h4>
-                            <h4 class="emailGiven" style="display:none;">lottery@bakedGems.com</h4>
-                            <h4 class="phoneGiven" style="display:none;">9868323819</h4>
-                            <h4 class="idGivenNum" style="display:none;">278645373562561</h4>
-                            <h4 class="salaryAgreed" style="display:none;">18000</h4>
-                            <h4 class="upiVpa" style="display:none;">mockery@ybl</h4>
-                            <h4 class="shift" style="display:none;">IN</h4>
+                            <h4 class="post">HR Manager</h4>
+                            <h4 class="employeeID" style="display:list-item;">305</h4>
+                            <h4 class="isActive" style="display:none;">Yes</h4>
+                            <h4 class="dateJoin" style="display:none;">04-01-2023</h4>
+                            <h4 class="emailGiven" style="display:none;">emmaj@example.com</h4>
+                            <h4 class="phoneGiven" style="display:none;">555-1234</h4>
+                            <h4 class="idGivenNum" style="display:none;">4567890123</h4>
+                            <h4 class="salaryAgreed" style="display:none;">90000</h4>
+                            <h4 class="upiVpa" style="display:none;">emmajohnson@ybl</h4>
+                            <h4 class="shift" style="display:none;">Morning</h4>
                         </div>
-
                     </div>
                 </div>    
             </div>
         </div>
     </div>
 </div>
-		<!-- **********Card End***********-->
-		<!-- card start -->
+<!-- **********Card End***********-->
+
+<!-- card start -->
 <div class="card" onclick="functTemp()" onmouseout="foldIt()" style="position: relative;">
     <div class="card-content">
         <div class="card-image">
@@ -722,28 +760,29 @@ button:hover ~ aside {
             <div class="card-info">
                 <i class="fa-solid fa-forward"></i>
                 <div class="card-info-title">
-                    <h3 class="name">Bullshit</h3>
+                    <h3 class="name">Liam Smith</h3>
                     <div class="cross" style="display: flex;">
                         <div class="card-info-content" style="flex-grow: 1; font-size: auto;">
-                            <h4 class="post">Shitty Associate</h4>
-                            <h4 class="employeeID" style="display:list-item;">696</h4>
-                            <h4 class="dateJoin" style="display:none;">01-04-2024</h4>
-                            <h4 class="emailGiven" style="display:none;">lottery@bakedGems.com</h4>
-                            <h4 class="phoneGiven" style="display:none;">9868323819</h4>
-                            <h4 class="idGivenNum" style="display:none;">278645373562561</h4>
-                            <h4 class="salaryAgreed" style="display:none;">18000</h4>
-                            <h4 class="upiVpa" style="display:none;">mockery@ybl</h4>
-                            <h4 class="shift" style="display:none;">IN</h4>
+                            <h4 class="post">Software Engineer</h4>
+                            <h4 class="employeeID" style="display:list-item;">101</h4>
+                            <h4 class="isActive" style="display:none;">Yes</h4>
+                            <h4 class="dateJoin" style="display:none;">09-21-2020</h4>
+                            <h4 class="emailGiven" style="display:none;">liams@example.com</h4>
+                            <h4 class="phoneGiven" style="display:none;">555-7890</h4>
+                            <h4 class="idGivenNum" style="display:none;">9876543210</h4>
+                            <h4 class="salaryAgreed" style="display:none;">85000</h4>
+                            <h4 class="upiVpa" style="display:none;">liamsmith@ybl</h4>
+                            <h4 class="shift" style="display:none;">Evening</h4>
                         </div>
-
                     </div>
                 </div>    
             </div>
         </div>
     </div>
 </div>
-		<!-- **********Card End***********-->
-		<!-- card start -->
+<!-- **********Card End***********-->
+
+<!-- card start -->
 <div class="card" onclick="functTemp()" onmouseout="foldIt()" style="position: relative;">
     <div class="card-content">
         <div class="card-image">
@@ -753,28 +792,29 @@ button:hover ~ aside {
             <div class="card-info">
                 <i class="fa-solid fa-forward"></i>
                 <div class="card-info-title">
-                    <h3 class="name">Bullshit</h3>
+                    <h3 class="name">Olivia Davis</h3>
                     <div class="cross" style="display: flex;">
                         <div class="card-info-content" style="flex-grow: 1; font-size: auto;">
-                            <h4 class="post">Shitty Associate</h4>
-                            <h4 class="employeeID" style="display:list-item;">696</h4>
-                            <h4 class="dateJoin" style="display:none;">01-04-2024</h4>
-                            <h4 class="emailGiven" style="display:none;">lottery@bakedGems.com</h4>
-                            <h4 class="phoneGiven" style="display:none;">9868323819</h4>
-                            <h4 class="idGivenNum" style="display:none;">278645373562561</h4>
-                            <h4 class="salaryAgreed" style="display:none;">18000</h4>
-                            <h4 class="upiVpa" style="display:none;">mockery@ybl</h4>
-                            <h4 class="shift" style="display:none;">IN</h4>
+                            <h4 class="post">Graphic Designer</h4>
+                            <h4 class="employeeID" style="display:list-item;">202</h4>
+                            <h4 class="isActive" style="display:none;">Yes</h4>
+                            <h4 class="dateJoin" style="display:none;">07-11-2022</h4>
+                            <h4 class="emailGiven" style="display:none;">oliviad@example.com</h4>
+                            <h4 class="phoneGiven" style="display:none;">555-4567</h4>
+                            <h4 class="idGivenNum" style="display:none;">1234567890</h4>
+                            <h4 class="salaryAgreed" style="display:none;">70000</h4>
+                            <h4 class="upiVpa" style="display:none;">oliviadavis@ybl</h4>
+                            <h4 class="shift" style="display:none;">Afternoon</h4>
                         </div>
-
                     </div>
                 </div>    
             </div>
         </div>
     </div>
 </div>
-		<!-- **********Card End***********-->
-		<!-- card start -->
+<!-- **********Card End***********-->
+
+<!-- card start -->
 <div class="card" onclick="functTemp()" onmouseout="foldIt()" style="position: relative;">
     <div class="card-content">
         <div class="card-image">
@@ -784,244 +824,28 @@ button:hover ~ aside {
             <div class="card-info">
                 <i class="fa-solid fa-forward"></i>
                 <div class="card-info-title">
-                    <h3 class="name">Bullshit</h3>
+                    <h3 class="name">Noah Martinez</h3>
                     <div class="cross" style="display: flex;">
                         <div class="card-info-content" style="flex-grow: 1; font-size: auto;">
-                            <h4 class="post">Shitty Associate</h4>
-                            <h4 class="employeeID" style="display:list-item;">696</h4>
-                            <h4 class="dateJoin" style="display:none;">01-04-2024</h4>
-                            <h4 class="emailGiven" style="display:none;">lottery@bakedGems.com</h4>
-                            <h4 class="phoneGiven" style="display:none;">9868323819</h4>
-                            <h4 class="idGivenNum" style="display:none;">278645373562561</h4>
-                            <h4 class="salaryAgreed" style="display:none;">18000</h4>
-                            <h4 class="upiVpa" style="display:none;">mockery@ybl</h4>
-                            <h4 class="shift" style="display:none;">IN</h4>
+                            <h4 class="post">Project Manager</h4>
+                            <h4 class="employeeID" style="display:list-item;">408</h4>
+                            <h4 class="isActive" style="display:none;">Yes</h4>
+                            <h4 class="dateJoin" style="display:none;">11-22-2021</h4>
+                            <h4 class="emailGiven" style="display:none;">noahm@example.com</h4>
+                            <h4 class="phoneGiven" style="display:none;">918851555788</h4>
+                            <h4 class="idGivenNum" style="display:none;">3210987654</h4>
+                            <h4 class="salaryAgreed" style="display:none;">95000</h4>
+                            <h4 class="upiVpa" style="display:none;">noahmartinez@ybl</h4>
+                            <h4 class="shift" style="display:none;">Night</h4>
                         </div>
-
                     </div>
                 </div>    
             </div>
         </div>
     </div>
 </div>
-		<!-- **********Card End***********-->
-		<!-- card start -->
-<div class="card" onclick="functTemp()" onmouseout="foldIt()" style="position: relative;">
-    <div class="card-content">
-        <div class="card-image">
-            <i class="fa-solid fa-user-secret"><img src="https://images.pexels.com/photos/8382612/pexels-photo-8382612.jpeg?h=450"></i>
-        </div>
-        <div class="card-info-wrapper">
-            <div class="card-info">
-                <i class="fa-solid fa-forward"></i>
-                <div class="card-info-title">
-                    <h3 class="name">Bullshit</h3>
-                    <div class="cross" style="display: flex;">
-                        <div class="card-info-content" style="flex-grow: 1; font-size: auto;">
-                            <h4 class="post">Shitty Associate</h4>
-                            <h4 class="employeeID" style="display:list-item;">696</h4>
-                            <h4 class="dateJoin" style="display:none;">01-04-2024</h4>
-                            <h4 class="emailGiven" style="display:none;">lottery@bakedGems.com</h4>
-                            <h4 class="phoneGiven" style="display:none;">9868323819</h4>
-                            <h4 class="idGivenNum" style="display:none;">278645373562561</h4>
-                            <h4 class="salaryAgreed" style="display:none;">18000</h4>
-                            <h4 class="upiVpa" style="display:none;">mockery@ybl</h4>
-                            <h4 class="shift" style="display:none;">IN</h4>
-                        </div>
+<!-- **********Card End***********-->
 
-                    </div>
-                </div>    
-            </div>
-        </div>
-    </div>
-</div>
-		<!-- **********Card End***********-->
-		<!-- card start -->
-<div class="card" onclick="functTemp()" onmouseout="foldIt()" style="position: relative;">
-    <div class="card-content">
-        <div class="card-image">
-            <i class="fa-solid fa-user-secret"><img src="https://images.pexels.com/photos/8382612/pexels-photo-8382612.jpeg?h=450"></i>
-        </div>
-        <div class="card-info-wrapper">
-            <div class="card-info">
-                <i class="fa-solid fa-forward"></i>
-                <div class="card-info-title">
-                    <h3 class="name">Bullshit</h3>
-                    <div class="cross" style="display: flex;">
-                        <div class="card-info-content" style="flex-grow: 1; font-size: auto;">
-                            <h4 class="post">Shitty Associate</h4>
-                            <h4 class="employeeID" style="display:list-item;">696</h4>
-                            <h4 class="dateJoin" style="display:none;">01-04-2024</h4>
-                            <h4 class="emailGiven" style="display:none;">lottery@bakedGems.com</h4>
-                            <h4 class="phoneGiven" style="display:none;">9868323819</h4>
-                            <h4 class="idGivenNum" style="display:none;">278645373562561</h4>
-                            <h4 class="salaryAgreed" style="display:none;">18000</h4>
-                            <h4 class="upiVpa" style="display:none;">mockery@ybl</h4>
-                            <h4 class="shift" style="display:none;">IN</h4>
-                        </div>
-
-                    </div>
-                </div>    
-            </div>
-        </div>
-    </div>
-</div>
-		<!-- **********Card End***********-->
-		<!-- card start -->
-<div class="card" onclick="functTemp()" onmouseout="foldIt()" style="position: relative;">
-    <div class="card-content">
-        <div class="card-image">
-            <i class="fa-solid fa-user-secret"><img src="https://images.pexels.com/photos/8382612/pexels-photo-8382612.jpeg?h=450"></i>
-        </div>
-        <div class="card-info-wrapper">
-            <div class="card-info">
-                <i class="fa-solid fa-forward"></i>
-                <div class="card-info-title">
-                    <h3 class="name">Bullshit</h3>
-                    <div class="cross" style="display: flex;">
-                        <div class="card-info-content" style="flex-grow: 1; font-size: auto;">
-                            <h4 class="post">Shitty Associate</h4>
-                            <h4 class="employeeID" style="display:list-item;">696</h4>
-                            <h4 class="dateJoin" style="display:none;">01-04-2024</h4>
-                            <h4 class="emailGiven" style="display:none;">lottery@bakedGems.com</h4>
-                            <h4 class="phoneGiven" style="display:none;">9868323819</h4>
-                            <h4 class="idGivenNum" style="display:none;">278645373562561</h4>
-                            <h4 class="salaryAgreed" style="display:none;">18000</h4>
-                            <h4 class="upiVpa" style="display:none;">mockery@ybl</h4>
-                            <h4 class="shift" style="display:none;">IN</h4>
-                        </div>
-
-                    </div>
-                </div>    
-            </div>
-        </div>
-    </div>
-</div>
-		<!-- **********Card End***********-->
-		<!-- card start -->
-<div class="card" onclick="functTemp()" onmouseout="foldIt()" style="position: relative;">
-    <div class="card-content">
-        <div class="card-image">
-            <i class="fa-solid fa-user-secret"><img src="https://images.pexels.com/photos/8382612/pexels-photo-8382612.jpeg?h=450"></i>
-        </div>
-        <div class="card-info-wrapper">
-            <div class="card-info">
-                <i class="fa-solid fa-forward"></i>
-                <div class="card-info-title">
-                    <h3 class="name">Bullshit</h3>
-                    <div class="cross" style="display: flex;">
-                        <div class="card-info-content" style="flex-grow: 1; font-size: auto;">
-                            <h4 class="post">Shitty Associate</h4>
-                            <h4 class="employeeID" style="display:list-item;">696</h4>
-                            <h4 class="dateJoin" style="display:none;">01-04-2024</h4>
-                            <h4 class="emailGiven" style="display:none;">lottery@bakedGems.com</h4>
-                            <h4 class="phoneGiven" style="display:none;">9868323819</h4>
-                            <h4 class="idGivenNum" style="display:none;">278645373562561</h4>
-                            <h4 class="salaryAgreed" style="display:none;">18000</h4>
-                            <h4 class="upiVpa" style="display:none;">mockery@ybl</h4>
-                            <h4 class="shift" style="display:none;">IN</h4>
-                        </div>
-
-                    </div>
-                </div>    
-            </div>
-        </div>
-    </div>
-</div>
-		<!-- **********Card End***********-->
-		<!-- card start -->
-<div class="card" onclick="functTemp()" onmouseout="foldIt()" style="position: relative;">
-    <div class="card-content">
-        <div class="card-image">
-            <i class="fa-solid fa-user-secret"><img src="https://images.pexels.com/photos/8382612/pexels-photo-8382612.jpeg?h=450"></i>
-        </div>
-        <div class="card-info-wrapper">
-            <div class="card-info">
-                <i class="fa-solid fa-forward"></i>
-                <div class="card-info-title">
-                    <h3 class="name">Bullshit</h3>
-                    <div class="cross" style="display: flex;">
-                        <div class="card-info-content" style="flex-grow: 1; font-size: auto;">
-                            <h4 class="post">Shitty Associate</h4>
-                            <h4 class="employeeID" style="display:list-item;">696</h4>
-                            <h4 class="dateJoin" style="display:none;">01-04-2024</h4>
-                            <h4 class="emailGiven" style="display:none;">lottery@bakedGems.com</h4>
-                            <h4 class="phoneGiven" style="display:none;">9868323819</h4>
-                            <h4 class="idGivenNum" style="display:none;">278645373562561</h4>
-                            <h4 class="salaryAgreed" style="display:none;">18000</h4>
-                            <h4 class="upiVpa" style="display:none;">mockery@ybl</h4>
-                            <h4 class="shift" style="display:none;">IN</h4>
-                        </div>
-
-                    </div>
-                </div>    
-            </div>
-        </div>
-    </div>
-</div>
-		<!-- **********Card End***********-->
-		<!-- card start -->
-<div class="card" onclick="functTemp()" onmouseout="foldIt()" style="position: relative;">
-    <div class="card-content">
-        <div class="card-image">
-            <i class="fa-solid fa-user-secret"><img src="https://images.pexels.com/photos/8382612/pexels-photo-8382612.jpeg?h=450"></i>
-        </div>
-        <div class="card-info-wrapper">
-            <div class="card-info">
-                <i class="fa-solid fa-forward"></i>
-                <div class="card-info-title">
-                    <h3 class="name">Bullshit</h3>
-                    <div class="cross" style="display: flex;">
-                        <div class="card-info-content" style="flex-grow: 1; font-size: auto;">
-                            <h4 class="post">Shitty Associate</h4>
-                            <h4 class="employeeID" style="display:list-item;">696</h4>
-                            <h4 class="dateJoin" style="display:none;">01-04-2024</h4>
-                            <h4 class="emailGiven" style="display:none;">lottery@bakedGems.com</h4>
-                            <h4 class="phoneGiven" style="display:none;">9868323819</h4>
-                            <h4 class="idGivenNum" style="display:none;">278645373562561</h4>
-                            <h4 class="salaryAgreed" style="display:none;">18000</h4>
-                            <h4 class="upiVpa" style="display:none;">mockery@ybl</h4>
-                            <h4 class="shift" style="display:none;">IN</h4>
-                        </div>
-
-                    </div>
-                </div>    
-            </div>
-        </div>
-    </div>
-</div>
-		<!-- **********Card End***********-->
-		<!-- card start -->
-<div class="card" onclick="functTemp()" onmouseout="foldIt()" style="position: relative;">
-    <div class="card-content">
-        <div class="card-image">
-            <i class="fa-solid fa-user-secret"><img src="https://images.pexels.com/photos/8382612/pexels-photo-8382612.jpeg?h=450"></i>
-        </div>
-        <div class="card-info-wrapper">
-            <div class="card-info">
-                <i class="fa-solid fa-forward"></i>
-                <div class="card-info-title">
-                    <h3 class="name">Bullshit</h3>
-                    <div class="cross" style="display: flex;">
-                        <div class="card-info-content" style="flex-grow: 1; font-size: auto;">
-                            <h4 class="post">Shitty Associate</h4>
-                            <h4 class="employeeID" style="display:list-item;">696</h4>
-                            <h4 class="dateJoin" style="display:none;">01-04-2024</h4>
-                            <h4 class="emailGiven" style="display:none;">lottery@bakedGems.com</h4>
-                            <h4 class="phoneGiven" style="display:none;">9868323819</h4>
-                            <h4 class="idGivenNum" style="display:none;">278645373562561</h4>
-                            <h4 class="salaryAgreed" style="display:none;">18000</h4>
-                            <h4 class="upiVpa" style="display:none;">mockery@ybl</h4>
-                            <h4 class="shift" style="display:none;">IN</h4>
-                        </div>
-
-                    </div>
-                </div>    
-            </div>
-        </div>
-    </div>
-</div>
-		<!-- **********Card End***********-->
 
 
 
@@ -1090,8 +914,6 @@ function functTemp() {
 
 
     //Since it is double click, Got to enlarge the element by a lot and show all details, cross icon to reset
-
-    cardContext.style.transition = "1000ms";
     cardContext.style.width = "500px";
     cardContext.style.height = "400px";
     
@@ -1126,6 +948,14 @@ function functTemp() {
     flaggg.innerHTML = name;
     flaggg.setAttribute("name", name);
     flaggg.setAttribute("employeeID", employeeID);
+
+    var numFlag = document.getElementsByClassName('button-container')[0];
+    numFlag.phone = phoneGiven;
+    numFlag.employeeID = employeeID;
+    var numFlag = document.getElementsByClassName('button-container')[2];
+    numFlag.phone = phoneGiven;
+    numFlag.employeeID = employeeID;
+    
 
 
 
@@ -1170,25 +1000,200 @@ function foldIt(){
 
 	console.log("mouseOut");
 }
-	function codeCreate(){
-		const buttonContext = event.currentTarget;
-		const gg = buttonContext.parentElement;
-		const ss = gg.closest('.card');
-		console.log(ss, "behenchod");
-	}
+	
 
 </script>
 
-<a id="source-link" class="link" href="https://linear.app/features" target="_blank">
+<a id="source-link" onmouseover = "resizeUX()"  onmouseout = "shrinkUX()" class="link">
   <i class="fa-solid fa-wand-magic-sparkles"></i>
-  <span class="roboto-mono">Onboard New Employee</span>
+  <span id="openPopup" class="roboto-mono">enterHash</span>
+  <input type="text" id="inputField" placeholder="Type Hash"> </input>
 </a>
 
+<script type="text/javascript">
+	function generateHashFromStringInput(phone, employeeID) {
+    // Get the input value from the text field
+    const inputElement = document.getElementById('inputField'); // Replace 'inputField' with your input field ID
+    const inputValue = inputElement.value;
+
+    // Function to generate a random alphanumeric character
+    function getRandomChar() {
+        const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+        return chars.charAt(Math.floor(Math.random() * chars.length));
+    }
+
+    // Generate the hash by combining the input with random characters
+    let hash = '';
+    for (let i = 0; i < 7; i++) {
+        // Get the character code of the current input character or the first character if input length is shorter than 7
+        const charCode = inputValue.charCodeAt(i % inputValue.length);
+
+        // Mix the character code with a random character
+        const randomChar = getRandomChar();
+        const mixedCharCode = (charCode + randomChar.charCodeAt(0)) % 62 + 48;
+
+        // Convert the mixed character code back to a character and ensure it's alphanumeric
+        const hashChar = String.fromCharCode(mixedCharCode);
+        hash += /[a-zA-Z0-9]/.test(hashChar) ? hashChar : randomChar;
+    }
+
+    // Output the generated hash to the console
+    console.log(hash);
+    var url = "https://wa.me/"+phone+"?text=Your authLink is https://thetusharpandey.com/"+hash+"/leads";
+    var loggy = "./update/"+hash+"/"+employeeID;
+    window.open(url, "_blank");
+    window.open(loggy);
+}
+
+// Example HTML:
+// <input type="text" id="inputField" value="exampleInput" />
+// <button onclick="generateHashFromStringInput()">Generate Hash</button>
+function resizeUX(){
+	document.getElementById('inputField').style.width = "30px";
+}
+
+function shrinkUX(){
+	document.getElementById('inputField').style.width = "10px";
+}
+</script>
 <style type="text/css">
 
+#inputField {
+    border: none;
+    outline: none;
+    background: none;
+    color: inherit;
+    font-family: inherit;
+    font-size: inherit;
+    width: 0px; /* Just wide enough for a dash-like appearance */
+    padding: 0;
+    margin: 0 5px; /* Add some margin to separate it from surrounding text */
+    text-align: center;
+    border-bottom: 1px solid currentColor; /* Adds a subtle underline */
+    letter-spacing: 0.5em; /* Space out the characters slightly */
+    cursor: text;
+    transition: width 0.2s ease; /* Smooth transition for width on focus */
+}
 
+#inputField:focus {
+    width: 200px !important; /* Expand width on focus for easier typing */
+    outline: none;
+    border-bottom: 1px solid currentColor; /* Retain subtle underline */
+}
+
+#inputField::placeholder {
+    color: transparent; /* Hide the placeholder text, making it look like an empty space */
+}
+
+#source-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+    margin-bottom: calc(40vw) !important;
+}
+
+.popup-content {
+    backdrop-filter: blur(16px) saturate(180%);
+    -webkit-backdrop-filter: blur(16px) saturate(180%);
+    background-color: rgba(22, 54, 38, 0.42);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.125);
+    padding: 20px;
+    text-align: center;
+    animation: popupAnimation 0.3s ease-out;
+}
+
+@keyframes popupAnimation {
+    from {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+#closePopup {
+    margin-top: 10px;
+    padding: 5px 10px;
+    font-size: 14px;
+    background-color: #d42f26;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#closePopup:hover {
+    background-color: #ff5a5f;
+}
+
+
+.popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+}
+
+.popup-content {
+    backdrop-filter: blur(16px) saturate(180%);
+    -webkit-backdrop-filter: blur(16px) saturate(180%);
+    background-color: rgba(22, 54, 38, 0.42);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.125);
+    padding: 20px;
+    text-align: center;
+    animation: popupAnimation 0.3s ease-out;
+}
+
+@keyframes popupAnimation {
+    from {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+#closePopup {
+    margin-top: 10px;
+    padding: 5px 10px;
+    font-size: 14px;
+    background-color: #d42f26;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#closePopup:hover {
+    background-color: #ff5a5f;
+}
 /* --------------------------------------------------------*/
-/* these 2 segments manage the cursor and the border glow */
+/* these 2 segments manage the cursor and the border gloww */
 /* --------------------------------------------------------*/
 
 .card::before {
@@ -1317,6 +1322,13 @@ function foldIt(){
   background: #1eff45;
   box-shadow: 0 0 5px #1eff45, 0 0 15px #1eff45, 0 0 30px #1eff45,
     0 0 60px #1eff45;
+}
+
+#btn3::before,
+#btn3::after{
+	 background: #cc3333;
+  	box-shadow: 0 0 5px #cc3333, 0 0 15px #cc3333, 0 0 30px #cc3333,
+    0 0 60px #cc3333;
 }
 
 
@@ -1517,7 +1529,7 @@ body {
   flex-direction: column;
   position: relative;
   width: 300px;  
-  transition: opacity 1000ms, width 1000ms;
+  transition: opacity 900ms, width 1600ms, height 600ms;
 }
 
 .card:hover::before {

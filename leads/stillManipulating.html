@@ -1,0 +1,2246 @@
+<!-- mapped into stillManipulating.html -->
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Active Funnel of Customers</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body onload="fetchLeadFunc()">
+<!--
+
+Follow me on
+Codepen: https://codepen.io/supah/
+
+
+-->
+<script type="text/javascript">
+  var testVal = 0;
+  var elementDisplay = "alfjsj";
+async function fetchLeadFunc() {
+  const url = "./giveItToMePlease_stillManipulating";
+  try {
+    const response = await fetch(url);
+    if (!response.ok) {
+      throw new Error(`Response status: ${response.status}`);
+    }
+
+    const json = await response.json();
+    console.log(json);
+    testVal = json;
+
+    //------------------------------ adding values to html ---------------------
+    document.getElementById("SMValue").innerHTML = json[0];
+    document.getElementById("campaign").innerHTML = json[2];
+    document.getElementById("countryCode").innerHTML = json[3];
+    document.getElementById("timeZone").innerHTML = json[4];
+    document.getElementById("countryName").innerHTML = json[5];
+    document.getElementById("parentName").innerHTML = json[7];
+    document.getElementById("email").innerHTML = json[6];
+    document.getElementById("parentNumber").innerHTML = json[8];
+    //0 printing by default
+      document.getElementById("listRender").innerHTML = json[9];
+      document.getElementById("listRender").innerHTML = document.getElementById("listRender").innerHTML + " - "+json[10]+ "<br><br>";
+      document.getElementById("void0").style.zIndex = 2;
+    //1
+    if(json[11]!=""){
+      document.getElementById("listRender").innerHTML += json[11];
+      document.getElementById("listRender").innerHTML = document.getElementById("listRender").innerHTML + " - "+json[12]+ "<br><br>";
+      document.getElementById("void1").style.zIndex = 2;
+    }
+    //2
+    if(json[13]!=""){
+      document.getElementById("listRender").innerHTML += json[13];
+      document.getElementById("listRender").innerHTML = document.getElementById("listRender").innerHTML + " - "+json[14]+ "<br><br>";
+      document.getElementById("void2").style.zIndex = 2;
+    }
+    //3
+    if(json[15]!=""){
+      document.getElementById("listRender").innerHTML += json[15];
+      document.getElementById("listRender").innerHTML = document.getElementById("listRender").innerHTML + " - "+json[16]+ "<br><br>";
+      document.getElementById("void3").style.zIndex = 2;
+    }
+    //4
+    if(json[17]!=""){
+      document.getElementById("listRender").innerHTML += json[17];
+      document.getElementById("listRender").innerHTML = document.getElementById("listRender").innerHTML + " - "+json[18]+ "<br><br>";
+      document.getElementById("void4").style.zIndex = 2;
+    }
+    //5
+    if(json[19]!=""){
+      document.getElementById("listRender").innerHTML += json[19];
+      document.getElementById("listRender").innerHTML = document.getElementById("listRender").innerHTML + " - "+json[20]+ "<br><br>";
+      document.getElementById("void5").style.zIndex = 2;
+    }
+    //6
+    if(json[21]!=""){
+      document.getElementById("listRender").innerHTML += json[21];
+      document.getElementById("listRender").innerHTML = document.getElementById("listRender").innerHTML + " - "+json[22]+ "<br><br>";
+      document.getElementById("void6").style.zIndex = 2;
+    }
+    //7
+    if(json[23]!=""){
+      document.getElementById("listRender").innerHTML += json[23];
+      document.getElementById("listRender").innerHTML = document.getElementById("listRender").innerHTML + " - "+json[24]+ "<br><br>";
+      document.getElementById("void7").style.zIndex = 2;
+    }
+    if(json[15]!=""){
+      document.getElementById("memberList").style.display = "none";
+    }
+
+    //document.getElementById("referRender").innerHTML = document.getElementById("referRender").innerHTML + "Received From<br>" + json[25] + "<br><br>GivenTo<br>" + json[26];
+    
+    if(json[25]!=""){
+      values = json[25].split('|');
+      document.getElementById("referRender").innerHTML = "Received From<br>";
+    }
+    values.forEach(val => {
+      document.getElementById("referRender").innerHTML = document.getElementById("referRender").innerHTML + val + "<br>"
+    })
+
+    if(json[26]!=""){
+      values = json[26].split('|');
+      document.getElementById("referRender").innerHTML += "<br><br>GivenTo<br>";
+    }
+    values.forEach(val => {
+      document.getElementById("referRender").innerHTML = document.getElementById("referRender").innerHTML + val + "<br>"
+    })
+
+
+
+
+
+    if(json[27]!=""){
+      values = json[27].split('|');
+      document.getElementById("probeRender").innerHTML = "" + elementDisplay;
+    }
+    values.forEach(val => {
+      document.getElementById("probeRender").innerHTML = document.getElementById("probeRender").innerHTML + val + "<br>"
+    })
+
+
+
+    if(json[28]!=""){
+      values = json[28].split('|');
+      document.getElementById("eventRender").innerHTML = "";
+    }
+    values.forEach(val => {
+      document.getElementById("eventRender").innerHTML = document.getElementById("eventRender").innerHTML + val + "<br>"
+    })
+
+
+
+    if(json[29]!=""){
+      values = json[29].split(',');
+      document.getElementById("invoiceEntry").innerHTML = "";
+    }
+    values.forEach(val => {
+      document.getElementById("invoiceEntry").innerHTML = document.getElementById("invoiceEntry").innerHTML + val + "<br>"
+    })
+
+
+    if(json[30]!=""){
+      values = json[30].split('|');
+      document.getElementById("classDiv").innerHTML = "";
+    }
+    values.forEach(val => {
+      document.getElementById("classDiv").innerHTML = document.getElementById("classDiv").innerHTML + val + "<br>"
+    })
+
+    //--------------------------------values added-------------------------------------
+
+  } catch (error) {
+    console.error(error.message);
+  }
+}
+
+</script>
+<div class="carousel">
+    <div class="carousel-item" id="card-2" ondblclick="useTheObject('card-2', 'backPic-2');">
+    <div class="carousel-box">
+      <div class="title">shopTagg</div>
+      <div class="title" style="top: 90px;" id="campaign">testCampaignsldkjghlkjhsdfgdfgsdfgjslkjhsdfghlkjhsdgflkjh</div>
+      <div class="title" style="top: 160px" id="SMValue">039</div>
+      <div class="title" style="top: 230px" id="employeeName">william</div>
+      <div class="num">-2</div>
+      <!-- 
+      <img id="backPic-2" src="https://media.istockphoto.com/id/184316397/it/foto/londra-edifici-aziendali.jpg?s=612x612&w=0&k=20&c=XqrRxEPzFnwRFk7PQrCiu9-FPfCTPyMe5BKKaxYXCs8=" /> 
+      -->
+      <img id="backPic-2" style="filter: blur(1px); -webkit-filter: blur(1px);" src="https://thetusharpandey.com/imageFolder/cardBacking-2.jpeg" />
+    </div>
+  </div>
+  <div class="carousel-item" id="card-1" ondblclick="useTheObject('card-1', 'backPic-1')";>
+    <div class="carousel-box">
+      <div class="title">geoSpot</div>
+      <div class="title" id="countryCodeDisplay" style="top: 12vh;">+971</div>
+      <div class="title_1" style="bottom: 69vh; display: none;"><input type="text" class="inputField" value="Use the 01 card to edit country code." disabled></input></div>
+      <div class="title" id="timeZone" style="top:22vh;">GST</div>
+        <div class="title_1" style="bottom: 60vh; display: none;">
+          <select class="inputField" id="zoneGap" onchange="changeMagnet()">
+            <option value="zone0">Select</option>
+            <option value="zone1">UTC - 12:00| IDLW (International Date Line West)</option>
+            <option value="zone2">UTC - 11:00| NUT (Niue Time)</option>
+            <option value="zone3">UTC - 10:00| HST, TAHT (Hawaii-Aleutian Standard Time, Tahiti Time)</option>
+            <option value="zone4">UTC - 09:30| MART (Marquesas Time)</option>
+            <option value="zone5">UTC - 09:00| AKST (Alaska Standard Time)</option>
+            <option value="zone6">UTC - 08:00| PST (Pacific Standard Time)</option>
+            <option value="zone7">UTC - 07:00| MST (Mountain Standard Time)</option>
+            <option value="zone8">UTC - 06:00| CST (Central Standard Time)</option>
+            <option value="zone9">UTC - 05:00| EST (Eastern Standard Time)</option>
+            <option value="zone10">UTC - 04:00| AST (Atlantic Standard Time)</option>
+            <option value="zone11">UTC - 03:30| NST (Newfoundland Standard Time)</option>
+            <option value="zone12">UTC - 03:00| BRT, ART (Brazil Time, Argentina Time)</option>
+            <option value="zone13">UTC - 02:00| GST (South Georgia Time)</option>
+            <option value="zone14">UTC - 01:00| AZOT (Azores Standard Time)</option>
+            <option value="zone15">UTC ± 00:00| GMT, UTC, WET (Greenwich Mean Time, Western European Time)</option>
+            <option value="zone16">UTC + 01:00| CET, WAT (Central European Time, West Africa Time)</option>
+            <option value="zone17">UTC + 02:00| EET, CAT (Eastern European Time, Central Africa Time)</option>
+            <option value="zone18">UTC + 03:00| MSK, EAT (Moscow Standard Time, East Africa Time)</option>
+            <option value="zone19">UTC + 03:30| IRST (Iran Standard Time)</option>
+            <option value="zone20">UTC + 04:00| GST, SAMT (Gulf Standard Time, Samara Time)</option>
+            <option value="zone21">UTC + 04:30| AFT (Afghanistan Time)</option>
+            <option value="zone22">UTC + 05:00| PKT, YEKST (Pakistan Standard Time, Yekaterinburg Time)</option>
+            <option value="zone23">UTC + 05:30| IST (Indian Standard Time)</option>
+            <option value="zone24">UTC + 05:45| NPT (Nepal Time)</option>
+            <option value="zone25">UTC + 06:00| BST, ALMT (Bangladesh Standard Time, Almaty Time)</option>
+            <option value="zone26">UTC + 06:30| CCT, MMT (Cocos Islands Time, Myanmar Time)</option>
+            <option value="zone27">UTC + 07:00| WIB, ICT (Western Indonesia Time, Indochina Time)</option>
+            <option value="zone28">UTC + 08:00| CST, SGT (China Standard Time, Singapore Time)</option>
+            <option value="zone29">UTC + 08:45| ACWST (Australian Central Western Standard Time)</option>
+            <option value="zone30">UTC + 09:00| JST, KST, WIT (Japan Standard Time, Korea Standard Time, Eastern Indonesia Time)</option>
+            <option value="zone31">UTC + 09:30| ACST (Australian Central Standard Time)</option>
+            <option value="zone32">UTC + 10:00| AEST, VLAT (Australian Eastern Standard Time, Vladivostok Time)</option>
+            <option value="zone33">UTC + 10:30| LHST (Lord Howe Standard Time)</option>
+            <option value="zone34">UTC + 11:00| SBT, VUT (Solomon Islands Time, Vanuatu Time)</option>
+            <option value="zone35">UTC + 12:00| NZST, FJT (New Zealand Standard Time, Fiji Time)</option>
+            <option value="zone36">UTC + 12:45| CHAST (Chatham Islands Standard Time)</option>
+            <option value="zone37">UTC + 13:00| TOT, PHOT (Tonga Time, Phoenix Islands Time)</option>
+            <option value="zone38">UTC + 14:00| LINT (Line Islands Time)</option>
+    </select>
+</div>
+
+      <div class="title" id="countryName" style="top: 32vh;">United states of America</div>
+      
+      <div class="title_1 dropdown" id="dropdownTag" onmouseenter="fieldStretch()" style="bottom: 50vh; display: none;">
+        <input type="text" class="dropdown-button inputField_mkc" onmouseover="toggleDropdown()" onfocusout="boggleDropdown();"></input>
+        <div id="dropdownList" class="dropdown-content" onfocusout="boggleDropdown();">
+          <a class="optionList" onclick="assignValue(this)" countryHash="1">Afghanistan</a>
+          <a class="optionList" onclick="assignValue(this)" countryHash="2">Albania</a>
+          <a class="optionList" onclick="assignValue(this)" countryHash="3">Algeria</a>
+          <a class="optionList" onclick="assignValue(this)" countryHash="4">Andorra</a>
+          <a class="optionList" onclick="assignValue(this)"  countryHash="5">Angola</a>
+          <a class="optionList" onclick="assignValue(this)"  countryHash="6">Antigua and Barbuda</a>
+          <a class="optionList" onclick="assignValue(this)"  countryHash="7">Argentina</a>
+          <a class="optionList" onclick="assignValue(this)"  countryHash="8">Armenia</a>
+          <a class="optionList" onclick="assignValue(this)"  countryHash="9">Australia</a>
+          <a class="optionList" onclick="assignValue(this)"  countryHash="10">Austria</a>
+          <a class="optionList" onclick="assignValue(this)"  countryHash="11">Azerbaijan</a>
+          <a class="optionList" onclick="assignValue(this)"  countryHash="12">Bahamas</a>
+          <a class="optionList" onclick="assignValue(this)"  countryHash="13">Bahrain</a>
+          <a class="optionList" onclick="assignValue(this)"  countryHash="14">Bangladesh</a>
+          <a class="optionList" onclick="assignValue(this)"  countryHash="15">Barbados</a>
+          <a class="optionList" onclick="assignValue(this)"  countryHash="16">Belarus</a>
+          <a class="optionList" onclick="assignValue(this)"  countryHash="17">Belgium</a>
+          <a class="optionList" onclick="assignValue(this)"  countryHash="18">Belize</a>
+          <a class="optionList" onclick="assignValue(this)"  countryHash="19">Benin</a>
+          <a class="optionList" onclick="assignValue(this)"  countryHash="20">Bhutan</a>
+          <a class="optionList" onclick="assignValue(this)"  countryHash="21">Bolivia</a>
+          <a class="optionList" onclick="assignValue(this)"  countryHash="22">Bosnia and Herzegovina</a>
+          <a class="optionList" onclick="assignValue(this)"  countryHash="23">Botswana</a>
+          <a class="optionList" onclick="assignValue(this)"  countryHash="24">Brazil</a>
+          <a class="optionList" onclick="assignValue(this)"  countryHash="25">Brunei</a>
+          <a class="optionList" onclick="assignValue(this)"  countryHash="26">Bulgaria</a>
+          <a class="optionList" onclick="assignValue(this)"  countryHash="27">Burkina Faso</a>
+          <a class="optionList" onclick="assignValue(this)"  countryHash="28">Burundi</a>
+          <a class="optionList" onclick="assignValue(this)"  countryHash="29">Cambodia</a>
+          <a class="optionList" onclick="assignValue(this)"  countryHash="30">Cameroon</a>
+          <a class="optionList" onclick="assignValue(this)"  countryHash="31">Canada</a>
+          <a class="optionList" onclick="assignValue(this)"  countryHash="32">Cape Verde</a>
+          <a class="optionList" onclick="assignValue(this)"  countryHash="33">Central African Republic</a>
+          <a class="optionList" onclick="assignValue(this)"  countryHash="34">Chad</a>
+          <a class="optionList" onclick="assignValue(this)"  countryHash="35">Chile</a>
+          <a class="optionList" onclick="assignValue(this)"  countryHash="36">China</a>
+          <a class="optionList" onclick="assignValue(this)"  countryHash="37">Colombia</a>
+          <a class="optionList" onclick="assignValue(this)"  countryHash="38">Comoros</a>
+          <a class="optionList" onclick="assignValue(this)"  countryHash="39">Democratic Republic of Congo</a>
+          <a class="optionList" onclick="assignValue(this)"  countryHash="40">Republic of Congo/ Congo Republic</a>
+          <a class="optionList" onclick="assignValue(this)"  countryHash="41">Costa Rica</a>
+          <a class="optionList" onclick="assignValue(this)"  countryHash="42">Croatia</a>
+          <a class="optionList" onclick="assignValue(this)"  countryHash="43">Cuba</a>
+          <a class="optionList" onclick="assignValue(this)"  countryHash="44">Cyprus</a>
+          <a class="optionList" onclick="assignValue(this)"  countryHash="45">Czech Republic</a>
+          <a class="optionList" onclick="assignValue(this)"  countryHash="46">Denmark</a>
+          <a class="optionList" onclick="assignValue(this)"  countryHash="47">Djibouti</a>
+          <a class="optionList" onclick="assignValue(this)"  countryHash="48">Dominica</a>
+          <a class="optionList" onclick="assignValue(this)"  countryHash="49">Dominican Republic</a>
+          <a class="optionList" onclick="assignValue(this)"  countryHash="50">East Timor</a>
+          <a class="optionList" onclick="assignValue(this)"  countryHash="51">Ecuador</a>
+          <a class="optionList" onclick="assignValue(this)"  countryHash="52">Egypt</a>
+          <a class="optionList" onclick="assignValue(this)"  countryHash="53">El Salvador</a>
+          <a class="optionList" onclick="assignValue(this)"  countryHash="54">Equatorial Guinea</a>
+          <a class="optionList" onclick="assignValue(this)"  countryHash="55">Eritrea</a>
+          <a class="optionList" onclick="assignValue(this)"  countryHash="56">Estonia</a>
+          <a class="optionList" onclick="assignValue(this)"  countryHash="57">Eswatini</a>
+          <a class="optionList" onclick="assignValue(this)"  countryHash="58">Ethiopia</a>
+          <a class="optionList" onclick="assignValue(this)"  countryHash="59">Fiji</a>
+          <a class="optionList" onclick="assignValue(this)"  countryHash="60">Finland</a>
+          <a class="optionList" onclick="assignValue(this)"  countryHash="61">France</a>
+          <a class="optionList" onclick="assignValue(this)"  countryHash="62">Gabon</a>
+          <a class="optionList" onclick="assignValue(this)"  countryHash="63">Gambia</a>
+          <a class="optionList" onclick="assignValue(this)"  countryHash="64">Georgia</a>
+          <a class="optionList" onclick="assignValue(this)"  countryHash="65">Germany</a>
+          <a class="optionList" onclick="assignValue(this)"  countryHash="66">Ghana</a>
+          <a class="optionList" onclick="assignValue(this)"  countryHash="67">Greece</a>
+          <a class="optionList" onclick="assignValue(this)"  countryHash="68">Grenada</a>
+          <a class="optionList" onclick="assignValue(this)"  countryHash="69">Guatemala</a>
+          <a class="optionList" onclick="assignValue(this)"  countryHash="70">Guinea</a>
+          <a class="optionList" onclick="assignValue(this)"  countryHash="71">Guinea-Bissau</a>
+          <a class="optionList" onclick="assignValue(this)"  countryHash="72">Guyana</a>
+          <a class="optionList" onclick="assignValue(this)"  countryHash="73">Haiti</a>
+          <a class="optionList" onclick="assignValue(this)"  countryHash="74">Honduras</a>
+          <a class="optionList" onclick="assignValue(this)"  countryHash="75">Hungary</a>
+          <a class="optionList" onclick="assignValue(this)"  countryHash="76">Iceland</a>
+          <a class="optionList" onclick="assignValue(this)"  countryHash="77">India</a>
+          <a class="optionList" onclick="assignValue(this)"  countryHash="78">Indonesia</a>
+          <a class="optionList" onclick="assignValue(this)"  countryHash="79">Iran</a>
+          <a class="optionList" onclick="assignValue(this)"  countryHash="80">Iraq</a>
+          <a class="optionList" onclick="assignValue(this)"  countryHash="81">Ireland</a>
+          <a class="optionList" onclick="assignValue(this)"  countryHash="82">Israel</a>
+          <a class="optionList" onclick="assignValue(this)"  countryHash="83">Italy</a>
+          <a class="optionList" onclick="assignValue(this)"  countryHash="84">Ivory Coast</a>
+          <a class="optionList" onclick="assignValue(this)"  countryHash="85">Jamaica</a>
+          <a class="optionList" onclick="assignValue(this)"  countryHash="86">Japan</a>
+          <a class="optionList" onclick="assignValue(this)"  countryHash="87">Jordan</a>
+          <a class="optionList" onclick="assignValue(this)"  countryHash="88">Kazakhstan</a>
+          <a class="optionList" onclick="assignValue(this)"  countryHash="89">Kenya</a>
+          <a class="optionList" onclick="assignValue(this)"  countryHash="90">Kiribati</a>
+          <a class="optionList" onclick="assignValue(this)"  countryHash="91">Kuwait</a>
+          <a class="optionList" onclick="assignValue(this)"  countryHash="92">Kyrgyzstan</a>
+          <a class="optionList" onclick="assignValue(this)"  countryHash="93">Laos</a>
+          <a class="optionList" onclick="assignValue(this)"  countryHash="94">Latvia</a>
+          <a class="optionList" onclick="assignValue(this)"  countryHash="95">Lebanon</a>
+          <a class="optionList" onclick="assignValue(this)"  countryHash="96">Lesotho</a>
+          <a class="optionList" onclick="assignValue(this)"  countryHash="97">Liberia</a>
+          <a class="optionList" onclick="assignValue(this)"  countryHash="98">Libya</a>
+          <a class="optionList" onclick="assignValue(this)"  countryHash="99">Liechtenstein</a>
+          <a class="optionList" onclick="assignValue(this)"  countryHash="100">Lithuania</a>
+          <a class="optionList" onclick="assignValue(this)"  countryHash="101">Luxembourg</a>
+          <a class="optionList" onclick="assignValue(this)"  countryHash="102">Madagascar</a>
+          <a class="optionList" onclick="assignValue(this)"  countryHash="103">Malawi</a>
+          <a class="optionList" onclick="assignValue(this)"  countryHash="104">Malaysia</a>
+          <a class="optionList" onclick="assignValue(this)"  countryHash="105">Maldives</a>
+          <a class="optionList" onclick="assignValue(this)"  countryHash="106">Mali</a>
+          <a class="optionList" onclick="assignValue(this)"  countryHash="107">Malta</a>
+          <a class="optionList" onclick="assignValue(this)"  countryHash="108">Marshall Islands</a>
+          <a class="optionList" onclick="assignValue(this)"  countryHash="109">Mauritania</a>
+          <a class="optionList" onclick="assignValue(this)"  countryHash="110">Mauritius</a>
+          <a class="optionList" onclick="assignValue(this)"  countryHash="111">Mexico</a>
+          <a class="optionList" onclick="assignValue(this)"  countryHash="112">Micronesia</a>
+          <a class="optionList" onclick="assignValue(this)"  countryHash="113">Moldova</a>
+          <a class="optionList" onclick="assignValue(this)"  countryHash="114">Monaco</a>
+          <a class="optionList" onclick="assignValue(this)"  countryHash="115">Mongolia</a>
+          <a class="optionList" onclick="assignValue(this)"  countryHash="116">Montenegro</a>
+          <a class="optionList" onclick="assignValue(this)"  countryHash="117">Morocco</a>
+          <a class="optionList" onclick="assignValue(this)"  countryHash="118">Mozambique</a>
+          <a class="optionList" onclick="assignValue(this)"  countryHash="119">Myanmar</a>
+          <a class="optionList" onclick="assignValue(this)"  countryHash="120">Namibia</a>
+          <a class="optionList" onclick="assignValue(this)"  countryHash="121">Nauru</a>
+          <a class="optionList" onclick="assignValue(this)"  countryHash="122">Nepal</a>
+          <a class="optionList" onclick="assignValue(this)"  countryHash="123">Netherlands</a>
+          <a class="optionList" onclick="assignValue(this)"  countryHash="124">New Zealand</a>
+          <a class="optionList" onclick="assignValue(this)"  countryHash="125">Nicaragua</a>
+          <a class="optionList" onclick="assignValue(this)"  countryHash="126">Niger</a>
+          <a class="optionList" onclick="assignValue(this)"  countryHash="127">Nigeria</a>
+          <a class="optionList" onclick="assignValue(this)"  countryHash="128">North Korea</a>
+          <a class="optionList" onclick="assignValue(this)"  countryHash="129">North Macedonia</a>
+          <a class="optionList" onclick="assignValue(this)"  countryHash="130">Norway</a>
+          <a class="optionList" onclick="assignValue(this)"  countryHash="131">Oman</a>
+          <a class="optionList" onclick="assignValue(this)"  countryHash="132">Pakistan</a>
+          <a class="optionList" onclick="assignValue(this)"  countryHash="133">Palau</a>
+          <a class="optionList" onclick="assignValue(this)"  countryHash="134">Palestine</a>
+          <a class="optionList" onclick="assignValue(this)"  countryHash="135">Panama</a>
+          <a class="optionList" onclick="assignValue(this)"  countryHash="136">Papua New Guinea</a>
+          <a class="optionList" onclick="assignValue(this)"  countryHash="137">Paraguay</a>
+          <a class="optionList" onclick="assignValue(this)"  countryHash="138">Peru</a>
+          <a class="optionList" onclick="assignValue(this)"  countryHash="139">Philippines</a>
+          <a class="optionList" onclick="assignValue(this)"  countryHash="140">Poland</a>
+          <a class="optionList" onclick="assignValue(this)"  countryHash="141">Portugal</a>
+          <a class="optionList" onclick="assignValue(this)"  countryHash="142">Qatar</a>
+          <a class="optionList" onclick="assignValue(this)"  countryHash="143">Romania</a>
+          <a class="optionList" onclick="assignValue(this)"  countryHash="144">Russia</a>
+          <a class="optionList" onclick="assignValue(this)"  countryHash="145">Rwanda</a>
+          <a class="optionList" onclick="assignValue(this)"  countryHash="146">Saint Kitts and Nevis</a>
+          <a class="optionList" onclick="assignValue(this)"  countryHash="147">Saint Lucia</a>
+          <a class="optionList" onclick="assignValue(this)"  countryHash="148">Saint Vincent and the Grenadines</a>
+          <a class="optionList" onclick="assignValue(this)"  countryHash="149">Samoa</a>
+          <a class="optionList" onclick="assignValue(this)"  countryHash="150">San Marino</a>
+          <a class="optionList" onclick="assignValue(this)"  countryHash="151">São Tomé and Príncipe</a>
+          <a class="optionList" onclick="assignValue(this)"  countryHash="152">Saudi Arabia</a>
+          <a class="optionList" onclick="assignValue(this)"  countryHash="153">Senegal</a>
+          <a class="optionList" onclick="assignValue(this)"  countryHash="154">Serbia</a>
+          <a class="optionList" onclick="assignValue(this)"  countryHash="155">Seychelles</a>
+          <a class="optionList" onclick="assignValue(this)"  countryHash="156">Sierra Leone</a>
+          <a class="optionList" onclick="assignValue(this)"  countryHash="157">Singapore</a>
+          <a class="optionList" onclick="assignValue(this)"  countryHash="158">Slovakia</a>
+          <a class="optionList" onclick="assignValue(this)"  countryHash="159">Slovenia</a>
+          <a class="optionList" onclick="assignValue(this)"  countryHash="160">Solomon Islands</a>
+          <a class="optionList" onclick="assignValue(this)"  countryHash="161">Somalia</a>
+          <a class="optionList" onclick="assignValue(this)"  countryHash="162">South Africa</a>
+          <a class="optionList" onclick="assignValue(this)"  countryHash="163">South Korea</a>
+          <a class="optionList" onclick="assignValue(this)"  countryHash="164">South Sudan</a>
+          <a class="optionList" onclick="assignValue(this)"  countryHash="165">Spain</a>
+          <a class="optionList" onclick="assignValue(this)"  countryHash="166">Sri Lanka</a>
+          <a class="optionList" onclick="assignValue(this)"  countryHash="167">Sudan</a>
+          <a class="optionList" onclick="assignValue(this)"  countryHash="168">Suriname</a>
+          <a class="optionList" onclick="assignValue(this)"  countryHash="169">Sweden</a>
+          <a class="optionList" onclick="assignValue(this)"  countryHash="170">Switzerland</a>
+          <a class="optionList" onclick="assignValue(this)"  countryHash="171">Syria</a>
+          <a class="optionList" onclick="assignValue(this)"  countryHash="172">Tajikistan</a>
+          <a class="optionList" onclick="assignValue(this)"  countryHash="173">Tanzania</a>
+          <a class="optionList" onclick="assignValue(this)"  countryHash="174">Thailand</a>
+          <a class="optionList" onclick="assignValue(this)"  countryHash="175">Togo</a>
+          <a class="optionList" onclick="assignValue(this)"  countryHash="176">Tonga</a>
+          <a class="optionList" onclick="assignValue(this)"  countryHash="177">Trinidad and Tobago</a>
+          <a class="optionList" onclick="assignValue(this)"  countryHash="178">Tunisia</a>
+          <a class="optionList" onclick="assignValue(this)"  countryHash="179">Turkey</a>
+          <a class="optionList" onclick="assignValue(this)"  countryHash="180">Turkmenistan</a>
+          <a class="optionList" onclick="assignValue(this)"  countryHash="181">Tuvalu</a>
+          <a class="optionList" onclick="assignValue(this)"  countryHash="182">Uganda</a>
+          <a class="optionList" onclick="assignValue(this)"  countryHash="183">Ukraine</a>
+          <a class="optionList" onclick="assignValue(this)"  countryHash="184">United Arab Emirates</a>
+          <a class="optionList" onclick="assignValue(this)"  countryHash="185">United Kingdom</a>
+          <a class="optionList" onclick="assignValue(this)"  countryHash="186">United States</a>
+          <a class="optionList" onclick="assignValue(this)"  countryHash="187">Uruguay</a>
+          <a class="optionList" onclick="assignValue(this)"  countryHash="188">Uzbekistan</a>
+          <a class="optionList" onclick="assignValue(this)"  countryHash="189">Vanuatu</a>
+          <a class="optionList" onclick="assignValue(this)"  countryHash="190">Vatican City</a>
+          <a class="optionList" onclick="assignValue(this)"  countryHash="191">Venezuela</a>
+          <a class="optionList" onclick="assignValue(this)"  countryHash="192">Vietnam</a>
+          <a class="optionList" onclick="assignValue(this)"  countryHash="193">Yemen</a>
+          <a class="optionList" onclick="assignValue(this)"  countryHash="194">Zambia</a>
+          <a class="optionList" onclick="assignValue(this)"  countryHash="195">Zimbabwe</a>
+        </div>
+      </div>
+
+      <div class="num">-1</div>
+      <img id="backPic-1" src="https://thetusharpandey.com/imageFolder/Gemini_Generated_Image_wngn60wngn60wngn.jpeg" />
+    </div>
+  </div>
+  <style>
+    /* Button styling */
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+
+
+    #dropdownList{
+      overflow-y: overlay;
+      overflow-x: hidden;
+    }
+
+
+    .dropdown-button {
+      background-color: #4CAF50;
+      border-radius: 50px;
+    }
+
+    .dropdown-button:hover {
+      background-color: #3e8e41;
+    }
+
+    /* Dropdown list (hidden by default) */
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      width: calc(var(--width)*0.9);
+      height: 36vh;
+      z-index: 1;
+    }
+
+    .dropdown-content a {
+      color: whitesmoke;
+      padding: 12px 16px;
+      font-size: 0.6em;
+      text-decoration: none;
+      display: block;
+    }
+
+    .dropdown-content a:hover {
+      background-color: #ddd;
+    }
+
+
+    .optionList
+    {
+      border-radius: 20px;
+      background: rgba( 115, 221, 18, 0.1 );
+      box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+      backdrop-filter: blur( 20px );
+      -webkit-backdrop-filter: blur( 20px );
+    }
+
+
+
+    .inputField_mkc {
+    --width10msr : 10vw;
+    border: none;
+    outline: none;
+    background: none;
+    color: black;
+    width: var(--width10msr);
+    font-size: 0.6em;
+    font-family: inherit;
+    padding: 0;
+    transition: width 1.3s; /* Optional for smooth animation */
+    text-align: center;
+    border-bottom: 1px solid currentColor; /* Adds a subtle underline */
+    cursor: text;
+    -webkit-box-shadow: inset 20px -4px 20px 0px rgba(255, 248, 148, 0.9);
+    -moz-box-shadow:inset 20px -4px 20px 0px rgb(255 248 148, 0.9);
+    box-shadow:inset 20px -4px 20px 0px rgb(255 248 148 / 90%);
+    border-radius: 10px;
+}
+  </style>
+
+  <script>
+  // Toggle the dropdown list visibility
+function fieldStretch() {
+  const inputField = document.getElementsByClassName("inputField_mkc")[0];
+  const dropdownContent = document.getElementsByClassName("dropdown-content")[0];
+
+  // Make sure the dropdown content is visible before measuring its width
+  dropdownContent.style.display = "block";
+console.log(dropdownContent.offsetWidth);
+
+  // Set the input field's width to the dropdown content's width
+  inputField.style.width = dropdownContent.offsetWidth + "px";
+}
+
+function toggleDropdown(){
+  const dropdownContent = document.getElementById("dropdownList");
+  dropdownContent.style.display = "block";
+  document.getElementById("dropdownList").style.overflowY = "visible";
+
+
+  // Optionally stretch the input field when the dropdown is displayed
+}
+
+function boggleDropdown(){
+  document.getElementById("dropdownList").style.display = "none";
+  document.getElementsByClassName("inputField_mkc")[0].style.width = document.getElementsByClassName("randomId")[0].style.width;
+  var x = document.getElementsByClassName("inputField_mkc")[0].style.width;
+  console.log(x);
+}
+
+function assignValue(element){
+var countryHash = element.getAttribute('countryHash');
+document.getElementsByClassName("inputField_mkc")[0].value = element.innerHTML;
+console.log(document.getElementsByClassName("inputField_mkc")[0].value);
+//document.getElementById("countryName").innerHTML = element.innerHTML;
+}
+
+document.querySelector('.inputField_mkc').addEventListener('keyup', function() {
+    const filterValue = this.value.toLowerCase();
+    const countries = document.querySelectorAll('.optionList');
+
+    countries.forEach(country => {
+        const countryText = country.textContent.toLowerCase();
+        if (countryText.includes(filterValue)) {
+            country.style.display = 'block';  // Show matching countries
+        } else {
+            country.style.display = 'none';  // Hide non-matching countries
+        }
+    });
+});
+
+</script>
+	<div class="carousel-item" id="card01" ondblclick="useTheObject('card01', 'backPic01');">
+		<div class="carousel-box">
+      <div class="title" style="top: 12vh;" id="parentName">Gaurav</div>
+      <div class="title_1" style="bottom: 69vh; display: none;"><input type="text" class="inputField" id = "parentNameGap"></input></div>
+      <div class="title" style="top: 22vh;" id="email">tingtong_zaddy@icloud.com</div>
+      <div class="title_1" style="bottom: 60vh; display: none;"><input type="text" class="inputField" id = "emailGap"></input></div>
+      <div class="title" style="top: 32vh;" id="countryCode">+971</div>
+      <div class="title_1" style="bottom: 50vh; display: none;">
+        <select class="inputField" id = "numberGap">
+        <option value="option0">Select</option>
+        <option value="option1">+1</option>
+        <option value="option2">+1-242</option>
+        <option value="option3">+1-246</option>
+        <option value="option4">+1-268</option>
+        <option value="option5">+1-473</option>
+        <option value="option6">+1-758</option>
+        <option value="option7">+1-767</option>
+        <option value="option8">+1-784</option>
+        <option value="option9">+1-809</option>
+        <option value="option10">+1-829</option>
+        <option value="option11">+1-849</option>
+        <option value="option12">+1-868</option>
+        <option value="option13">+1-869</option>
+        <option value="option14">+1-876</option>
+        <option value="option15">+20</option>
+        <option value="option16">+211</option>
+        <option value="option17">+212</option>
+        <option value="option18">+213</option>
+        <option value="option19">+216</option>
+        <option value="option20">+218</option>
+        <option value="option21">+220</option>
+        <option value="option22">+221</option>
+        <option value="option23">+222</option>
+        <option value="option24">+223</option>
+        <option value="option25">+224</option>
+        <option value="option26">+225</option>
+        <option value="option27">+226</option>
+        <option value="option28">+227</option>
+        <option value="option29">+228</option>
+        <option value="option30">+229</option>
+        <option value="option31">+230</option>
+        <option value="option32">+231</option>
+        <option value="option33">+232</option>
+        <option value="option34">+233</option>
+        <option value="option35">+234</option>
+        <option value="option36">+235</option>
+        <option value="option37">+236</option>
+        <option value="option38">+237</option>
+        <option value="option39">+238</option>
+        <option value="option40">+239</option>
+        <option value="option41">+240</option>
+        <option value="option42">+241</option>
+        <option value="option43">+242</option>
+        <option value="option44">+243</option>
+        <option value="option45">+244</option>
+        <option value="option46">+245</option>
+        <option value="option47">+248</option>
+        <option value="option48">+249</option>
+        <option value="option49">+250</option>
+        <option value="option50">+251</option>
+        <option value="option51">+252</option>
+        <option value="option52">+253</option>
+        <option value="option53">+254</option>
+        <option value="option54">+255</option>
+        <option value="option55">+256</option>
+        <option value="option56">+257</option>
+        <option value="option57">+258</option>
+        <option value="option58">+260</option>
+        <option value="option59">+261</option>
+        <option value="option60">+263</option>
+        <option value="option61">+264</option>
+        <option value="option62">+265</option>
+        <option value="option63">+266</option>
+        <option value="option64">+267</option>
+        <option value="option65">+268</option>
+        <option value="option66">+269</option>
+        <option value="option67">+27</option>
+        <option value="option68">+291</option>
+        <option value="option69">+30</option>
+        <option value="option70">+31</option>
+        <option value="option71">+32</option>
+        <option value="option72">+33</option>
+        <option value="option73">+34</option>
+        <option value="option74">+351</option>
+        <option value="option75">+352</option>
+        <option value="option76">+353</option>
+        <option value="option77">+354</option>
+        <option value="option78">+355</option>
+        <option value="option79">+356</option>
+        <option value="option80">+357</option>
+        <option value="option81">+358</option>
+        <option value="option82">+359</option>
+        <option value="option83">+36</option>
+        <option value="option84">+370</option>
+        <option value="option85">+371</option>
+        <option value="option86">+372</option>
+        <option value="option87">+373</option>
+        <option value="option88">+374</option>
+        <option value="option89">+375</option>
+        <option value="option90">+376</option>
+        <option value="option91">+377</option>
+        <option value="option92">+378</option>
+        <option value="option93">+379</option>
+        <option value="option94">+380</option>
+        <option value="option95">+381</option>
+        <option value="option96">+382</option>
+        <option value="option97">+385</option>
+        <option value="option98">+386</option>
+        <option value="option99">+387</option>
+        <option value="option100">+389</option>
+        <option value="option101">+39</option>
+        <option value="option102">+40</option>
+        <option value="option103">+41</option>
+        <option value="option104">+420</option>
+        <option value="option105">+421</option>
+        <option value="option106">+423</option>
+        <option value="option107">+43</option>
+        <option value="option108">+44</option>
+        <option value="option109">+45</option>
+        <option value="option110">+46</option>
+        <option value="option111">+47</option>
+        <option value="option112">+48</option>
+        <option value="option113">+49</option>
+        <option value="option114">+501</option>
+        <option value="option115">+502</option>
+        <option value="option116">+503</option>
+        <option value="option117">+504</option>
+        <option value="option118">+505</option>
+        <option value="option119">+506</option>
+        <option value="option120">+507</option>
+        <option value="option121">+509</option>
+        <option value="option122">+51</option>
+        <option value="option123">+52</option>
+        <option value="option124">+53</option>
+        <option value="option125">+54</option>
+        <option value="option126">+55</option>
+        <option value="option127">+56</option>
+        <option value="option128">+57</option>
+        <option value="option129">+58</option>
+        <option value="option130">+591</option>
+        <option value="option131">+592</option>
+        <option value="option132">+593</option>
+        <option value="option133">+595</option>
+        <option value="option134">+597</option>
+        <option value="option135">+598</option>
+        <option value="option136">+60</option>
+        <option value="option137">+61</option>
+        <option value="option138">+62</option>
+        <option value="option139">+63</option>
+        <option value="option140">+64</option>
+        <option value="option141">+65</option>
+        <option value="option142">+66</option>
+        <option value="option143">+670</option>
+        <option value="option144">+673</option>
+        <option value="option145">+674</option>
+        <option value="option146">+675</option>
+        <option value="option147">+676</option>
+        <option value="option148">+677</option>
+        <option value="option149">+678</option>
+        <option value="option150">+679</option>
+        <option value="option151">+680</option>
+        <option value="option152">+685</option>
+        <option value="option153">+686</option>
+        <option value="option154">+688</option>
+        <option value="option155">+691</option>
+        <option value="option156">+692</option>
+        <option value="option157">+7</option>
+        <option value="option158">+81</option>
+        <option value="option159">+82</option>
+        <option value="option160">+84</option>
+        <option value="option161">+850</option>
+        <option value="option162">+855</option>
+        <option value="option163">+856</option>
+        <option value="option164">+86</option>
+        <option value="option165">+880</option>
+        <option value="option166">+90</option>
+        <option value="option167">+91</option>
+        <option value="option168">+92</option>
+        <option value="option169">+93</option>
+        <option value="option170">+94</option>
+        <option value="option171">+95</option>
+        <option value="option172">+960</option>
+        <option value="option173">+961</option>
+        <option value="option174">+962</option>
+        <option value="option175">+963</option>
+        <option value="option176">+964</option>
+        <option value="option177">+965</option>
+        <option value="option178">+966</option>
+        <option value="option179">+967</option>
+        <option value="option180">+968</option>
+        <option value="option181">+970</option>
+        <option value="option182">+971</option>
+        <option value="option183">+972</option>
+        <option value="option184">+973</option>
+        <option value="option185">+974</option>
+        <option value="option186">+975</option>
+        <option value="option187">+976</option>
+        <option value="option188">+977</option>
+        <option value="option189">+98</option>
+        <option value="option190">+992</option>
+        <option value="option191">+993</option>
+        <option value="option192">+994</option>
+        <option value="option193">+995</option>
+        <option value="option194">+996</option>
+        <option value="option195">+998</option>
+        </select>
+      </div>
+      <div class="title" style="top: 42vh;" id="parentNumber">555429849</div>
+      <div class="title_1" style="bottom: 40vh; display: none;"><input type="text" class="inputField" id = "contactGap"></input></div>
+      
+      <div class="num">01</div>
+			<img id="backPic01" style="position: fixed;" src="https://thetusharpandey.com/imageFolder/Gemini_Generated_Image_t3gdsdt3gdsdt3gd.jpeg" />
+		</div>
+	</div>
+
+	<div class="carousel-item" id="card02" ondblclick="useTheObject('card02', 'backPic02')";>
+		<div class="carousel-box" style="overflow-y: auto;">
+      <div class="num">02<br></div>
+			<div class = "title" id="memberList">Members</div>
+      <div class="title_1" style="bottom: 73vh; z-index: -2; display: none;" id = "void0">
+
+        <input type="text" style="max-width: calc(90% - 4vw);" class="inputField" id="myName0"></input>
+        <select style = "max-width: 4vw;" id="myDropdown">
+        <option value="option1">Age</option>
+        <option value="option2">3</option>
+        <option value="option3">4</option>
+        <option value="option3">5</option>
+        <option value="option3">6</option>
+        <option value="option3">7</option>
+        <option value="option3">8</option>
+        <option value="option3">9</option>
+        <option value="option3">10</option>
+        <option value="option3">11</option>
+        <option value="option3">12</option>
+        <option value="option3">13</option>
+        <option value="option3">14</option>
+        <option value="option3">15</option>
+        <option value="option3">16</option>
+        <option value="option3">17</option>
+        <option value="option3">18</option>
+        <option value="option3">19</option>
+        <option value="option3">20&+</option>
+        </select>
+        <p id="selectedValue"></p>
+        <script type="text/javascript">
+          const dropdown0 = document.getElementById('myDropdown');
+          const selectedValueDisplay0 = document.getElementById('selectedValue');
+
+          // Add an event listener to detect changes in the select element
+          dropdown0.addEventListener('change', function() {
+          var selectedOption0 = dropdown0.value; // Get the selected value
+          console.log(selectedOption0);
+          });
+
+        </script>
+      </div>
+      <div class="title_1" style="bottom: 65vh; z-index: -2; display: none;" id = "void1">
+
+        <input type="text" style="max-width: calc(90% - 4vw);" class="inputField" id="myName1"></input>
+        <select style = "max-width: 4vw; overflow-x: auto;" id="myDropdown1">
+        <option value="option1">Age</option>
+        <option value="option2">3</option>
+        <option value="option3">4</option>
+        <option value="option3">5</option>
+        <option value="option3">6</option>
+        <option value="option3">7</option>
+        <option value="option3">8</option>
+        <option value="option3">9</option>
+        <option value="option3">10</option>
+        <option value="option3">11</option>
+        <option value="option3">12</option>
+        <option value="option3">13</option>
+        <option value="option3">14</option>
+        <option value="option3">15</option>
+        <option value="option3">16</option>
+        <option value="option3">17</option>
+        <option value="option3">18</option>
+        <option value="option3">19</option>
+        <option value="option3">20&+</option>
+        </select>
+        <p id="selectedValue1"></p>
+        <script type="text/javascript">
+          const dropdown1 = document.getElementById('myDropdown1');
+          const selectedValueDisplay1 = document.getElementById('selectedValue1');
+
+          // Add an event listener to detect changes in the select element
+          dropdown1.addEventListener('change', function() {
+          var selectedOption1 = dropdown1.value; // Get the selected value
+          console.log(selectedOption1);
+          });
+
+        </script>
+      </div>
+      <div class="title_1" style="bottom: 57vh; z-index: -2; display: none;" id = "void2">
+
+        <input type="text" style="max-width: calc(90% - 4vw);" class="inputField" id="myName2"></input>
+        <select style = "max-width: 4vw;" id="myDropdown2">
+        <option value="option1">Age</option>
+        <option value="option2">3</option>
+        <option value="option3">4</option>
+        <option value="option3">5</option>
+        <option value="option3">6</option>
+        <option value="option3">7</option>
+        <option value="option3">8</option>
+        <option value="option3">9</option>
+        <option value="option3">10</option>
+        <option value="option3">11</option>
+        <option value="option3">12</option>
+        <option value="option3">13</option>
+        <option value="option3">14</option>
+        <option value="option3">15</option>
+        <option value="option3">16</option>
+        <option value="option3">17</option>
+        <option value="option3">18</option>
+        <option value="option3">19</option>
+        <option value="option3">20&+</option>
+        </select>
+        <p id="selectedValue2"></p>
+        <script type="text/javascript">
+          const dropdown2 = document.getElementById('myDropdown2');
+          const selectedValueDisplay2 = document.getElementById('selectedValue2');
+
+          // Add an event listener to detect changes in the select element
+          dropdown2.addEventListener('change', function() {
+          var selectedOption2 = dropdown2.value; // Get the selected value
+          console.log(selectedOption2);
+          });
+
+        </script>
+      </div>
+      <div class="title_1" style="bottom: 49vh; z-index: -2; display: none;" id = "void3">
+
+        <input type="text" style="max-width: calc(90% - 4vw);" class="inputField randomId" id="myName3"></input>
+        <select style = "max-width: 4vw;" id="myDropdown3">
+        <option value="option1">Age</option>
+        <option value="option2">3</option>
+        <option value="option3">4</option>
+        <option value="option3">5</option>
+        <option value="option3">6</option>
+        <option value="option3">7</option>
+        <option value="option3">8</option>
+        <option value="option3">9</option>
+        <option value="option3">10</option>
+        <option value="option3">11</option>
+        <option value="option3">12</option>
+        <option value="option3">13</option>
+        <option value="option3">14</option>
+        <option value="option3">15</option>
+        <option value="option3">16</option>
+        <option value="option3">17</option>
+        <option value="option3">18</option>
+        <option value="option3">19</option>
+        <option value="option3">20&+</option>
+        </select>
+        <p id="selectedValue3"></p>
+        <script type="text/javascript">
+          const dropdown3 = document.getElementById('myDropdown3');
+          const selectedValueDisplay3 = document.getElementById('selectedValue3');
+
+          // Add an event listener to detect changes in the select element
+          dropdown3.addEventListener('change', function() {
+          var selectedOption3 = dropdown3.value; // Get the selected value
+          console.log(selectedOption3);
+          });
+
+        </script>
+      </div>
+      <div class="title_1" style="bottom: 41vh; z-index: -2; display: none;" id = "void4">
+
+        <input type="text" style="max-width: calc(90% - 4vw);" class="inputField" id="myName4"></input>
+        <select style = "max-width: 4vw;" id="myDropdown4">
+        <option value="option1">Age</option>
+        <option value="option2">3</option>
+        <option value="option3">4</option>
+        <option value="option3">5</option>
+        <option value="option3">6</option>
+        <option value="option3">7</option>
+        <option value="option3">8</option>
+        <option value="option3">9</option>
+        <option value="option3">10</option>
+        <option value="option3">11</option>
+        <option value="option3">12</option>
+        <option value="option3">13</option>
+        <option value="option3">14</option>
+        <option value="option3">15</option>
+        <option value="option3">16</option>
+        <option value="option3">17</option>
+        <option value="option3">18</option>
+        <option value="option3">19</option>
+        <option value="option3">20&+</option>
+        </select>
+        <p id="selectedValue4"></p>
+        <script type="text/javascript">
+          const dropdown4 = document.getElementById('myDropdown4');
+          const selectedValueDisplay4 = document.getElementById('selectedValue4');
+
+          // Add an event listener to detect changes in the select element
+          dropdown4.addEventListener('change', function() {
+          var selectedOption4 = dropdown4.value; // Get the selected value
+          console.log(selectedOption4);
+          });
+
+        </script>
+      </div>
+      <div class="title_1" style="bottom: 33vh; z-index: -2; display: none;" id = "void5">
+
+        <input type="text" style="max-width: calc(90% - 4vw);" class="inputField" id="myName5"></input>
+        <select style = "max-width: 4vw;" id="myDropdown5">
+        <option value="option1">Age</option>
+        <option value="option2">3</option>
+        <option value="option3">4</option>
+        <option value="option3">5</option>
+        <option value="option3">6</option>
+        <option value="option3">7</option>
+        <option value="option3">8</option>
+        <option value="option3">9</option>
+        <option value="option3">10</option>
+        <option value="option3">11</option>
+        <option value="option3">12</option>
+        <option value="option3">13</option>
+        <option value="option3">14</option>
+        <option value="option3">15</option>
+        <option value="option3">16</option>
+        <option value="option3">17</option>
+        <option value="option3">18</option>
+        <option value="option3">19</option>
+        <option value="option3">20&+</option>
+        </select>
+        <p id="selectedValue5"></p>
+        <script type="text/javascript">
+          const dropdown5 = document.getElementById('myDropdown5');
+          const selectedValueDisplay5 = document.getElementById('selectedValue5');
+
+          // Add an event listener to detect changes in the select element
+          dropdown5.addEventListener('change', function() {
+          var selectedOption5 = dropdown5.value; // Get the selected value
+          console.log(selectedOption5);
+          });
+
+        </script>
+      </div>
+      <div class="title_1" style="bottom: 26vh; z-index: -2; display: none;" id = "void6">
+
+        <input type="text" style="max-width: calc(90% - 4vw);" class="inputField" id="myName6"></input>
+        <select style = "max-width: 4vw;" id="myDropdown6">
+        <option value="option1">Age</option>
+        <option value="option2">3</option>
+        <option value="option3">4</option>
+        <option value="option3">5</option>
+        <option value="option3">6</option>
+        <option value="option3">7</option>
+        <option value="option3">8</option>
+        <option value="option3">9</option>
+        <option value="option3">10</option>
+        <option value="option3">11</option>
+        <option value="option3">12</option>
+        <option value="option3">13</option>
+        <option value="option3">14</option>
+        <option value="option3">15</option>
+        <option value="option3">16</option>
+        <option value="option3">17</option>
+        <option value="option3">18</option>
+        <option value="option3">19</option>
+        <option value="option3">20&+</option>
+        </select>
+        <p id="selectedValue6"></p>
+        <script type="text/javascript">
+          const dropdown6 = document.getElementById('myDropdown6');
+          const selectedValueDisplay6 = document.getElementById('selectedValue6');
+
+          // Add an event listener to detect changes in the select element
+          dropdown6.addEventListener('change', function() {
+          var selectedOption6 = dropdown6.value; // Get the selected value
+          console.log(selectedOption6);
+          });
+
+        </script>
+      </div>
+      <div class="title_1" style="bottom: 19vh; z-index: -2; display: none;" id = "void7">
+
+        <input type="text" style="max-width: calc(90% - 4vw);" class="inputField" id="myName7"></input>
+        <select style = "max-width: 4vw;" id="myDropdown7">
+        <option value="option1">Age</option>
+        <option value="option2">3</option>
+        <option value="option3">4</option>
+        <option value="option3">5</option>
+        <option value="option3">6</option>
+        <option value="option3">7</option>
+        <option value="option3">8</option>
+        <option value="option3">9</option>
+        <option value="option3">10</option>
+        <option value="option3">11</option>
+        <option value="option3">12</option>
+        <option value="option3">13</option>
+        <option value="option3">14</option>
+        <option value="option3">15</option>
+        <option value="option3">16</option>
+        <option value="option3">17</option>
+        <option value="option3">18</option>
+        <option value="option3">19</option>
+        <option value="option3">20&+</option>
+        </select>
+        <p id="selectedValue7"></p>
+        <script type="text/javascript">
+          const dropdown7 = document.getElementById('myDropdown7');
+          const selectedValueDisplay7 = document.getElementById('selectedValue7');
+
+          // Add an event listener to detect changes in the select element
+          dropdown7.addEventListener('change', function() {
+          var selectedOption7 = dropdown7.value; // Get the selected value
+          console.log(selectedOption7);
+          });
+
+        </script>
+      </div>
+			<div class="title" style="top: 70px;" id="listRender">Tushar</div>
+
+      
+			<img id="backPic02" style="filter: blur(4px); -webkit-filter: blur(4px); position: fixed;" src="https://thetusharpandey.com/imageFolder/download_(1).png" />
+		</div>
+	</div>
+
+  <div class="carousel-item" id="card08" ondblclick="useTheObject('card08', 'backPic08')";>
+    <div class="carousel-box">
+      <div class="title">Sessions</div>
+      <div class="title" style="top: 90px;" id="classDiv">
+        None<br>
+        None<br>
+        None<br>
+        None<br>
+        <!-- session codes seperated by <br> tags -->
+      </div>
+      <div class="num">03</div>
+      <img id="backPic08" style="position: fixed;" src="https://thetusharpandey.com/imageFolder/download_(10).png" />
+    </div>
+  </div>
+
+	<div class="carousel-item" id="card04" ondblclick="useTheObject('card04', 'backPic04')"; >
+		<div class="carousel-box">
+			<div class="title">Probing</div>
+      <div class="title" style="top: 8vh;">Probe</div>
+      <div class="title_1" id="potty" style="bottom: 74vh; display: none; ">
+        <div>Add new: </div>
+        <select id = "probeThing" class="inputField" style="max-width: 49% !important;">
+          <option value="probeOpt">Select</option>
+          <option value="probeOpt0">is gay?</option>
+          <option value="probeOpt1">is employed?</option>
+          <option value="probeOpt2">child on tuiton?</option>
+          <option value="probeOpt3">Car owned?</option>
+          <option value="probeOpt4">bike owned?</option>
+          <option value="probeOpt5">eat out?</option>
+          <option value="probeOpt6">blinkit used?</option>
+          <option value="probeOpt7">loans are good?</option>
+          <option value="probeOpt8">edtech used?</option>
+          <option value="probeOpt9">Dreamy or not?</option>
+          <option value="probeOpt10">Lacks english?</option>
+        </select>
+      </div>  
+      <div class="title_1" style="top: 16vh; overflow-y: overlay; display: inline-flex;" id="zotty">
+        
+      </div>  
+      <div class="title" style="top: 16vh; overflow-y: overlay" id="probeRender">None</div>
+
+			<div class="num">04</div>
+			<img id="backPic04" style="filter: blur(2px);position: fixed; -webkit-filter: blur(2px);" src="https://thetusharpandey.com/imageFolder/download_(5).png" />
+		</div>
+	</div>
+
+	<div class="carousel-item" id="card05" ondblclick="useTheObject('card05', 'backPic05')";>
+		<div class="carousel-box">
+			<div class="title">EventLogs</div>
+      <div class="title" style="top: 60px;" id="eventComment">eventComment</div>
+      <div class="title" style="top: 90px;" id="eventRender">None</div>
+			<div class="num">05</div>
+			<img id="backPic05" style="filter: blur(1px); -webkit-filter: blur(1px); position: fixed;" src="https://thetusharpandey.com/imageFolder/download_(8).png" />
+		</div>
+	</div>
+
+	<div class="carousel-item" id="card06" ondblclick="useTheObject('card06', 'backPic06')";>
+		<div class="carousel-box">
+			<div class="title">Invoicesss</div>
+      <div class="title" style="top: 90px;" id="invoiceEntry">Not Paid</div>
+			<div class="num">06</div>
+			<img id="backPic06" style="position: fixed;" src="https://thetusharpandey.com/imageFolder/download_(9).png" />
+		</div>
+	</div>
+
+	 <div class="carousel-item" id="card03" ondblclick="useTheObject('card03', 'backPic03')";>
+    <div class="carousel-box">
+      <div class="title">refTree</div>
+      <div class="title" id="referRender" style="top: 60px; overflow-y: overlay; width: 100vw;">Recieved from<br></div>
+      <div class="num">07</div>
+      <img id="backPic03" style="position: fixed;" src="https://thetusharpandey.com/imageFolder/download_(4).png"/>
+    </div>
+  </div>
+
+
+<div class="carousel-item" id="card07" ondblclick="useTheObject('card07', 'backPic07');">
+    <div class="carousel-box">
+        <div class="title" style="top: 90px;" id="miscellaneous">Stage Change: </div>
+        <button class="custom-btn btn-7" onclick="expandBox()" style="top:20vh;"><span>changeStage</span></button>
+        
+        <div class="levelCardsScroll">
+          .
+                <button class="custom-btn btn-7 levelCards" onclick="updateStage(1)">Level 1</button>
+                <button class="custom-btn btn-7 levelCards" onclick="updateStage(2)">Level 2</button>
+                <button class="custom-btn btn-7 levelCards" onclick="updateStage(3)">Level 3</button>
+                <button class="custom-btn btn-7 levelCards" onclick="updateStage(4)">Level 4</button>
+                <button class="custom-btn btn-7 levelCards" onclick="updateStage(5)">Level 5</button>
+                <button class="custom-btn btn-7 levelCards" onclick="updateStage(6)">Level 6</button>
+                <button class="custom-btn btn-7 levelCards" onclick="updateStage(7)">Level 7</button>
+                <button class="custom-btn btn-7 levelCards" onclick="updateStage(8)">Level 8</button>
+        </div>
+
+        <script type="text/javascript">
+          function updateStage(x){
+            var stageVal = 0;
+            if(x === 1){
+              stageVal = x;
+              document.getElementById("miscellaneous").innerHTML = "";
+              document.getElementById("miscellaneous").innerHTML = document.getElementById("miscellaneous").innerHTML +  'Stage Change: Level 1';
+            } else if(x === 2){
+              stageVal = x;
+              document.getElementById("miscellaneous").innerHTML = "";
+              document.getElementById("miscellaneous").innerHTML = document.getElementById("miscellaneous").innerHTML +  "Stage Change: Level 2";
+            } else if(x === 3){
+              stageVal = x;
+              document.getElementById("miscellaneous").innerHTML = "";
+              document.getElementById("miscellaneous").innerHTML = document.getElementById("miscellaneous").innerHTML +  "Stage Change: Level 3";
+            } else if(x === 4){
+              stageVal = x;
+              document.getElementById("miscellaneous").innerHTML = "";
+              document.getElementById("miscellaneous").innerHTML = document.getElementById("miscellaneous").innerHTML + "Stage Change: Level 4";
+            } else if(x === 5){
+              stageVal = x;
+              document.getElementById("miscellaneous").innerHTML = "";
+              document.getElementById("miscellaneous").innerHTML = document.getElementById("miscellaneous").innerHTML +  "Stage Change: Level 5";
+            } else if(x === 6){
+              stageVal = x;
+              document.getElementById("miscellaneous").innerHTML = "";
+              document.getElementById("miscellaneous").innerHTML = document.getElementById("miscellaneous").innerHTML +  "Stage Change: Level 6";
+            } else if(x === 7){
+              stageVal = x;
+              document.getElementById("miscellaneous").innerHTML = "";
+              document.getElementById("miscellaneous").innerHTML = document.getElementById("miscellaneous").innerHTML +  "Stage Change: Level 7";
+            } else if(x === 8) {
+              stageVal = x;
+              document.getElementById("miscellaneous").innerHTML = "";
+              document.getElementById("miscellaneous").innerHTML = document.getElementById("miscellaneous").innerHTML +  "Stage Change: Level 8";
+            } else {
+              console.log("reaching end of stage selection Ladder");
+            }
+
+          }
+        </script>
+  <style type="text/css">
+    .custom-btn {
+  width: 10vw;
+  height: 5vh;
+  left: calc(50% - 5vw);
+  color: #fff;
+  border-radius: 5px;
+  padding: 10px 25px;
+  font-family: 'Lato', sans-serif;
+  font-size: 1.6vw;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: absolute;
+  display: inline-block;
+   box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
+   7px 7px 20px 0px rgba(0,0,0,.1),
+   4px 4px 5px 0px rgba(0,0,0,.1);
+  outline: none;
+}
+
+/* 7 */
+.btn-7 {
+background: linear-gradient(0deg, rgba(15, 230, 255, 0.52) 0%, rgb(115, 17, 255) 100%);
+  line-height: 42px;
+  border: none;
+      position: absolute;
+      padding: 0;
+    z-index: 5;
+}
+.btn-7 span {
+  position: absolute;
+  display: contents;
+  width: 100%;
+  height: 100%;
+}
+.btn-7:before,
+.btn-7:after {
+  position: absolute;
+  content: "";
+  right: 0;
+  bottom: 0;
+  background: rgba(251,75,2,1);
+  box-shadow:
+   -7px -7px 20px 0px rgba(255,255,255,.9),
+   -4px -4px 5px 0px rgba(255,255,255,.9),
+   7px 7px 20px 0px rgba(0,0,0,.2),
+   4px 4px 5px 0px rgba(0,0,0,.3);
+  transition: all 0.3s ease;
+}
+.btn-7:before{
+   height: 0%;
+   width: 2px;
+}
+.btn-7:after {
+  width: 0%;
+  height: 2px;
+}
+.btn-7:hover{
+  color: rgba(251,75,2,1);
+  background: transparent;
+}
+.btn-7:hover:before {
+  height: 100%;
+}
+.btn-7:hover:after {
+  width: 100%;
+}
+.btn-7 span:before,
+.btn-7 span:after {
+  position: absolute;
+  content: "";
+  left: 0;
+  top: 0;
+  background: rgba(251,75,2,1);
+  box-shadow:
+   -7px -7px 20px 0px rgba(255,255,255,.9),
+   -4px -4px 5px 0px rgba(255,255,255,.9),
+   7px 7px 20px 0px rgba(0,0,0,.2),
+   4px 4px 5px 0px rgba(0,0,0,.3);
+  transition: all 0.3s ease;
+}
+.btn-7 span:before {
+  width: 2px;
+  height: 0%;
+}
+.btn-7 span:after {
+  height: 2px;
+  width: 0%;
+}
+.btn-7 span:hover:before {
+  height: 100%;
+}
+.btn-7 span:hover:after {
+  width: 100%;
+}
+.levelCardsScroll {
+    width: 90%; /* Set the width to 90% of card07 */
+    overflow-x: auto; /* Enable horizontal scrolling */
+    margin-left: 5%;
+    position: absolute;
+    display: flex; /* Use flexbox for inline layout */
+    min-width: max-content;
+    top: 31vh;
+}
+
+.levelCards {
+    display: none; /* Hidden initially */
+    width: fit-content;
+    margin-left: 1.5vw; /* Horizontal margin for spacing */
+    flex: 0 0 auto; /* Prevent flex items from shrinking */
+    position: relative;
+}
+
+  </style>
+  <script type="text/javascript">
+    function expandBox() {
+    document.getElementById("card07").style.width = "60vw";
+    document.getElementById("card07").style.left = "36vw";
+    document.getElementById("card07").style.transition = "1s";
+    const xItem = document.getElementsByClassName("levelCards");
+
+    // Loop through each element and apply the styles
+    for (let i = 0; i < xItem.length; i++) {
+        xItem[i].style.display = "block"; // Set display to block for proper visibility
+        xItem[i].style.position = "relative";
+        xItem[i].style.left = "0";
+    }
+}
+  </script>
+			<div class="num">08</div>
+			<img id="backPic07" style="position: absolute; top: 0;" src="https://thetusharpandey.com/imageFolder/download_(3).png" />
+		</div>
+	</div>
+</div>
+
+<div class="layout">
+	<div class="box">High threshold</div>
+</div>
+
+<a onclick="editToggle(), showButt()" target="_blank" class="logo" style="right: 2vw;">
+  <div id="app-cover">
+  <div class="row">
+    <div class="toggle-button-cover">
+      <div class="button-cover">
+        <div class="button r" id="button-6">
+          <input type="checkbox" class="checkbox" />
+          <div class="knobs"></div>
+          <div class="layer"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+    </div>
+</a>
+<a class="logo confirmButton">
+  <div class="night">
+<span class="moon"></span>
+<span class="spot1"></span>
+<span class="spot2">
+</span>
+<ul>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li> 
+  </ul>
+</style>
+</div>
+</a>
+
+<script type="text/javascript">
+  //**********************expanding box func code begins**********************
+  function useTheObject(cardId, picId){
+    console.log("expandingBox");
+    document.getElementById(cardId).getElementsByClassName("carousel-box")[0].style.setProperty('overflow-x', 'auto');
+    document.getElementById(picId).style.setProperty('overflow', 'visible');
+    document.getElementById("potty").style.bottom = "72.3vh";
+
+
+    //image overflow: visible
+    //overflow-x: auto
+  }
+  //***********************expanding box func code ends***********************
+  var flag1=1;
+  console.log(flag1);
+
+  function showButt(){
+    var r = document.querySelector(':root');
+
+    if(flag1===1){
+      flag1=flag1-1;
+      console.log("runn");
+      document.getElementsByClassName("confirmButton")[0].style.opacity = "1";
+      document.getElementsByClassName("night")[0].style.zIndex = "120";
+//      document.getElementsByClassName("confirmButton")[0].setAttribute("onclick", "confirmFunc()");  //
+      document.getElementsByClassName("confirmButton")[0].setAttribute("onclick", "changeMagnet()"); 
+      document.getElementById("zotty").innerHTML= "Content: <input type=\"text\" style=\"max-width: 50%;\"class=\"inputField\" name=\"fname\" placeholder=\"Enter Your Input\" id=\"probeContent\"></input>";
+      document.getElementById("probeRender").style.top = "20vh";
+
+    /*
+
+
+      div => {
+        // Get the current top value and parse it to a number
+        let currentTop = parseInt(window.getComputedStyle(div).top);
+
+        // Add 10px to the current top value
+        div.style.top = (currentTop + 10) + 'px';  // Increment by 10px
+
+
+    */
+    }
+    else{
+      flag1=flag1+1;
+      console.log("gunn");
+      document.getElementsByClassName("confirmButton")[0].style.opacity = "0";
+      document.getElementsByClassName("night")[0].style.zIndex = "-10";
+      document.getElementsByClassName("confirmButton")[0].setAttribute("onclick", "console.log('noEditLmao');");
+    }
+  }
+
+</script>
+
+<style type="text/css">
+  h1
+{
+font-family: 'Raleway', sans-serif;
+     position: fixed;
+  left:30%;
+  
+}
+.confirmButton{
+  opacity: 0;
+  transition: opacity 1.5s;
+}
+.night
+{
+  right: 2vw; 
+  top: 10vh;
+  width:6rem;
+  height:6rem;
+  border-radius: 40%;
+/*  z-index:120;  */
+
+  position: absolute;
+  background:linear-gradient(to bottom right, rgb(17 69 255) -7%, rgb(5 218 37) 53%);
+  box-shadow: -19px 16px 48px 18px rgba(81, 45, 168, 1);
+
+}
+.moon
+{
+  position: absolute;
+  top:-10%;
+  left:65%;
+  width:4.775vw;
+  height: 4.775vw;
+  border-radius: 100%;
+  background:rgba(255,241,118 ,1);
+  box-shadow: 1px 1px 30px rgba(224,224,224 ,1);
+}
+.spot1
+{
+  position: absolute;
+  top:0%;
+  left:85%;
+  width:10px;
+  height: 10px;
+  border-radius: 100%;
+  background-color: #777;
+}
+.spot2
+{
+  position: absolute;
+  top:30%;
+  left:75%;
+  width:5px;
+  height: 5px;
+  border-radius: 100%;
+  background-color: #777;
+}
+
+.night li
+{
+  position: absolute;
+  list-style: none;
+  width: 3px;
+  height: 3px;
+  border-radius: 100%;
+  background-color:#fff;
+  
+  
+  transform: rotate(45deg);
+}
+.night li:nth-child(1)
+{
+  
+top:30%;
+left:65%;
+}
+
+.night li:nth-child(2)
+{
+top:35%;
+left:53%;
+}
+
+.night li:nth-child(3)
+{
+
+opacity: 0;
+top:20%;
+left:75%;
+width:2px;
+height: 2px;
+animation: meteor 1.5s infinite linear;
+animation-delay: 0.6s;
+
+}
+
+.night li:nth-child(4)
+{
+top:5%;
+left:50%;
+}
+
+.night li:nth-child(5)
+{
+  opacity: 0;
+top:20%;
+left:55%;
+width:1px;
+height: 15px;
+animation: meteor 1.5s infinite linear;
+}
+
+@keyframes inex {
+
+
+  50% {
+  opacity: 0.4;
+
+  }
+  60%
+  {
+    opacity: 1;
+  }
+}
+@keyframes move {
+
+
+  50% {
+  transform: translateX(-10px);
+
+  }
+}
+@keyframes fall {
+10%
+{
+  opacity:0.8;
+}
+
+  50% {
+    opacity:1;
+  transform: translate(-10px,30px);
+
+  }
+  100%
+  {
+    transform: translate(-25px,70px);
+
+    
+  }
+}
+@keyframes flash
+{
+  48%
+  {
+    background-color: rgba(96,125,139 ,1);
+  }
+  50%
+  {
+    background-color: #fff;
+  }
+  55%
+  {
+    background-color: rgba(96,125,139 ,1);
+  }
+  57%
+  {
+    background-color: #fff; 
+  }
+}
+@keyframes meteor
+{
+
+10%
+{opacity: 1;
+}
+80% 
+{
+left:10%;
+top:75%;
+opacity: 0;
+}
+}
+
+<style type="text/css">
+  #app-cover {
+  counter-reset: button-counter;
+}
+
+.row {
+  display: table-row;
+}
+
+.toggle-button-cover {
+  width: fit-content;
+  box-sizing: border-box;
+}
+
+.button-cover {
+  margin-top: 10vw;
+  height: fit-content;
+  background-color: #fff;
+  box-shadow: 0 10px 20px -8px #c5d6d6;
+  border-radius: 4px;
+}
+
+.button-cover:before {
+  counter-increment: button-counter;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  color: #d7e3e3;
+  font-size: 12px;
+  line-height: 1;
+  padding: 5px;
+}
+
+.button-cover,
+.knobs,
+.layer {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.button {
+  position: absolute;
+  top: 50%;
+  width: 81px;
+  height: 36px;
+  margin: -20px auto 0 auto;
+  overflow: hidden;
+}
+
+.button.r,
+.button.r .layer {
+  border-radius: 100px;
+  right: 0vw;
+}
+
+.button.b2 {
+  border-radius: 2px;
+}
+
+.checkbox {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  opacity: 0;
+  cursor: pointer;
+  z-index: 3;
+}
+
+.knobs {
+  z-index: 2;
+}
+
+.layer {
+  width: 100%;
+  background-color: #ebf7fc;
+  transition: 0.3s ease all;
+  z-index: 1;
+}
+
+/* Button 6 */
+#button-6 {
+  margin-top: -10vw;
+  overflow: visible;
+}
+
+#button-6 .knobs:before {
+  content: "HIT";
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  width: 20px;
+  height: 10px;
+  color: #fff;
+  font-size: 10px;
+  font-weight: bold;
+  text-align: center;
+  line-height: 1;
+  padding: 9px 4px;
+  background-color: #f44336;
+  border-radius: 50%;
+}
+
+#button-6 .layer,
+#button-6 .knobs,
+#button-6 .knobs:before {
+  transform: rotateZ(0);
+  transition: 0.4s cubic-bezier(0.18, 0.89, 0.35, 1.15) all;
+}
+
+#button-6 .checkbox:checked + .knobs {
+  transform: rotateZ(-180deg);
+}
+
+#button-6 .checkbox:checked + .knobs:before {
+  content: "OK";
+  background-color: #00DA76;
+  transform: rotateZ(180deg);
+}
+
+#button-6 .checkbox:checked ~ .layer {
+  background-color: #fcebeb;
+  transform: rotateZ(180deg);
+}
+
+</style>
+
+<a href="../sex" target="_blank" class="logo2"><</div></a>
+<div class="social">
+  <a href="https://www.linkedin.com/in/thetusharpandey/" target="_blank">
+    <svg>
+			<use xlink:href="#ico-linkedin"></use>
+    </svg>
+  </a>
+	<a href="https://www.instagram.com/itstusharpandey/" target="_blank">
+    <svg>
+			<use xlink:href="#ico-instagram"></use>
+    </svg>
+  </a>
+</div>
+<script type="text/javascript">
+  var flag=1;
+  console.log(flag);
+
+  function editToggle(){
+    var r = document.querySelector(':root');
+    var n = document.getElementsByClassName("title_1");
+    console.log(flag);
+    if(flag===1){
+      console.log("run");
+      r.style.setProperty('--height', '90vh');
+      for (let i = 0; i < n.length; i++) {
+        n[i].style.display = "inline-table";
+        document.getElementById("potty").style.display = "inline-flex";
+      }
+      setTimeout(function(){
+        finallyHeight = document.getElementById('card04').offsetHeight;
+        console.log(finallyHeight);
+      },2001); //printing height after the fucker has expanded hehe
+      flag=flag-1;
+    }
+    else{
+      console.log("gun");
+      r.style.setProperty('--height', 'clamp(200px, 40vw,  400px)');
+      for (let i = 0; i < n.length; i++) {
+        n[i].style.display = "none";
+      }
+      flag=flag+1;
+    }
+  }
+</script>
+<svg style="display: none">
+	<symbol id="ico-instagram" viewBox="0 0 35 35">
+		<circle opacity=".2" cx="17.5" cy="17.5" r="17" stroke="var(--fill)" fill="none"></circle>
+		<path
+			fill-rule="evenodd"
+			clip-rule="evenodd"
+			d="M24.944 20.476c.028-.457.042-1.282.042-2.476s-.014-2.019-.042-2.476c-.056-1.09-.378-1.93-.965-2.517s-1.422-.91-2.503-.965C21.018 12.014 20.194 12 19 12s-2.019.014-2.476.042c-1.081.047-1.92.368-2.517.965s-.918 1.436-.965 2.518C13.014 15.98 13 16.805 13 18c0 1.194.014 2.019.042 2.476.047 1.09.368 1.93.965 2.517s1.436.91 2.518.965c.466.028 1.29.042 2.475.042 1.184 0 2.01-.014 2.476-.042 1.072-.047 1.906-.368 2.503-.965.597-.597.918-1.436.965-2.517ZM19 13.075h-1.427c-.186 0-.438.01-.755.029a11.61 11.61 0 0 0-.797.07c-.215.028-.401.08-.56.154-.26.102-.489.251-.685.447-.196.196-.35.425-.461.685-.056.15-.103.336-.14.56a7.843 7.843 0 0 0-.084.811 7.113 7.113 0 0 0-.014.741c.01.178.01.453 0 .826-.01.373-.01.573 0 .601.01.028.01.228 0 .601s-.01.648 0 .826c.01.177.014.424.014.74 0 .318.028.588.084.812l.14.56c.112.26.265.489.461.685.196.196.425.345.685.447.15.056.336.108.56.154.224.047.49.07.797.07.308 0 .56.01.755.028.196.019.471.019.826 0 .354-.019.554-.019.601 0 .047.019.242.019.587 0s.62-.019.826 0c.205.019.456.01.755-.028.298-.037.569-.06.811-.07.242-.01.424-.06.546-.154.26-.102.494-.251.699-.447a1.75 1.75 0 0 0 .447-.686c.056-.149.103-.335.14-.559.038-.224.066-.494.084-.811.019-.317.023-.564.014-.741a11.82 11.82 0 0 1 0-.826c.01-.373.01-.573 0-.601-.01-.028-.01-.228 0-.601s.01-.648 0-.826c-.01-.177-.014-.424-.014-.74 0-.318-.028-.588-.084-.812l-.14-.56a1.956 1.956 0 0 0-1.147-1.133 3.979 3.979 0 0 0-.545-.153 3.915 3.915 0 0 0-.811-.07c-.326 0-.578-.01-.755-.028a5.916 5.916 0 0 0-.826 0c-.372.019-.568.019-.587 0Zm3.706 2.225c.14-.14.21-.308.21-.504a.57.57 0 0 0-.21-.503.767.767 0 0 0-.517-.21.718.718 0 0 0-.504.21.622.622 0 0 0-.21.503c.01.196.08.364.21.504s.299.21.504.21c.205 0 .377-.07.517-.21ZM22.063 18c0 .849-.298 1.576-.895 2.182a2.882 2.882 0 0 1-2.168.895 3.075 3.075 0 0 1-2.182-.895c-.606-.588-.904-1.315-.895-2.182.01-.867.308-1.594.895-2.182.588-.587 1.315-.886 2.182-.895.867-.01 1.59.29 2.168.895.578.606.876 1.333.895 2.182Zm-1.077 0a1.95 1.95 0 0 0-.573-1.413A1.897 1.897 0 0 0 19 16c-.56 0-1.03.196-1.413.587A2.001 2.001 0 0 0 17 18c-.01.55.186 1.021.587 1.413.401.391.872.587 1.413.587.54 0 1.012-.196 1.413-.587.4-.392.592-.863.573-1.413Z"
+			transform="translate(-1.5 -0.5)"
+			fill="var(--fill)"
+		></path>
+	</symbol>
+
+	<symbol id="ico-linkedin" viewBox="0 0 35 35">
+		<circle opacity=".2" cx="17.5" cy="17.5" r="17" stroke="var(--fill)" fill="none"></circle>
+		<path
+			fill-rule="evenodd"
+			clip-rule="evenodd"
+			d="M15.3025 14.0835C15.3025 14.3845 15.1934 14.6403 14.9752 14.851C14.757 15.0617 14.4786 15.167 14.14 15.167C13.8014 15.167 13.5267 15.0617 13.316 14.851C13.1053 14.6403 13 14.3807 13 14.0722C13 13.7637 13.1053 13.5079 13.316 13.3047C13.5267 13.1016 13.8051 13 14.1512 13C14.4974 13 14.772 13.1016 14.9752 13.3047C15.1783 13.5079 15.2874 13.7675 15.3025 14.0835ZM13.0677 23V16.0248H15.2348V23H13.0677ZM16.4763 16.0248C16.5064 16.8676 16.5214 17.6125 16.5214 18.2596V23H18.7111V18.9819C18.7111 18.7111 18.7336 18.5305 18.7788 18.4402C18.9895 17.8984 19.3582 17.6275 19.8849 17.6275C20.6223 17.6275 20.991 18.1317 20.991 19.14V23H23.158V18.8691C23.158 17.8758 22.9285 17.1272 22.4695 16.623C22.0105 16.1189 21.4048 15.8668 20.6524 15.8668C19.6742 15.8668 18.9594 16.243 18.5079 16.9955H18.4628L18.3499 16.0248H16.4763Z"
+			transform="translate(0 -1)"
+			fill="var(--fill)"
+		></path>
+	</symbol>
+</svg>
+
+
+
+<style type="text/css">
+  :root{
+  --height: clamp(200px, 40vw,  400px);
+  }
+
+	body {
+  overflow: hidden;
+  font-family: 'Roboto', serif;
+  background: linear-gradient(135deg, black, #220033);
+}
+
+.inputField {
+    border: none;
+    outline: none;
+    background: none;
+    color: black;
+    width: 10vw;
+    font-size: 0.6em;
+    font-family: inherit;
+    padding: 0;
+    transition: width 0.3s; /* Optional for smooth animation */
+    text-align: center;
+    border-bottom: 1px solid currentColor; /* Adds a subtle underline */
+    cursor: text;
+    -webkit-box-shadow: inset 20px -4px 20px 0px rgba(255, 248, 148, 0.9);
+    -moz-box-shadow:inset 20px -4px 20px 0px rgb(255 248 148, 0.9);
+    box-shadow:inset 20px -4px 20px 0px rgb(255 248 148 / 90%);
+    border-radius: 10px;
+}
+
+.inputField:hover {
+    width: calc(var(--width)*0.9); /* Expand width on focus for easier typing */
+    font-size: 0.7em;
+    border-bottom: 1px solid currentColor; /* Retain subtle underline */
+    transition: box-shadow 1.5s, width 1s;
+    -webkit-box-shadow: none;
+    -moz-box-shadow:none;
+    box-shadow:none;
+}
+
+.inputField::placeholder {
+    color: black; /* Hide the placeholder text, making it look like an empty space */
+}
+
+.rounded{
+  width: 30px;
+  height: 30px;
+  border: 2px solid #fff;
+  border-radius: 50%;
+}
+.pointed{
+  width: 7px;
+  height: 7px;
+  background-color: white;
+  border-radius: 50%;
+  margin-bottom: 20rem;
+}
+
+.carousel {
+  position: relative;
+  z-index: 1;
+  height: 100vh;
+  pointer-events: none;
+
+}
+
+
+.carousel-item {
+  --items: 10;
+  --width: clamp(150px, 30vw,  300px);
+  --x: calc(var(--active) * 800%);
+  --y: calc(var(--active) * 200%);
+  --rot: calc(var(--active) * 120deg);
+  --opacity: calc(var(--zIndex)*0.3 - 1.7);
+  overflow: hidden;
+  position: absolute;
+  z-index: var(--zIndex);
+  width: var(--width);
+  height: var(--height);
+  margin: calc(var(--height) * -0.5) 0 0 calc(var(--width) * -0.5);
+  border-radius: 10px;
+  top: 50%;
+  left: 50%;
+  user-select: auto;
+  transform-origin: 0% 100%;
+  box-shadow: 0 10px 50px 10px rgba(0, 0, 0, .5);
+  /*background: black;*/
+  pointer-events: visible;
+  transform:  translate(var(--x), var(--y)) rotate(var(--rot)) ;
+  transition: transform 2s cubic-bezier(0.24, 1.04, 0.32, 0.97), height 2s;
+
+  .carousel-box {
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: opacity 2s cubic-bezier(.96,.58,1,.82);
+    opacity: var(--opacity);
+    font-family: 'Orelo-sw-db', serif;
+
+    &:before {
+      content: '';
+      position: absolute;
+      z-index: 1;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to bottom, rgba(0, 0, 0, .3), rgba(0, 0, 0, 0) 30%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, .5));
+    }
+  }
+
+  .title {
+    position: absolute;
+    z-index: 1;
+    color: #fff;
+    bottom: 60px;
+    left: 20px;
+    transition: opacity .8s cubic-bezier(0, 0.02, 0, 1);
+    font-size: clamp(20px, 2.6vw, 27px);
+    text-shadow: 0 4px 4px rgba(0, 0, 0, .1);
+  }
+
+  .title_1 {
+    position: absolute;
+    z-index: 1;
+    color: #fff;
+    bottom: 20px;
+    left: 20px;
+    transition: opacity .8s cubic-bezier(0, 0.02, 0, 1);
+    font-size: clamp(20px, 3vw, 30px);
+    text-shadow: 0 4px 4px rgba(0, 0, 0, .1);
+  }
+
+
+  .num {
+    position: absolute;
+    z-index: 1;
+    color: #fff;
+    top: 10px;
+    left: 20px;
+    transition: opacity .8s cubic-bezier(0, 0.02, 0, 1);
+    font-size: clamp(20px, 6vw, 57px);
+  }
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    pointer-events: none;
+  }
+}
+
+.layout {
+  position: absolute;
+  z-index: 0;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+
+  &:before {
+    content: '';
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 90px;
+    width: 10px;
+    height: 100%;
+    border: 1px solid #fff;
+    border-top: none;
+    border-bottom: none;
+    opacity: .15;
+  }
+
+  .box {
+    position: absolute;
+    bottom: 0;
+    left: 30px;
+    color: #fff;
+    transform-origin: 0% 10%;
+    transform: rotate(-90deg);
+    font-size: 9px;
+    line-height: 1.4;
+    text-transform: uppercase;
+    opacity: .4;
+  }
+}
+/*
+.logo {
+  position: absolute;
+  z-index: 2;
+  top: 28px;
+  right: 28px;
+  width: 30px;
+  height: 30px;
+  background: #fff;
+  border-radius: 50%;
+  opacity: .5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Orelo-sw-db', serif;
+  pointer-events: all;
+  color: black;
+  text-decoration: none;
+  font-size: 20px;
+  overflow: hidden;
+  padding-bottom: .1em;
+}
+
+*/
+.logo {
+  position: absolute;
+  z-index: 0;
+  top: 28px;
+  right: 0vw;
+  display: flex;
+  justify-content: center;
+  pointer-events: all;
+  padding-bottom: .1em;
+}
+
+.logo2 {
+  position: absolute;
+  z-index: 2;
+  top: 28px;
+  width: 30px;
+  height: 30px;
+  background: #fff;
+  border-radius: 50%;
+  opacity: .5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Orelo-sw-db', serif;
+  pointer-events: all;
+  color: black;
+  text-decoration: none;
+  font-size: 20px;
+  overflow: hidden;
+  padding-bottom: .1em;
+}
+
+.social {
+  position: absolute;
+  z-index: 10;
+  bottom: 20px;
+  right: 25px;
+  color: #fff;
+  opacity: .4;
+
+  a {
+    display: inline-block;
+    margin-left: 3px;
+  }
+
+  svg {
+    --fill: #fff;
+    width: 35px;
+    height: 35px;
+  }
+}
+
+
+
+</style>
+<script type="text/javascript">
+	/*--------------------
+Vars
+--------------------*/
+let progress = 30
+let startX = 0
+let active = 0 
+let isDown = false
+
+/*--------------------
+Contants
+--------------------*/
+const speedWheel = 0.02
+const speedDrag = -0.1
+
+/*--------------------
+Get Z
+--------------------*/
+const getZindex = (array, index) => (array.map((_, i) => (index === i) ? array.length : array.length - Math.abs(index - i)))
+
+/*--------------------
+Items
+--------------------*/
+const $items = document.querySelectorAll('.carousel-item')
+
+const displayItems = (item, index, active) => {
+  const zIndex = getZindex([...$items], active)[index]
+  item.style.setProperty('--zIndex', zIndex)
+  item.style.setProperty('--active', (index-active)/$items.length)
+}
+
+/*--------------------
+Animate
+--------------------*/
+const animate = () => {
+  progress = Math.max(0, Math.min(progress, 100))
+  active = Math.floor(progress/100*($items.length-1))
+  
+  $items.forEach((item, index) => displayItems(item, index, active))
+}
+animate()
+
+/*--------------------
+Click on Items
+--------------------*/
+$items.forEach((item, i) => {
+  item.addEventListener('click', () => {
+    progress = (i/$items.length) * 100 + 10
+    animate()
+  })
+})
+
+/*--------------------
+Handlers
+--------------------*/
+const handleWheel = e => {
+  const wheelProgress = e.deltaY * speedWheel
+  progress = progress + wheelProgress
+  animate()
+}
+
+const handleMouseMove = (e) => {
+  if (!isDown) return
+  const x = e.clientX || (e.touches && e.touches[0].clientX) || 0
+  const mouseProgress = (x - startX) * speedDrag
+  progress = progress + mouseProgress
+  startX = x
+  animate()
+}
+
+
+const handleMouseDown = e => {
+  isDown = true
+  startX = e.clientX || (e.touches && e.touches[0].clientX) || 0
+}
+
+const handleMouseUp = () => {
+  isDown = false
+}
+
+/*--------------------
+Listeners
+--------------------*/
+document.addEventListener('mousewheel', handleWheel)
+document.addEventListener('mousedown', handleMouseDown)
+document.addEventListener('mousemove', handleMouseMove)
+document.addEventListener('mouseup', handleMouseUp)
+document.addEventListener('touchstart', handleMouseDown)
+document.addEventListener('touchmove', handleMouseMove)
+document.addEventListener('touchend', handleMouseUp)
+</script>
+
+
+<script type="text/javascript">
+  //editCollector
+  //this is going to be a big redundant function
+  //check if an input field is empty, ignore. if it has a value, keep that update in the list. 
+function changeMagnet(){
+
+  var val1 = document.getElementById("zoneGap").options[document.getElementById("zoneGap").selectedIndex]; //timezone
+  var val2 = document.getElementById("dropdownList").value;  //countryName
+  var val3 = document.getElementById("parentNameGap").value; //parentName
+  var val4 = document.getElementById("emailGap").value; //email
+  var val5 = document.getElementById("numberGap").value; //countryCode
+  var val6 = document.getElementById("contactGap").value; //phoneNumber
+  var val7 = document.getElementById("myName0").value; //json[9] for name value will be "" if nothing is there, it has to be rendered
+  var val8 = document.getElementById("myName1").value; //json[11] for name value will be "" if nothing is there
+  var val9 = document.getElementById("myName2").value; //json[13] for name value will be "" if nothing is there
+  var val10 = document.getElementById("myName3").value; //json[15] for name value will be "" if nothing is there
+  var val11 = document.getElementById("myName4").value; //json[17] for name value will be "" if nothing is there
+  var val12 = document.getElementById("myName5").value; //json[19] for name value will be "" if nothing is there
+  var val13 = document.getElementById("myName6").value; //json[21] for name value will be "" if nothing is there
+  var val14 = document.getElementById("myName7").value; //json[23] for name value will be "" if nothing is there
+  //selectedOption0 already setup for age dropdowns
+  //selectedOption1 already setup for age dropdowns
+  //selectedOption2 already setup for age dropdowns
+  //selectedOption3 already setup for age dropdowns
+  //selectedOption4 already setup for age dropdowns
+  //selectedOption5 already setup for age dropdowns
+  //selectedOption6 already setup for age dropdowns
+  //selectedOption7 already setup for age dropdowns
+  var val15 = document.getElementById("probeThing").value; //probe header
+  var val16 = ".";
+  if(val15!="Select"){
+    val16 = document.getElementById("probeThing"); //probeSummary added. you refresh to add everyone
+  }
+  //stageVal contained incase changed to something, It will be given a value, Else default is Zero. 
+
+  //25 values per lead. noice!!
+
+  //********************************************************
+
+  //********************************************************
+
+  //********************************************************
+  //tests
+
+
+    console.log(val1.value);
+    console.log(val2.value);
+
+  //********************************************************
+
+}
+
+ function confirmFunc(){
+    console.log("hoBC");
+    console.log(val1.value);
+    /* Individual calls to validate the changes? or one object(post request needed) */
+  }
+</script>
+</body>
+</html>
+
+<!-- update is through ./hashCode/leads/type/field/value-->

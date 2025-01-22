@@ -1,0 +1,78 @@
+{
+  "SMValue": "employeeCode","employeeName"
+  "stage":"1/2/3/4/5/6",
+  "campaign": "campaignTheyCameFrom",
+ 
+  "countryCode": "valueChosenFromCountryListFunction",
+  "timezone": "defaultForTheCountryChosen",
+  "countryName": "nameFromList",
+
+  "email": "valueInputFromFormField",
+  "parentName": "FullNameString",
+  "phoneNumber": "valueInputFromFormField",
+ 
+  "member0": "age0",
+  "member1": "age1",
+  "member2": "age2",
+  "member3": "age3",
+  "member4": "age4",
+  "member5": "age5",
+  "member6": "age6",
+  "member7": "age7", // 8 members cause never seen anyone have more than 5 unique, 6 in redundancy #fuck split function, fuck more brain use for same task. #itTookSimpleMathToReachMoon
+
+  "refer": {
+    "receivedFrom"  : "phoneNumber"    ,
+    "givenTo"       : "phoneNumber"    ,
+    "...i-thGivenTo": "i-thPhoneNumber"
+  },
+  "probe": {
+    "probeHeaderFromAllowedPrompts": "probeSummary"     ,
+    "i'th-ProbeSummary"            : "i'th-ProbeComment"
+  },
+  "EventLog": {
+    "eventComment": "concatenatedStringOf_date_time_employeeCode",
+    "...i'th_Appended_eventComment": "...i'th_Appended_concatenatedStringOf_date_time_employeeCode"
+  },
+  "moneyData": ["invoiceID", "...", "i-thInvoice"],
+  "sessionList": {"sessionID": "cost", "...appendedIDs": "appendedCosts"}
+},
+
+
+
+//dataReadme.json
+{
+	"parentName": "FullNameString",
+	"memberParam":{"memberNameString":"MemberAgeValueFromFunction","i-timesNames":"i-timesDates"}, //this new key-value has to have a zero member, if not found, i assume -> "Child":"01-01-2020"
+	"countryCode":"valueChosenFromCountryListFunction",//searcheable list of countries
+	"phoneNumber":"valueInputFromFormField",
+	"email":"valueInputFromFormField",
+	"timezone":"defaultForTheCountryChosen", //the user is indicated that the timezone is thiss. and current time is mentioned in the form when you select the country and location. But they can change it. 
+	"SMValue":"employeeCode",
+	"EventLog":{"eventComment":"concatenatedStringOf_date_time_employeeCode","...i'th_Appended_eventComment":"...i'th_Appended_concatenatedStringOf_date_time_employeeCode"},
+	"probe":{"probeHeaderFromAllowedPrompts":"probeSummary","i'th-ProbeHeader":"i'th-ProbeSummary"},
+	"sessionList":{"sessionID":"cost","sessionID":"cost","...appendedIDs":"appendedCosts"},
+	"moneyData":["invoiceID", "...", "i-thInvoice"], //initially Value is Null, or invoice #0000
+	"refer":{"receivedFrom":"phoneNumber", "givenTo":"phoneNumber", "...i-thGivenTo":"i-thPhoneNumber"},
+	"campaign":"campaignTheyCameFrom"
+}
+
+//sessionID
+/*
+{
+	"bookingList":{"phoneNumber":"memberIndex", "i-thPhoneNumber":"i-thMemberIndex"},
+	"currentTrainer":"employeeCode",
+	"eventLog":{"eventComment":"concatenatedStringOf_date_time_employeeCode","...i'th_Appended_eventComment":"...i'th_Appended_concatenatedStringOf_date_time_employeeCode"},
+}
+*/
+
+
+adding new json in beginning of the file, 
+eventLog sample : "eventComment~[{\"existing\":\"value\"}] -> [{\"new\":\"value\"},{\"existing\":\"value\"}]"
+
+open json file as text, after first square bracket, add the object, add comma
+{"new":"value"}, added
+
+
+
+
+json read write is heavy, CSV is mind-light-> Transitioning!

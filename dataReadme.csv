@@ -1,0 +1,38 @@
+{
+  "SMValue": "employeeCode","employeeName"
+  "stage":"1/2/3/4/5/6",
+  "campaign": "campaignTheyCameFrom",
+ 
+  "countryCode": "valueChosenFromCountryListFunction",
+  "timezone": "defaultForTheCountryChosen",
+  "countryName": "nameFromList",
+
+  "email": "valueInputFromFormField",
+  "parentName": "FullNameString",
+  "phoneNumber": "valueInputFromFormField",
+ 
+  "member0": "age0",
+  "member1": "age1",
+  "member2": "age2",
+  "member3": "age3",
+  "member4": "age4",
+  "member5": "age5",
+  "member6": "age6",
+  "member7": "age7", // 8 members cause never seen anyone have more than 5 unique, 6 in redundancy #fuck split function, fuck more brain use for same task. #itTookSimpleMathToReachMoon
+
+  "refer": {
+    "receivedFrom"  : "phoneNumber"    ,
+    "givenTo"       : "phoneNumber"    ,
+    "...i-thGivenTo": "i-thPhoneNumber"
+  },
+  "probe": {
+    "probeHeaderFromAllowedPrompts": "probeSummary"     ,
+    "i'th-ProbeSummary"            : "i'th-ProbeComment"
+  },
+  "EventLog": {
+    "eventComment": "concatenatedStringOf_date_time_employeeCode",
+    "...i'th_Appended_eventComment": "...i'th_Appended_concatenatedStringOf_date_time_employeeCode"
+  },
+  "moneyData": ["invoiceID", "...", "i-thInvoice"],
+  "sessionList": {"sessionID": "cost", "...appendedIDs": "appendedCosts"}
+},

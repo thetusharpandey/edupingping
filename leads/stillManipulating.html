@@ -155,6 +155,250 @@ async function fetchLeadFunc() {
 }
 
 </script>
+
+<script type="text/javascript">
+  let submitButtonFlag = 0;
+
+   function stuffList(serial, newVal) {
+  submitButtonFlag+=1;
+  if(submitButtonFlag){
+    document.getElementById("loduLalit").style.display = "block";
+  }
+  var ul = document.getElementById("popFinal");
+  var li = document.createElement("li");
+  var textVal = serial + " : " + newVal;
+  li.appendChild(document.createTextNode(textVal));
+  li.setAttribute("id", serial); // added line
+  li.setAttribute("class", "updateListStack"); //marking these members which have to be worked on by xiPingPing
+  ul.appendChild(li);
+  }
+
+  function changeMagnet(){
+
+  document.getElementById("popFinal").innerHTML = "";
+  var val1 = document.getElementById("zoneGap"); //timezone
+  var val2 = document.getElementById("dropdownList");  //countryName
+  var val3 = document.getElementById("parentNameGap"); //parentName
+  var val4 = document.getElementById("emailGap"); //email
+  var val5 = document.getElementById("numberGap"); //countryCode
+  var val6 = document.getElementById("contactGap"); //phoneNumber
+  var val7 = document.getElementById("myName0"); //json[9] for name value will be "" if nothing is there, it has to be rendered
+  var val8 = document.getElementById("myName1"); //json[11] for name value will be "" if nothing is there
+  var val9 = document.getElementById("myName2"); //json[13] for name value will be "" if nothing is there
+  var val10 = document.getElementById("myName3"); //json[15] for name value will be "" if nothing is there
+  var val11 = document.getElementById("myName4"); //json[17] for name value will be "" if nothing is there
+  var val12 = document.getElementById("myName5"); //json[19] for name value will be "" if nothing is there
+  var val13 = document.getElementById("myName6"); //json[21] for name value will be "" if nothing is there
+  var val14 = document.getElementById("myName7"); //json[23] for name value will be "" if nothing is there
+  //selectedOption0 already setup for age dropdowns
+  //selectedOption1 already setup for age dropdowns
+  //selectedOption2 already setup for age dropdowns
+  //selectedOption3 already setup for age dropdowns
+  //selectedOption4 already setup for age dropdowns
+  //selectedOption5 already setup for age dropdowns
+  //selectedOption6 already setup for age dropdowns
+  //selectedOption7 already setup for age dropdowns
+  var val15 = document.getElementById("probeThing"); //probe header
+  var val16 = document.getElementById("probeContent"); //probeSummary added. you refresh to add everyone
+  var val17 = stageVal;
+
+  //stageVal contained incase changed to something, It will be given a value, Else default is Zero. 
+
+  //25 values per lead. noice!!
+
+  //********************************************************
+
+  //********************************************************
+
+  //********************************************************
+  //tests
+
+  //val1
+  if(val1.selectedIndex != 0)
+  {
+    console.log("zonePassed");
+    //add this to the popup request queue
+    stuffList("val1", val1.selectedIndex);
+  }
+
+  //val2
+  if (val2.getAttribute("chosenhash")!="0")
+  {
+    console.log("countryPassed");
+    //add this to the popup request queue
+    stuffList("val2", val2.getAttribute("chosenhash"));
+  }
+
+  //val3
+  if (val3.value!="")
+  {
+    console.log("parentNameGapPassed");
+    //add this to the popup request queue
+    stuffList("val3", val3.value);
+  }
+
+  //val4
+  if (val4.value!=""){
+    console.log("emailPassed");
+    //add this to the popup request queue
+    stuffList("val4", val4.value);
+  }
+
+  //val5
+  if(val5.selectedIndex > 0)
+  {
+    console.log("countryCodePassed");
+    //add this to the popup request queue
+    stuffList("val5", val5.selectedIndex);
+  }
+
+  //val6
+  if(val6.value != "")
+  {
+    if (/^\d+$/.test(val6.value)) 
+      {
+        console.log("contactGapPassed");
+        //add this to the popup request queue
+        stuffList("val6", val6.value);
+      } else {
+        console.log("Invalid: contactGap contains non-numeric characters");
+        }
+  }
+
+  //val7
+  if(val7.value != "")
+  {
+    console.log("myName0 captured");
+    if(!document.getElementById("myDropdown0").selectedIndex){
+      document.getElementById("myDropdown0").selectedIndex = 7;
+      console.log("myDropdown0 name captured, age empty");
+    }
+    //add this name and age value to the popup request queue
+    stuffList("val7Name", val7.value);
+    stuffList("val7Age",document.getElementById("myDropdown0").selectedIndex);
+
+    
+  }
+
+  //val8
+  if(val8.value != "")
+  {
+    console.log("myName1 captured");
+    if(!document.getElementById("myDropdown1").selectedIndex){
+      document.getElementById("myDropdown1").selectedIndex = 7;
+      console.log("myDropdown1 name captured, age empty");
+    }
+    //add this name and age value to the popup request queue
+    stuffList("val8Name", val8.value);
+    stuffList("val8Age",document.getElementById("myDropdown1").selectedIndex);
+  }
+  //val9
+  if(val9.value != "")
+  {
+    console.log("myName2 captured");
+    if(!document.getElementById("myDropdown2").selectedIndex){
+      document.getElementById("myDropdown2").selectedIndex = 7;
+      console.log("myDropdown2 name captured, age empty");
+    }
+    //add this name and age value to the popup request queue
+    stuffList("val9Name", val9.value);
+    stuffList("val9Age",document.getElementById("myDropdown2").selectedIndex);
+  }
+  //val10
+  if(val10.value != "")
+  {
+    console.log("myName3 captured");
+    if(!document.getElementById("myDropdown3").selectedIndex){
+      document.getElementById("myDropdown3").selectedIndex = 7;
+      console.log("myDropdown3 name captured, age empty");
+    }
+    //add this name and age value to the popup request queue
+    stuffList("val10Name", val10.value);
+    stuffList("val10Age",document.getElementById("myDropdown3").selectedIndex);
+  }
+  //val11
+  if(val11.value != "")
+  {
+    console.log("myName4 captured");
+    if(!document.getElementById("myDropdown4").selectedIndex){
+      document.getElementById("myDropdown4").selectedIndex = 7;
+      console.log("myDropdown4 name captured, age empty");
+    }
+    //add this name and age value to the popup request queue
+    stuffList("val11Name", val11.value);
+    stuffList("val11Age",document.getElementById("myDropdown4").selectedIndex);
+  }
+  //val12
+  if(val12.value != "")
+  {
+    console.log("myName5 captured");
+    if(!document.getElementById("myDropdown5").selectedIndex){
+      document.getElementById("myDropdown5").selectedIndex = 7;
+      console.log("myDropdown5 name captured, age empty");
+    }
+    //add this name and age value to the popup request queue
+    stuffList("val12Name", val12.value);
+    stuffList("val12Age",document.getElementById("myDropdown5").selectedIndex);
+  }
+  //val13
+  if(val13.value != "")
+  {
+    console.log("myName6 captured");
+    if(!document.getElementById("myDropdown6").selectedIndex){
+      document.getElementById("myDropdown6").selectedIndex = 7;
+      console.log("myDropdown6 name captured, age empty");
+    }
+    //add this name and age value to the popup request queue
+    stuffList("val13Name", val13.value);
+    stuffList("val13Age",document.getElementById("myDropdown6").selectedIndex);
+  }
+  //val14
+  if(val14.value != "")
+  {
+    console.log("myName7 captured");
+    if(!document.getElementById("myDropdown7").selectedIndex){
+      document.getElementById("myDropdown7").selectedIndex = 7;
+      console.log("myDropdown7 name captured, age empty");
+    }
+    //add this name and age value to the popup request queue
+    stuffList("val14Name", val14.value);
+    stuffList("val14Age",document.getElementById("myDropdown7").selectedIndex);
+  }
+
+  //val15
+  if(val15.selectedIndex !== 0)
+  {
+    console.log(val15.selectedIndex + " selected in probe");
+    if(val16.value == "")
+    {
+      console.log("nothing captured in probe");
+      //nothing entered in probe description, NO need to add it to profile then
+    }
+
+    if(val16.value != "")
+    {
+      console.log("ProbecontentPassed");
+      //add probe index and the description to the popup request queue
+      stuffList("val15", val15.selectedIndex);
+      stuffList("val16", val16.value);
+    }
+  }
+
+  //val17
+  if(val17)
+  {
+    console.log(stageVal + " will be the stage if submitted now, refresh page to cancel");
+    //add this to the popup request queue
+    stuffList("val17", stageVal);
+  }
+  //********************************************************
+  //changes stop here
+
+//render the changes in the final box
+  document.getElementById("poppop").style.display = "block";
+}
+
+</script>
 <div class="carousel">
     <div class="carousel-item" id="card-2" ondblclick="useTheObject('card-2', 'backPic-2');">
     <div class="carousel-box">
@@ -176,7 +420,7 @@ async function fetchLeadFunc() {
       <div class="title_1" style="bottom: 69vh; display: none;"><input type="text" class="inputField" value="Use the 01 card to edit country code." disabled></input></div>
       <div class="title" id="timeZone" style="top:22vh;">GST</div>
         <div class="title_1" style="bottom: 60vh; display: none;">
-          <select class="inputField" id="zoneGap" onchange="changeMagnet()">
+          <select class="inputField" id="zoneGap">
             <option value="zone0">Select</option>
             <option value="zone1">UTC - 12:00| IDLW (International Date Line West)</option>
             <option value="zone2">UTC - 11:00| NUT (Niue Time)</option>
@@ -223,7 +467,7 @@ async function fetchLeadFunc() {
       
       <div class="title_1 dropdown" id="dropdownTag" onmouseenter="fieldStretch()" style="bottom: 50vh; display: none;">
         <input type="text" class="dropdown-button inputField_mkc" onmouseover="toggleDropdown()" onfocusout="boggleDropdown();"></input>
-        <div id="dropdownList" class="dropdown-content" onfocusout="boggleDropdown();">
+        <div chosenhash="0" id="dropdownList" class="dropdown-content" onfocusout="boggleDropdown();">
           <a class="optionList" onclick="assignValue(this)" countryHash="1">Afghanistan</a>
           <a class="optionList" onclick="assignValue(this)" countryHash="2">Albania</a>
           <a class="optionList" onclick="assignValue(this)" countryHash="3">Algeria</a>
@@ -534,9 +778,9 @@ function boggleDropdown(){
 }
 
 function assignValue(element){
-var countryHash = element.getAttribute('countryHash');
+var hippy = element.getAttribute("countryHash");
+document.getElementById("dropdownList").setAttribute("chosenhash", hippy);
 document.getElementsByClassName("inputField_mkc")[0].value = element.innerHTML;
-console.log(document.getElementsByClassName("inputField_mkc")[0].value);
 //document.getElementById("countryName").innerHTML = element.innerHTML;
 }
 
@@ -563,7 +807,7 @@ document.querySelector('.inputField_mkc').addEventListener('keyup', function() {
       <div class="title_1" style="bottom: 60vh; display: none;"><input type="text" class="inputField" id = "emailGap"></input></div>
       <div class="title" style="top: 32vh;" id="countryCode">+971</div>
       <div class="title_1" style="bottom: 50vh; display: none;">
-        <select class="inputField" id = "numberGap">
+        <select chosenValue = "option0" class="inputField" id = "numberGap">
         <option value="option0">Select</option>
         <option value="option1">+1</option>
         <option value="option2">+1-242</option>
@@ -777,7 +1021,7 @@ document.querySelector('.inputField_mkc').addEventListener('keyup', function() {
       <div class="title_1" style="bottom: 73vh; z-index: -2; display: none;" id = "void0">
 
         <input type="text" style="max-width: calc(90% - 4vw);" class="inputField" id="myName0"></input>
-        <select style = "max-width: 4vw;" id="myDropdown">
+        <select style = "max-width: 4vw;" id="myDropdown0">
         <option value="option1">Age</option>
         <option value="option2">3</option>
         <option value="option3">4</option>
@@ -800,7 +1044,7 @@ document.querySelector('.inputField_mkc').addEventListener('keyup', function() {
         </select>
         <p id="selectedValue"></p>
         <script type="text/javascript">
-          const dropdown0 = document.getElementById('myDropdown');
+          const dropdown0 = document.getElementById('myDropdown0');
           const selectedValueDisplay0 = document.getElementById('selectedValue');
 
           // Add an event listener to detect changes in the select element
@@ -1170,10 +1414,12 @@ document.querySelector('.inputField_mkc').addEventListener('keyup', function() {
         </div>
 
         <script type="text/javascript">
+            let stageVal = 0;
+
           function updateStage(x){
-            var stageVal = 0;
             if(x === 1){
               stageVal = x;
+
               document.getElementById("miscellaneous").innerHTML = "";
               document.getElementById("miscellaneous").innerHTML = document.getElementById("miscellaneous").innerHTML +  'Stage Change: Level 1';
             } else if(x === 2){
@@ -1325,6 +1571,7 @@ background: linear-gradient(0deg, rgba(15, 230, 255, 0.52) 0%, rgb(115, 17, 255)
 }
 
   </style>
+
   <script type="text/javascript">
     function expandBox() {
     document.getElementById("card07").style.width = "60vw";
@@ -1340,6 +1587,9 @@ background: linear-gradient(0deg, rgba(15, 230, 255, 0.52) 0%, rgb(115, 17, 255)
     }
 }
   </script>
+
+ 
+
 			<div class="num">08</div>
 			<img id="backPic07" style="position: absolute; top: 0;" src="https://thetusharpandey.com/imageFolder/download_(3).png" />
 		</div>
@@ -1381,7 +1631,6 @@ background: linear-gradient(0deg, rgba(15, 230, 255, 0.52) 0%, rgb(115, 17, 255)
 </style>
 </div>
 </a>
-
 <script type="text/javascript">
   //**********************expanding box func code begins**********************
   function useTheObject(cardId, picId){
@@ -1406,9 +1655,12 @@ background: linear-gradient(0deg, rgba(15, 230, 255, 0.52) 0%, rgb(115, 17, 255)
       console.log("runn");
       document.getElementsByClassName("confirmButton")[0].style.opacity = "1";
       document.getElementsByClassName("night")[0].style.zIndex = "120";
-//      document.getElementsByClassName("confirmButton")[0].setAttribute("onclick", "confirmFunc()");  //
-      document.getElementsByClassName("confirmButton")[0].setAttribute("onclick", "changeMagnet()"); 
-      document.getElementById("zotty").innerHTML= "Content: <input type=\"text\" style=\"max-width: 50%;\"class=\"inputField\" name=\"fname\" placeholder=\"Enter Your Input\" id=\"probeContent\"></input>";
+      document.getElementsByClassName("confirmButton")[0].setAttribute("onclick", "confirmFunc()");  
+
+
+      // change onclick function to something else for the final popup and start api update sequence. 
+      document.getElementsByClassName("confirmButton")[0].setAttribute("onclick", "changeMagnet()");  //
+      document.getElementById("zotty").innerHTML = "Content: <input type=\"text\" style=\"max-width: 50%;\"class=\"inputField\" name=\"fname\" placeholder=\"Enter Your Input\" id=\"probeContent\"></input>";
       document.getElementById("probeRender").style.top = "20vh";
 
     /*
@@ -2182,65 +2434,175 @@ document.addEventListener('touchend', handleMouseUp)
 </script>
 
 
-<script type="text/javascript">
+<!-- 
+popup element
+-->
+
+
+
+<div id="poppop" style="position:absolute; display: none;">
+<p onclick="closeBox()" style="cursor: no-drop; position: absolute !important; right: 2vw !important; top: 2vh !important">❌</p>
+
+<div id="popIn1" style="overflow-y: auto; overflow-x: hidden; ">
+  <ul id="popFinal">
+    
+  </ul>
+   <script type="text/javascript">
+
   //editCollector
   //this is going to be a big redundant function
   //check if an input field is empty, ignore. if it has a value, keep that update in the list. 
-function changeMagnet(){
+    
 
-  var val1 = document.getElementById("zoneGap").options[document.getElementById("zoneGap").selectedIndex]; //timezone
-  var val2 = document.getElementById("dropdownList").value;  //countryName
-  var val3 = document.getElementById("parentNameGap").value; //parentName
-  var val4 = document.getElementById("emailGap").value; //email
-  var val5 = document.getElementById("numberGap").value; //countryCode
-  var val6 = document.getElementById("contactGap").value; //phoneNumber
-  var val7 = document.getElementById("myName0").value; //json[9] for name value will be "" if nothing is there, it has to be rendered
-  var val8 = document.getElementById("myName1").value; //json[11] for name value will be "" if nothing is there
-  var val9 = document.getElementById("myName2").value; //json[13] for name value will be "" if nothing is there
-  var val10 = document.getElementById("myName3").value; //json[15] for name value will be "" if nothing is there
-  var val11 = document.getElementById("myName4").value; //json[17] for name value will be "" if nothing is there
-  var val12 = document.getElementById("myName5").value; //json[19] for name value will be "" if nothing is there
-  var val13 = document.getElementById("myName6").value; //json[21] for name value will be "" if nothing is there
-  var val14 = document.getElementById("myName7").value; //json[23] for name value will be "" if nothing is there
-  //selectedOption0 already setup for age dropdowns
-  //selectedOption1 already setup for age dropdowns
-  //selectedOption2 already setup for age dropdowns
-  //selectedOption3 already setup for age dropdowns
-  //selectedOption4 already setup for age dropdowns
-  //selectedOption5 already setup for age dropdowns
-  //selectedOption6 already setup for age dropdowns
-  //selectedOption7 already setup for age dropdowns
-  var val15 = document.getElementById("probeThing").value; //probe header
-  var val16 = ".";
-  if(val15!="Select"){
-    val16 = document.getElementById("probeThing"); //probeSummary added. you refresh to add everyone
+  
+
+  //function confirmFunc(){}
+    /* this was my shit function, below is the chat gpt fix
+    
+        function xiPingPing(){
+
+    console.log('helow_X');
+        //variable will be the incoming ID of element, value will be the new value to update, Return a json bool to update it. 
+    const url = "./1/" + variable + "/" + value; //adding one to show im coming from the stillManipulating page
+    try {
+    const response = await fetch(url);
+    if (!response.ok) {
+      throw new Error(`Response status is bad`);
+    }
+    const jsonCatch = await response.json();
+    return jsonCatch[0];
+    }
+    return jsonCatch[1]; //catch the bool result of edited or failed, based on input new value is same as updated?
+
+
   }
-  //stageVal contained incase changed to something, It will be given a value, Else default is Zero. 
+    */
 
-  //25 values per lead. noice!!
+async function xiPingPing(variable, value) {
+  console.log('helow_X');
+  const url = "./1/" + variable + "/" + value;
 
-  //********************************************************
-
-  //********************************************************
-
-  //********************************************************
-  //tests
-
-
-    console.log(val1.value);
-    console.log(val2.value);
-
-  //********************************************************
-
+  try {
+    const response = await fetch(url);
+    if (!response.ok) {
+      throw new Error(`Response status is bad: ${response.status}`);
+    }
+    const jsonCatch = await response.json();
+    return jsonCatch[0]; // Assuming this is the intended return value
+  } catch (error) {
+    console.error("Error in xiPingPing:", error);
+    return false; // Return a default value if something goes wrong
+  }
 }
 
- function confirmFunc(){
-    console.log("hoBC");
-    console.log(val1.value);
-    /* Individual calls to validate the changes? or one object(post request needed) */
+  //for each update element, Send call to system, update is through ./hashCode/leads/field/value
+  //get a json response of a boolean segment, update to the respective image element and move to next update. 
+  /*
+    var testVal = 0;
+  var elementDisplay = "alfjsj";
+  async function fetchLeadFunc() {
+  const url = "./giveItToMePlease_stillManipulating";
+  try {
+    const response = await fetch(url);
+    if (!response.ok) {
+      throw new Error(`Response status: ${response.status}`);
+    }
+
+    const json = await response.json();
+    console.log(json);
+    testVal = json;
+
+    //------------------------------ adding values to html ---------------------
+    document.getElementById("SMValue").innerHTML = json[0];
+
+  */    
+        //defining pingSomWun() here to have a definition for the location of trigger 
+
+
+  function pingSomWun(){
+    console.log('helow');
+            var idValTemp = 0;
+    console.log("toobhnika");
+    var valueValTemp = "0";
+    listOfChanges = document.querySelectorAll('.updateListStack');
+    listOfChanges.forEach((item) => {
+      idValTemp = item.id;  //id of the list item
+      valueValTemp = item.textContent;  //text value of the list item
+
+      //sending ping here hehe
+      xiPingPing(idValTemp, valueValTemp);
+      console.log("bhootnika");
+
+    });
+  
+  }
+  </script>
+  <button class="custom-btn btn-7" onclick = "pingSomWun()" id="loduLalit" style="display: none;">SendUpdates</button>
+ <script type="text/javascript">
+      function xiPingPing(variable, value){
+
+    console.log('LOWER_SHIT_X');
+
+    //variable will be the incoming ID of element, value will be the new value to update, Return a json bool to update it. 
+    const url = "./1/" + variable + "/" + value; //adding one to show im coming from the stillManipulating page
+    try {
+    const response = await fetch(url);
+    if (!response.ok) {
+      throw new Error(`Response status is bad`);
+    }
+    const jsonCatch = await response.json();
+    return jsonCatch[0];
+    }
+    return jsonCatch[1]; //catch the bool result of edited or failed, based on input new value is same as updated?
+
+  }
+   function pingSomWun1(){
+
+   }
+ </script>
+</div>
+</div>
+
+<script type="text/javascript">
+  function closeBox(){
+    document.getElementById("poppop").style.display="none";
   }
 </script>
+
+
+<style type="text/css">
+#poppop{
+  z-index: 100;
+  min-height: 70vh;
+  min-width: 70vw;
+  opacity: 0.94;
+  top: 15vh;
+  color: whitesmoke;
+  bottom: 15vh;
+  left: 15vw;
+  background: rgba( 255, 240, 14, 0.15 );
+  box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+  backdrop-filter: blur( 12.5px );
+  -webkit-backdrop-filter: blur( 12.5px );
+  border-radius: 10px;
+  border: 1px solid rgba( 255, 255, 255, 0.18 );
+}  
+
+#popIn1{
+  left: 3vw;
+  top: 2vh;
+  max-height: 100%-10vh;
+}
+</style>
+
+
+
 </body>
 </html>
 
-<!--- update is through ./hashCode/leads/type/field/value-->
+<!--
+for future upgrades: 
+// when x updates are to be done, send update list length to the server, if x update requests are not received and the age is closed, Flag the associate and enforce complete list audits. 
+-->
+
+

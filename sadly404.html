@@ -27,8 +27,28 @@ end about -->
         <div class="menu">
             <p class="website_name">GREEDY LEARNING</p>
             <div class="menu_links">
-                <a href="./sadly4041.html" class="link">Why this error</a>
-                <a href="./sadly4041.html#section-3" class="link">Solution</a>
+
+              <script type="text/javascript">
+                const currentUrl = window.location.href;  // e.g., "http://domain.com/<>/leads/sadly404.html"
+
+                // Create a URL object for easier manipulation
+                const urlObj = new URL(currentUrl);
+
+                // Extract the domain
+                const domain = urlObj.origin;  // "http://domain.com"
+
+                // Get the pathname and split it
+                const pathSegments = urlObj.pathname.split('/');  // ["", "<>", "leads", "sadly404.html"]
+
+                // Build the base URL (domain + first path segment)
+                const baseUrl = `${domain}/${pathSegments[1]}/`;  // "http://domain.com/<>/"
+
+                var baseUrl1 = baseUrl+"sadly4041.html";
+                var baseUrl2 = baseUrl+"sadly4041.html#section-3";
+
+              </script>
+                <a onclick="dare()" class="link">Why this error</a>
+                <a onclick="dare_()" class="link">Solution</a>
                 <a href="https://www.livechat.com/typing-speed-test" class="link">Games</a>
             </div>
             <div class="menu_icon">
@@ -81,7 +101,10 @@ end about -->
                     <button onclick="dare()">Next??</button>
                     <script type="text/javascript">
                       function dare(){
-                        window.open("./sadly4041.html", "_self");
+                        window.open(baseUrl1, "_self");
+                      }
+                      function dare_(){
+                        window.open(baseUrl2, "_self");
                       }
                     </script>
                 </article>

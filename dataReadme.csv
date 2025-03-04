@@ -1,38 +1,38 @@
 {
-  "SMValue": "employeeCode","employeeName"
-  "stage":"1/2/3/4/5/6",
-  "campaign": "campaignTheyCameFrom",
+  [0]"SMValue": "employeeCode",
+  [1]"stage":"1/2/3/4/5/6",
+  [2]"campaign": "campaignTheyCameFrom",
  
-  "countryCode": "valueChosenFromCountryListFunction",
-  "timezone": "defaultForTheCountryChosen",
-  "countryName": "nameFromList",
+  [3]"countryCode": "valueChosenFromCountryListFunction",
+  [4]"timezone": "defaultForTheCountryChosen",
+  [5]"countryName": "nameFromList",
 
-  "email": "valueInputFromFormField",
-  "parentName": "FullNameString",
-  "phoneNumber": "valueInputFromFormField",
+  [6]"email": "valueInputFromFormField",
+  [7]"parentName": "FullNameString",
+  [8]"phoneNumber": "valueInputFromFormField",
  
-  "member0": "age0",
-  "member1": "age1",
-  "member2": "age2",
-  "member3": "age3",
-  "member4": "age4",
-  "member5": "age5",
-  "member6": "age6",
-  "member7": "age7", // 8 members cause never seen anyone have more than 5 unique, 6 in redundancy #fuck split function, fuck more brain use for same task. #itTookSimpleMathToReachMoon
+  [9]"member0": [10]"age0",
+  [11]"member1": [12]"age1",
+  [13]"member2": [14]"age2",
+  [15]"member3": [16]"age3",
+  [17]"member4": [18]"age4",
+  [19]"member5": [20]"age5",
+  [21]"member6": [22]"age6",
+  [23]"member7": [24]"age7", // 8 members cause who fucks so much, and such a family is breeding not procreating #itTookSimpleMathToReachMoon
 
-  "refer": {
-    "receivedFrom"  : "phoneNumber"    ,
-    "givenTo"       : "phoneNumber"    ,
-    "...i-thGivenTo": "i-thPhoneNumber"
-  },
-  "probe": {
-    "probeHeaderFromAllowedPrompts": "probeSummary"     ,
-    "i'th-ProbeSummary"            : "i'th-ProbeComment"
-  },
-  "EventLog": {
-    "eventComment": "concatenatedStringOf_date_time_employeeCode",
-    "...i'th_Appended_eventComment": "...i'th_Appended_concatenatedStringOf_date_time_employeeCode"
-  },
-  "moneyData": ["invoiceID", "...", "i-thInvoice"],
-  "sessionList": {"sessionID": "cost", "...appendedIDs": "appendedCosts"}
+  [25]"receivedFrom: phoneNumber"
+  [26]"givenTo:phoneNumber"    
+
+
+  [27]"probeHeaderFromAllowedPrompts && probeSummary"
+
+
+  [28]"eventComment": "concatenatedStringOf_date_time_employeeCode",
+  "...i'th_Appended_eventComment": "...i'th_Appended_concatenatedStringOf_date_time_employeeCode",
+  
+  [29]"invoiceID,i-thInvoice"
+
+  [30]"sessionList,sessionID:cost,...appendedIDs:appendedCosts"
+  [31]"#End_Of_File"
 },
+

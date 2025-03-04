@@ -16,7 +16,7 @@ Codepen: https://codepen.io/supah/
 -->
 <script type="text/javascript">
   var testVal = 0;
-  var elementDisplay = "alfjsj";
+  var elementDisplay = "";
 async function fetchLeadFunc() {
   const url = "./giveItToMePlease_stillManipulating";
   try {
@@ -33,8 +33,24 @@ async function fetchLeadFunc() {
     document.getElementById("SMValue").innerHTML = json[0];
     document.getElementById("campaign").innerHTML = json[2];
     document.getElementById("countryCode").innerHTML = json[3];
-    document.getElementById("timeZone").innerHTML = json[4];
-    document.getElementById("countryName").innerHTML = json[5];
+    
+    const x = document.getElementById("zoneGap");
+    for (var i = 0; i <= 38; i++) {
+      if(x.options[i].getAttribute("value") == json[4])
+      {
+        document.getElementById("timeZone").innerHTML = x.options[i].innerHTML; 
+      }
+    }
+
+    const x_coun = document.querySelectorAll(".optionList");
+    for (var i = 0; i <=194; i++) {
+      if (x_coun[i].getAttribute("countryHash") == json[5])
+      {
+        document.getElementById("countryName").innerHTML = x_coun[i].innerHTML;
+      }
+    }
+
+    //document.getElementById("countryName").innerHTML = json[5];
     document.getElementById("parentName").innerHTML = json[7];
     document.getElementById("email").innerHTML = json[6];
     document.getElementById("parentNumber").innerHTML = json[8];
@@ -169,7 +185,8 @@ async function fetchLeadFunc() {
   var textVal = serial + " : " + newVal;
   li.appendChild(document.createTextNode(textVal));
   li.setAttribute("id", serial); // added line
-  li.setAttribute("class", "updateListStack"); //marking these members which have to be worked on by xiPingPing
+  li.setAttribute("payload", newVal); //the value to send to API, Congrajulashins you got me!, If I find you, I'll have your pheromones or testosterone based on your gender
+  li.setAttribute("class", "updateListStack"); //marking these members which have to be worked on by xiPingPing-- dissolving this function into the previous one. 
   ul.appendChild(li);
   }
 
@@ -218,7 +235,8 @@ async function fetchLeadFunc() {
   {
     console.log("zonePassed");
     //add this to the popup request queue
-    stuffList("val1", val1.selectedIndex);
+    stuffList("val1", val1.options[val1.selectedIndex].getAttribute("value"));
+
   }
 
   //val2
@@ -249,7 +267,7 @@ async function fetchLeadFunc() {
   {
     console.log("countryCodePassed");
     //add this to the popup request queue
-    stuffList("val5", val5.selectedIndex);
+    stuffList("val5", val5.options[val5.selectedIndex].value);
   }
 
   //val6
@@ -275,7 +293,7 @@ async function fetchLeadFunc() {
     }
     //add this name and age value to the popup request queue
     stuffList("val7Name", val7.value);
-    stuffList("val7Age",document.getElementById("myDropdown0").selectedIndex);
+    stuffList("val7Age",document.getElementById("myDropdown0").options[document.getElementById("myDropdown0").selectedIndex].innerHTML);
 
     
   }
@@ -378,9 +396,9 @@ async function fetchLeadFunc() {
     if(val16.value != "")
     {
       console.log("ProbecontentPassed");
-      //add probe index and the description to the popup request queue
-      stuffList("val15", val15.selectedIndex);
-      stuffList("val16", val16.value);
+      //add probe index and the description to the popup request queue, concatenate and pack val15.selectedIndex and val16.value
+      let timporari = val15.selectedIndex + " $$ " + val16.value; //sending API call with , is making issues
+      stuffList("val15", timporari);
     }
   }
 
@@ -402,7 +420,7 @@ async function fetchLeadFunc() {
 <div class="carousel">
     <div class="carousel-item" id="card-2" ondblclick="useTheObject('card-2', 'backPic-2');">
     <div class="carousel-box">
-      <div class="title">shopTagg</div>
+      <div class="title" id="cardName-2">shopTagg</div>
       <div class="title" style="top: 90px;" id="campaign">testCampaignsldkjghlkjhsdfgdfgsdfgjslkjhsdfghlkjhsdgflkjh</div>
       <div class="title" style="top: 160px" id="SMValue">039</div>
       <div class="title" style="top: 230px" id="employeeName">william</div>
@@ -415,10 +433,10 @@ async function fetchLeadFunc() {
   </div>
   <div class="carousel-item" id="card-1" ondblclick="useTheObject('card-1', 'backPic-1')";>
     <div class="carousel-box">
-      <div class="title">geoSpot</div>
+      <div class="title" id="cardName-1">geoSpot</div>
       <div class="title" id="countryCodeDisplay" style="top: 12vh;">+971</div>
       <div class="title_1" style="bottom: 69vh; display: none;"><input type="text" class="inputField" value="Use the 01 card to edit country code." disabled></input></div>
-      <div class="title" id="timeZone" style="top:22vh;">GST</div>
+      <div class="title" id="timeZone" style="top:22vh; width: max-content;">GST</div>
         <div class="title_1" style="bottom: 60vh; display: none;">
           <select class="inputField" id="zoneGap">
             <option value="zone0">Select</option>
@@ -463,7 +481,7 @@ async function fetchLeadFunc() {
     </select>
 </div>
 
-      <div class="title" id="countryName" style="top: 32vh;">United states of America</div>
+      <div class="title" id="countryName" style="top: 32vh; width: max-content;">United states of America</div>
       
       <div class="title_1 dropdown" id="dropdownTag" onmouseenter="fieldStretch()" style="bottom: 50vh; display: none;">
         <input type="text" class="dropdown-button inputField_mkc" onmouseover="toggleDropdown()" onfocusout="boggleDropdown();"></input>
@@ -1015,32 +1033,32 @@ document.querySelector('.inputField_mkc').addEventListener('keyup', function() {
 	</div>
 
 	<div class="carousel-item" id="card02" ondblclick="useTheObject('card02', 'backPic02')";>
-		<div class="carousel-box" style="overflow-y: auto;">
+		<div class="carousel-box" style="overflow-y: auto; overflow-x: auto;">
       <div class="num">02<br></div>
 			<div class = "title" id="memberList">Members</div>
       <div class="title_1" style="bottom: 73vh; z-index: -2; display: none;" id = "void0">
 
-        <input type="text" style="max-width: calc(90% - 4vw);" class="inputField" id="myName0"></input>
+        <input type="text" style="max-width: calc(90% - 4vw);" class="inputField" id="myName0" ondblclick="useTheObject('card02', 'myName0')"></input>
         <select style = "max-width: 4vw;" id="myDropdown0">
         <option value="option1">Age</option>
         <option value="option2">3</option>
         <option value="option3">4</option>
-        <option value="option3">5</option>
-        <option value="option3">6</option>
-        <option value="option3">7</option>
-        <option value="option3">8</option>
-        <option value="option3">9</option>
-        <option value="option3">10</option>
-        <option value="option3">11</option>
-        <option value="option3">12</option>
-        <option value="option3">13</option>
-        <option value="option3">14</option>
-        <option value="option3">15</option>
-        <option value="option3">16</option>
-        <option value="option3">17</option>
-        <option value="option3">18</option>
-        <option value="option3">19</option>
-        <option value="option3">20&+</option>
+        <option value="option4">5</option>
+        <option value="option5">6</option>
+        <option value="option6">7</option>
+        <option value="option7">8</option>
+        <option value="option8">9</option>
+        <option value="option9">10</option>
+        <option value="option10">11</option>
+        <option value="option11">12</option>
+        <option value="option12">13</option>
+        <option value="option13">14</option>
+        <option value="option14">15</option>
+        <option value="option15">16</option>
+        <option value="option16">17</option>
+        <option value="option17">18</option>
+        <option value="option18">19</option>
+        <option value="option19">20&+</option>
         </select>
         <p id="selectedValue"></p>
         <script type="text/javascript">
@@ -1314,7 +1332,7 @@ document.querySelector('.inputField_mkc').addEventListener('keyup', function() {
 
         </script>
       </div>
-			<div class="title" style="top: 70px;" id="listRender">Tushar</div>
+			<div class="title" style="top: 70px; width: max-content" id="listRender">Tushar</div>
 
       
 			<img id="backPic02" style="filter: blur(4px); -webkit-filter: blur(4px); position: fixed;" src="https://thetusharpandey.com/imageFolder/download_(1).png" />
@@ -1323,7 +1341,7 @@ document.querySelector('.inputField_mkc').addEventListener('keyup', function() {
 
   <div class="carousel-item" id="card08" ondblclick="useTheObject('card08', 'backPic08')";>
     <div class="carousel-box">
-      <div class="title">Sessions</div>
+      <div class="title" id="cardName08">Sessions</div>
       <div class="title" style="top: 90px;" id="classDiv">
         None<br>
         None<br>
@@ -1338,7 +1356,6 @@ document.querySelector('.inputField_mkc').addEventListener('keyup', function() {
 
 	<div class="carousel-item" id="card04" ondblclick="useTheObject('card04', 'backPic04')"; >
 		<div class="carousel-box">
-			<div class="title">Probing</div>
       <div class="title" style="top: 8vh;">Probe</div>
       <div class="title_1" id="potty" style="bottom: 74vh; display: none; ">
         <div>Add new: </div>
@@ -1360,7 +1377,7 @@ document.querySelector('.inputField_mkc').addEventListener('keyup', function() {
       <div class="title_1" style="top: 16vh; overflow-y: overlay; display: inline-flex;" id="zotty">
         
       </div>  
-      <div class="title" style="top: 16vh; overflow-y: overlay" id="probeRender">None</div>
+      <div class="title" style="top: 16vh; overflow-y: overlay; width: max-content; overflow: visible;" id="probeRender">None</div>
 
 			<div class="num">04</div>
 			<img id="backPic04" style="filter: blur(2px);position: fixed; -webkit-filter: blur(2px);" src="https://thetusharpandey.com/imageFolder/download_(5).png" />
@@ -1379,7 +1396,7 @@ document.querySelector('.inputField_mkc').addEventListener('keyup', function() {
 
 	<div class="carousel-item" id="card06" ondblclick="useTheObject('card06', 'backPic06')";>
 		<div class="carousel-box">
-			<div class="title">Invoicesss</div>
+			<div class="title" id="cardName06">Invoicesss</div>
       <div class="title" style="top: 90px;" id="invoiceEntry">Not Paid</div>
 			<div class="num">06</div>
 			<img id="backPic06" style="position: fixed;" src="https://thetusharpandey.com/imageFolder/download_(9).png" />
@@ -1388,7 +1405,7 @@ document.querySelector('.inputField_mkc').addEventListener('keyup', function() {
 
 	 <div class="carousel-item" id="card03" ondblclick="useTheObject('card03', 'backPic03')";>
     <div class="carousel-box">
-      <div class="title">refTree</div>
+      <div class="title" id="cardName03">refTree</div>
       <div class="title" id="referRender" style="top: 60px; overflow-y: overlay; width: 100vw;">Recieved from<br></div>
       <div class="num">07</div>
       <img id="backPic03" style="position: fixed;" src="https://thetusharpandey.com/imageFolder/download_(4).png"/>
@@ -2441,7 +2458,7 @@ popup element
 
 
 <div id="poppop" style="position:absolute; display: none;">
-<p onclick="closeBox()" style="cursor: no-drop; position: absolute !important; right: 2vw !important; top: 2vh !important">❌</p>
+<p onclick="closeBox()" style="cursor: no-drop; position: absolute !important; font-size: 4vh; right: 2vw !important; !important">❌</p>
 
 <div id="popIn1" style="overflow-y: auto; overflow-x: hidden; ">
   <ul id="popFinal">
@@ -2458,7 +2475,7 @@ popup element
 
   //function confirmFunc(){}
     /* this was my shit function, below is the chat gpt fix
-    
+
         function xiPingPing(){
 
     console.log('helow_X');
@@ -2477,6 +2494,13 @@ popup element
 
   }
     */
+/*
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+same name two functions!!
 
 async function xiPingPing(variable, value) {
   console.log('helow_X');
@@ -2490,10 +2514,20 @@ async function xiPingPing(variable, value) {
     const jsonCatch = await response.json();
     return jsonCatch[0]; // Assuming this is the intended return value
   } catch (error) {
-    console.error("Error in xiPingPing:", error);
+    console.log("tupu", error);
     return false; // Return a default value if something goes wrong
   }
 }
+
+
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+*/
+
+
+
 
   //for each update element, Send call to system, update is through ./hashCode/leads/field/value
   //get a json response of a boolean segment, update to the respective image element and move to next update. 
@@ -2519,46 +2553,47 @@ async function xiPingPing(variable, value) {
         //defining pingSomWun() here to have a definition for the location of trigger 
 
 
-  function pingSomWun(){
-    console.log('helow');
+  async function pingSomWun(){
+    //console.log('helow');
             var idValTemp = 0;
-    console.log("toobhnika");
+    //console.log("toobhnika");
     var valueValTemp = "0";
     listOfChanges = document.querySelectorAll('.updateListStack');
-    listOfChanges.forEach((item) => {
-      idValTemp = item.id;  //id of the list item
-      valueValTemp = item.textContent;  //text value of the list item
+    for (const item of listOfChanges) {  // ✅ Use for...of instead of forEach
+        idValTemp = item.id;  
+        valueValTemp = item.getAttribute("payload");  
 
-      //sending ping here hehe
-      xiPingPing(idValTemp, valueValTemp);
-      console.log("bhootnika");
-
-    });
-  
-  }
-  </script>
-  <button class="custom-btn btn-7" onclick = "pingSomWun()" id="loduLalit" style="display: none;">SendUpdates</button>
- <script type="text/javascript">
-      function xiPingPing(variable, value){
-
-    console.log('LOWER_SHIT_X');
+        // Sending ping request
+        //console.log('LOWER_SHIT_X');
 
     //variable will be the incoming ID of element, value will be the new value to update, Return a json bool to update it. 
-    const url = "./1/" + variable + "/" + value; //adding one to show im coming from the stillManipulating page
+    const url = "./1/" + idValTemp + "/" + valueValTemp; //adding one to show im coming from the stillManipulating page
     try {
     const response = await fetch(url);
     if (!response.ok) {
       throw new Error(`Response status is bad`);
     }
     const jsonCatch = await response.json();
-    return jsonCatch[0];
+    if (jsonCatch[0] == "tuplu") {
+      document.getElementById(idValTemp).innerHTML+= " ✅";
     }
-    return jsonCatch[1]; //catch the bool result of edited or failed, based on input new value is same as updated?
+    }catch (error) {
+        console.error("Fetch Error:", error); // Log error
+        return { success: false, error: error.message }; // Return a safe fallback JSON
+    }
 
+
+    }  
   }
-   function pingSomWun1(){
+  </script>
+  <button class="custom-btn btn-7" onclick = "pingSomWun()" id="loduLalit" style="display: none;">SendUpdates</button>
+ <script type="text/javascript">
+     /* 
+     async function xiPingPing(variable, value){
 
-   }
+    
+  }  
+      */
  </script>
 </div>
 </div>
@@ -2604,5 +2639,3 @@ async function xiPingPing(variable, value) {
 for future upgrades: 
 // when x updates are to be done, send update list length to the server, if x update requests are not received and the age is closed, Flag the associate and enforce complete list audits. 
 -->
-
-

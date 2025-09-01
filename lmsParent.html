@@ -1,0 +1,49 @@
+<html lang="en"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Parent Dashboard</title>
+  <style>
+    body {
+      margin: 0; font-family: sans-serif; background: #f9f9fb;
+    }
+    .container {
+      padding: 20px;
+      max-width: 1200px;
+      margin: auto;
+    }
+    .section {
+      background: white;
+      border-radius: 10px;
+      padding: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.05);
+    }
+    .grid {
+      display: flex; flex-wrap: wrap; gap: 15px;
+    }
+    .card {
+      flex: 1 1 200px;
+      background: #eef1f5;
+      border-radius: 10px;
+      padding: 15px;
+      text-align: center;
+    }
+    
+    @media (max-width: 600px) {
+      .grid {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <!-- Summary Cards -->
+    <div class="grid section">
+      <div class="card">👧 3 Students</div>
+      <div class="card">📅 6 Sessions</div>
+      <div class="card">💳 ₹12,000 Invoices</div>
+      <div class="card">🔁 2 Referrals</div>
+    </div>
+</body></html>

@@ -8,7 +8,14 @@
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<!-- Preload hero background image in WebP -->
+<link rel="preload" as="image" href="https://images.pexels.com/photos/1102915/pexels-photo-1102915.jpeg?auto=webp">
+
+
 <style>
+  @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,700;0,800;1,400;1,700;1,800&display=swap');
+
 body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
 
 body, html {
@@ -23,7 +30,7 @@ body, html {
   background-size: cover;
   background-image: url("https://images.pexels.com/photos/1102915/pexels-photo-1102915.jpeg"); 
 
-  min-height: 100%;
+  min-height: 100vh;
 }
 
 .w3-bar .w3-button {
@@ -55,6 +62,13 @@ body, html {
    
 </head>
 <body > <!--  onmousemove="reload__()">  -->
+
+<!-- Hidden hero image to boost LCP priority -->
+<img src="https://images.pexels.com/photos/1102915/pexels-photo-1102915.jpeg?auto=webp"
+     alt=""
+     style="display:none"
+     fetchpriority="high">
+
 
 <!-- Debug switch -->
 
@@ -181,9 +195,9 @@ body, html {
 <header class="bgimg-1 w3-display-container w3-grayscale-min" id="home">
   <div class="w3-display-left w3-text-white" style="padding:48px">
     <span id="test" class="w3-xxxlarge w3-hide-small"> </span><br>
-    <span class="w3-jumbo w3-hide-small">Start one chapter, and become the best...</span><br>
+    <h1 class="w3-jumbo w3-hide-small">Start one chapter, and become the best...</span><br>
     <span id="test2" class="w3-xxlarge w3-hide-large w3-hide-medium"><!-- deleted the data, this is the tag that will be written by function--></span><br>
-    <span class="w3-large w3-hide-large w3-hide-medium">Start a chapter & become the best...</span><br>
+    <h1 class="w3-large w3-hide-large w3-hide-medium">Start a chapter & become the best...</span><br>
     <span class="w3-large">Trust me, I will be your best Friend in this Journey!! </span>
     <p><a href="#about" class="w3-button w3-white w3-padding-large w3-large w3-margin-top w3-opacity w3-hover-opacity-off" style="border-radius:35px 30px 50px 70px;">Click Here, Welcome to the Room</a></p>
   </div>
@@ -971,38 +985,37 @@ a {
   <div class="w3-row-padding" style="margin-top:64px">
     <div class="w3-col l3 m6">
       <img src="https://thetusharpandey.github.io/tinyImages/image24.png" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="A microphone">
-      Mic got first prize.
+      Kushagra got first prize in school extempore competition.
     </div>
     <div class="w3-col l3 m6">
       <img src="https://thetusharpandey.github.io/tinyImages/image23.png" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="A phone">
-      Phone qualified for NDA SSB
+      Lisa ramsay qualified for her interschool competition of poem recitation on 4th July Celebrations.
     </div>
     <div class="w3-col l3 m6">
       <img src="https://thetusharpandey.github.io/tinyImages/image22.png" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="A drone">
-      Done won 2nd in State level flying Competition
-    </div>
+      Akshansh secured rank 3 in the essay writing event school wide for grade 3-6</div>
     <div class="w3-col l3 m6">
       <img src="https://thetusharpandey.github.io/tinyImages/image21.png" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="Soundbox">
-      soundbox won Singing competition
+      Shivin scored highest in Singing at school annual function for their skills!
     </div>
   </div>
 
   <div class="w3-row-padding w3-section">
     <div class="w3-col l3 m6">
       <img src="https://thetusharpandey.github.io/tinyImages/image20.png" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="A tablet">
-      Tablet got 1st Rank in Abacus competition
+      Lakshmi Murty scored first in Artifact presentation, describing one ancient relic!
     </div>
     <div class="w3-col l3 m6">
       <img src="https://thetusharpandey.github.io/tinyImages/image19.png" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="A camera">
-      Camera won the Photo-realism painting competion
+      Anvay won second prize in speech activity
     </div>
     <div class="w3-col l3 m6">
       <img src="https://thetusharpandey.github.io/tinyImages/image18.png" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="A typewriter">
-      Typewriter won the Essay writing champ in School.
+      Preethama was the Essay Writing Champ in her school annual function.
     </div>
     <div class="w3-col l3 m6">
       <img src="https://thetusharpandey.github.io/tinyImages/image17.png" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="A tableturner">
-      Table Turner performed in front of Pdt. Birju Maharaaj.
+      Kunal is the fastest reader in his grade for consecutive 2 years.
     </div>
   </div>
   <p>-Pictures edited with AI to protect pivacy and visual identity of kids-</p>
@@ -1117,25 +1130,55 @@ a {
 </div>
 
 <!-- Contact Section -->
+
+<script>
+function sendWhatsAppMessage() {
+  const name = document.getElementById('goodName').value.trim();
+  const email = document.getElementById('email').value.trim();
+  const subject = document.getElementById('winnerName').value.trim();
+  const message = document.getElementById('contactPoint').value.trim();
+
+  const fullMessage = `Hi, we are Parent: ${name}%0AEmail: ${email}%0AChildName: ${subject}%0APhone: ${message}`;
+
+  var whatsappLink = `https://wa.me/919990854947?text=${fullMessage}`;
+  if(name=="" && email =="" && subject=="" && message=="")
+  {
+    whatsappLink=`https://wa.me/918851555788?text=Hi`;
+  }
+
+
+
+  window.open(whatsappLink, '_blank');
+}
+
+function sendWhatsAppMessage1()
+{
+    whatsappLink=`https://wa.me/918851555788?text=Hi`;
+    window.open(whatsappLink, '_blank');
+
+}
+</script>
+
+
 <div class="w3-container w3-light-grey" style="padding:128px 16px" id="contact">
   <h3 class="w3-center">Meet Us</h3>
-  <p class="w3-center w3-large">Don't be scared, talk to a polite counsellor now, or Request a polite callback later :-)</p>
+  <p class="w3-center" ><h3>Don't be scared, talk to a polite counsellor now, or Request a polite callback later :-)</h3></p>
   <div style="margin-top:48px">
     <p><i class="fa fa-map-marker fa-fw w3-xxlarge w3-margin-right"></i> 27th Street, HSR Layout, Bengalore, India</p>
     <p><i class="fa fa-phone fa-fw w3-xxlarge w3-margin-right"></i> Phone: +91 8851-555-788</p>
     <p><i class="fa fa-envelope fa-fw w3-xxlarge w3-margin-right"> </i> Email: god@puncturebuddy.com</p>
     <br>
-    <form action="/action_page.php" target="_blank">
-      <p><input class="w3-input w3-border" type="text" placeholder="Parent Name" required name="Name"></p>
-      <p><input class="w3-input w3-border" type="text" placeholder="Email (any email ID)" required name="Email"></p>
-      <p><input class="w3-input w3-border" type="text" placeholder="Child name" required name="Subject"></p>
-      <p><input class="w3-input w3-border" type="text" placeholder="Phone number" required name="Message"></p>
+    <form action="https://wa.meee/" target="_blank">
+      <p><input class="w3-input w3-border" id="goodName" type="text" placeholder="Parent Name" required name="Name"></p>
+      <p><input class="w3-input w3-border" id="email"type="text" placeholder="Email (any email ID)" required name="Email"></p>
+      <p><input class="w3-input w3-border" id="winnerName" type="text" placeholder="Child name" required name="Subject"></p>
+      <p><input class="w3-input w3-border" id="contactPoint" type="text" placeholder="Phone number" required name="Message"></p>
       <p>
-        <button class="w3-button w3-black"  style="border-radius: 50px; min-height:99px !important; margin-left:10vw !important;" type="submit">
+        <button class="w3-button w3-black"  style="border-radius: 50px; min-height:99px !important; margin-left:10vw !important;" onclick="sendWhatsAppMessage1()" type="button">
           <i class="fa fa-paper-plane"></i> Talk to our sweet counsellors :-)
         </button>
          OR 
-        <button class="w3-button w3-green"  style="border-radius: 60px; min-height:99px !important; position: block; margin-right:10vw !important; " type="submit">
+        <button class="w3-button w3-green"  style="border-radius: 60px; min-height:99px !important; position: block; margin-right:10vw !important; " type="button" onclick="sendWhatsAppMessage()" >
           <i class="fa fa-whatsapp"></i> Send "Hi" on our WhatsApp, Hover on me
         </button>
       </p>
@@ -1193,7 +1236,7 @@ a {
                     <a href="#" class="footer-column-menu-item-link">About Us </a>
                 </li>
                 <li class="footer-column-menu-item" role="menuitem">
-                    <a href="#" class="footer-column-menu-item-link">Out Teachers</a>
+                    <a href="#" class="footer-column-menu-item-link">Our Teachers</a>
                 </li>
                 <li class="footer-column-menu-item" role="menuitem">
                     <a href="#" class="footer-column-menu-item-link">Courses</a>
@@ -1238,7 +1281,6 @@ a {
         </div>
     </section>
 <style type="text/css">
-  @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,700;0,800;1,400;1,700;1,800&display=swap');
 
 * {
     box-sizing: border-box;

@@ -23,7 +23,9 @@ body, html {
   line-height: 1.8;
   scroll-behavior: smooth;
 }
-
+* {
+  outline: 1px solid rgba(255, 0, 0, 0.5); /* red outlines */
+}
 /* Full height image header */
 .bgimg-1 {
   background-position: center;
@@ -38,7 +40,10 @@ body, html {
   padding: 16px;
 
 }
+.w3-bar {
+  width:100vw;
 
+}
 
 </style>
 
@@ -80,7 +85,6 @@ body, html {
 //  function reload__(){
 //    setTimeout( window.location.reload(), 5000);
 //  }};
-  
 </script>
 
 <!-- Navbar (sit on top) -->
@@ -167,7 +171,9 @@ body, html {
   .w3-top{
   top: 18px;
   z-index: 10;
+  width: 100vw;
 }
+  
 
 #myNavbar{
   border-radius: 50px;
@@ -204,6 +210,14 @@ body, html {
   </div>
   <div class="w3-display-bottomleft w3-text-grey w3-large" style="margin:25px 69px;">
     <style>
+  
+  #test {
+  display: inline-block;
+  max-width: 100vw;
+  white-space: normal;       /* allow wrapping */
+  word-break: break-word;    /* legacy */
+  overflow-wrap: break-word; /* modern */
+}
       .socialIcons{
         padding-right: 14px;
       }
@@ -281,9 +295,7 @@ body, html {
   --transition-time: 0.5s;
 }
 
-* {
-  box-sizing: border-box;
-}
+ 
 
 body {
   margin: 0;
@@ -630,9 +642,7 @@ a {
   font-family: "Trebuchet MS", sans-serif;
   font-size: 15.5px;
 }
-* {
-  box-sizing: border-box;
-}
+ 
 .container {
   width: 100%;
   display: grid;
@@ -1141,7 +1151,7 @@ function sendWhatsAppMessage() {
 
   const fullMessage = `Hi, we are Parent: ${name}%0AEmail: ${email}%0AChildName: ${subject}%0APhone: ${message}`;
 
-  var whatsappLink = `https://wa.me/919990854947?text=${fullMessage}`;
+  var whatsappLink = `https://wa.me/919990854946?text=${fullMessage}`;
   if(name=="" && email =="" && subject=="" && message=="")
   {
     whatsappLink=`https://wa.me/918851555788?text=Hi`;
@@ -1175,13 +1185,28 @@ function sendWhatsAppMessage1()
       <p><input class="w3-input w3-border" id="winnerName" type="text" placeholder="Child name" required name="Subject"></p>
       <p><input class="w3-input w3-border" id="contactPoint" type="text" placeholder="Phone number" required name="Message"></p>
       <p>
-        <button class="w3-button w3-black"  style="border-radius: 50px; min-height:99px !important; margin-left:10vw !important;" onclick="sendWhatsAppMessage1()" type="button">
-          <i class="fa fa-paper-plane"></i> Talk to our sweet counsellors :-)
-        </button>
-         OR 
-        <button class="w3-button w3-green"  style="border-radius: 60px; min-height:99px !important; position: block; margin-right:10vw !important; " type="button" onclick="sendWhatsAppMessage()" >
-          <i class="fa fa-whatsapp"></i> Send "Hi" on our WhatsApp, Hover on me
-        </button>
+       <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:1rem; margin:2rem 0;">
+  <button 
+    onclick="sendWhatsAppMessage1()" 
+    type="button"
+    style="background:#222; color:#fff; border:none; border-radius:50px; 
+           padding:1rem 2rem; font-size:1.1rem; font-weight:600; cursor:pointer;
+           display:flex; align-items:center; gap:0.5rem;
+           box-shadow:0 4px 12px rgba(0,0,0,0.15);">
+    <i class="fa fa-paper-plane"></i> Talk to our sweet counsellors :-)
+  </button>
+
+  <button 
+    onclick="sendWhatsAppMessage()" 
+    type="button"
+    style="background:#25D366; color:#fff; border:none; border-radius:50px; 
+           padding:1rem 2rem; font-size:1.1rem; font-weight:600; cursor:pointer;
+           display:flex; align-items:center; gap:0.5rem;
+           box-shadow:0 4px 12px rgba(0,0,0,0.15);">
+    <i class="fa fa-whatsapp"></i> Send "Hi" on WhatsApp
+  </button>
+</div>
+
       </p>
     </form>
     
@@ -1592,7 +1617,7 @@ var div = document.getElementById("test"),
     trigger=200,
     time2 = setInterval(typeDiv,trigger),
     time3,
-    text = "GreedyLearning... Keeping the Dreams Alive!!",
+    text = "GreedyLearning… Keeping the Dreams Alive!!",
     text2=text,
     clear,
     clear2,

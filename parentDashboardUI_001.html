@@ -1,0 +1,359 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Easy Side Menu Transitions — Vanilla JS</title>
+
+  <!-- Optional: ionicons for icons (keeps the look from original). Remove if you want no external deps. -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+
+  <style>
+  /* ==========================
+     Adapted styles (from original)
+     ========================== */
+  @import url('https://fonts.googleapis.com/css?family=Nunito:400,700,300');
+
+  :root {
+    --bg: #3A3A4F;
+    --accent: #38F1CF;
+    --muted: #5F5F71;
+    --panel: #ffffff;
+    --cta: #41EFB6;
+  }
+
+  html,body {
+    height:100%;
+    margin:0;
+    font-family: "Nunito", sans-serif;
+    background: var(--bg);
+    color: white;
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+  }
+
+  /* layout */
+  .app {
+    display:flex;
+    height:100vh;
+    overflow:hidden;
+    position:relative;
+  }
+
+  /* left menu */
+  ion-side-menu {
+    width:260px;
+    min-width:220px;
+    max-width:320px;
+    background:#fff;
+    transform:translateX(-100%);
+    position:relative;
+    z-index:20;
+    box-shadow: 2px 0 30px rgba(0,0,0,0.4);
+  }
+  /* keep visual theme from original (dark main content, colorful icons on menu items) */
+  ion-side-menu .menu-inner {
+    background: #ffffff;
+    height:100%;
+    padding-top:28px;
+    box-sizing:border-box;
+    overflow:auto;
+  }
+
+  ion-side-menu .item {
+    position:relative;
+    padding:18px 15px;
+    border-bottom: 1px solid rgba(0,0,0,0.04);
+    cursor:pointer;
+    overflow:visible;
+  }
+  ion-side-menu .item i {
+    font-size:20px;
+    padding:10px;
+    position:absolute;
+    left:12px;
+    top:12px;
+    :0;
+  }
+  ion-side-menu .item span {
+    display:inline-block;
+    padding-left:48px;
+    font-weight:600;
+    color:var(--muted);
+    text-transform:capitalize;
+    :0;
+  }
+  ion-side-menu .sub {
+    display:block;
+    padding-left:48px;
+    font-size:12px;
+    color:#8f8f95;
+    margin-top:6px;
+  }
+
+  /* content area */
+  .content {
+    flex:1;
+    padding:28px;
+    box-sizing:border-box;
+    position:relative;
+    z-index:10;
+    overflow:auto;
+    background: var(--bg);
+  }
+
+  .pad {
+    width:80%;
+    margin-left:60px;
+    max-width:770px;
+  }
+
+  .logo {
+    font-size:60px;
+    color:white;
+    display:block;
+    margin-top:40px;
+  }
+  h1 { color: var(--accent); margin:10px 0 18px 0; }
+  h2 { color:white; font-weight:400; margin:0 0 22px 0; }
+
+  a.download, a.follow {
+    display:inline-block;
+    padding:14px 22px;
+    border-radius:4px;
+    text-decoration:none;
+    color:white;
+    font-weight:900;
+    margin-right:10px;
+  }
+  a.download { background:var(--cta); }
+  a.follow { background:none; border:2px solid white; }
+
+  /* buttons */
+  .controls { margin-top:18px; }
+  button {
+    padding:10px 20px;
+    border-radius:100px;
+    border:2px solid white;
+    background:none;
+    color:white;
+    font-weight:600;
+    margin-right:10px;
+    margin-bottom:10px;
+    cursor:pointer;
+  }
+  button.active { border-color:var(--accent); color:var(--accent); }
+
+  /* overlay when menu open */
+  .overlay {
+    position:fixed;
+    left:0;top:0;right:0;bottom:0;
+    background: rgba(0,0,0,0.35);
+    :0;
+    pointer-events:none;
+    transition:  .25s;
+    z-index:15;
+  }
+
+  /* when menu is open — move menu in and allow animations to run */
+  body.menu-open ion-side-menu {
+    transform: translateX(0);
+    transition: transform 300ms cubic-bezier(0.42, 2.12, 0.35, 0.55);
+  }
+  body.menu-open .overlay {
+    opacity:1;
+    pointer-events:auto;
+  }
+
+  /* ---------- Animation classes (kept same names as original) ---------- */
+  /* we'll animate items when .menu-open is set on body; selectors follow original pattern */
+  body.menu-open ion-side-menu .item.slide_effect:nth-of-type(1) i { animation: menu_pop .17s .05s forwards; }
+  body.menu-open ion-side-menu .item.slide_effect:nth-of-type(1) span { animation: menu_pop .17s .15s forwards; }
+  /* repeated delays — we use a general rule for many elements using nth-child generation via CSS var fallback */
+  /* A few representative rules to cover multiple items — full explicit list isn't necessary for demo but we keep many for the same effect: */
+  body.menu-open ion-side-menu .item.slide_effect:nth-of-type(2) i { animation: menu_pop .17s .10s forwards; }
+  body.menu-open ion-side-menu .item.slide_effect:nth-of-type(2) span { animation: menu_pop .17s .2s forwards; }
+  body.menu-open ion-side-menu .item.slide_effect:nth-of-type(3) i { animation: menu_pop .17s .15s forwards; }
+  body.menu-open ion-side-menu .item.slide_effect:nth-of-type(3) span { animation: menu_pop .17s .25s forwards; }
+  body.menu-open ion-side-menu .item.slide_effect:nth-of-type(4) i { animation: menu_pop .17s .2s forwards; }
+  body.menu-open ion-side-menu .item.slide_effect:nth-of-type(4) span { animation: menu_pop .17s .3s forwards; }
+  body.menu-open ion-side-menu .item.slide_effect:nth-of-type(5) i { animation: menu_pop .17s .25s forwards; }
+  body.menu-open ion-side-menu .item.slide_effect:nth-of-type(5) span { animation: menu_pop .17s .35s forwards; }
+
+  /* scale effect */
+  body.menu-open ion-side-menu .item.scale_effect { animation: menu_scale .3s .12s cubic-bezier(0.42,2.12,0.35,0.55) forwards; transform-origin:left center; }
+  body.menu-open ion-side-menu .item.scale_effect:nth-of-type(2) { animation-delay:.18s; }
+  body.menu-open ion-side-menu .item.scale_effect:nth-of-type(3) { animation-delay:.24s; }
+
+  /* fade effect */
+  body.menu-open ion-side-menu .item.fade_effect i, body.menu-open ion-side-menu .item.fade_effect span {
+    animation: menu_fade .2s .06s forwards;
+  }
+  body.menu-open ion-side-menu .item.fade_effect:nth-of-type(2) i,
+  body.menu-open ion-side-menu .item.fade_effect:nth-of-type(2) span { animation-delay:.125s; }
+
+  /* slide_up / wave / drop_in approximate */
+  body.menu-open ion-side-menu .item.slide_up { animation: slide_up .4s .06s cubic-bezier(0.07,0.65,0,0.96) forwards; position:relative; }
+  body.menu-open ion-side-menu .item.wave { animation: wave .8s .06s cubic-bezier(0.43,1.6,0.57,0.88) forwards; position:relative; }
+  body.menu-open ion-side-menu .item.drop_in { animation: drop_in .5s .06s cubic-bezier(0.43,1.6,0.57,0.88) forwards; position:relative; }
+
+  /* default off-screen or invisible states (so animations play) */
+  .item.slide_up, .item.wave { top:1000px; }
+  .item i, .item span {  transform: translate3d(0,0,0); }
+  .item.scale_effect { transform: scale(0); }
+  .item.drop_in { transform: scale(2); :0; }
+
+  /* keyframes (copied from original) */
+  @keyframes menu_pop { from{ left:-10px; opacity:0 } to{ left:0; opacity:1 } }
+  @keyframes menu_scale { from{ transform:scale(0) ;opacity:0} to{ transform:scale(1) ; opacity:1} }
+  @keyframes menu_fade { from{ opacity:0 } to{ opacity:1 } }
+  @keyframes slide_up { from{ top:1000px ;opacity:0 } to{ top:0 ; opacity:1} }
+  @keyframes wave { from{ top:1000px; opacity:0  } to{ top:0 ; opacity:1} }
+  @keyframes drop_in { from{ transform:scale(2) ; opacity:0 } to{ transform:scale(1); opacity:1 } }
+
+  /* small responsive niceties */
+  @media (max-width:520px) {
+    ion-side-menu { width:220px; }
+    .pad { margin-left:18px; width:88%; }
+  }
+
+  </style>
+</head>
+<body>
+
+<div class="app">
+
+  <!-- left menu (using same tags as original so CSS selectors stay familiar) -->
+  <ion-side-menu>
+    <div class="menu-inner">
+      <!-- generate items -->
+      <div class="item slide_effect"><i class="icon ion-android-home"></i><span>home</span><span class="sub">This is a sub title</span></div>
+      <div class="item slide_effect"><i class="icon ion-android-wifi"></i><span>wifi</span><span class="sub">This is a sub title</span></div>
+      <div class="item slide_effect"><i class="icon ion-gear-a"></i><span>settings</span><span class="sub">This is a sub title</span></div>
+      <div class="item slide_effect"><i class="icon ion-android-options"></i><span>options</span><span class="sub">This is a sub title</span></div>
+      <div class="item slide_effect"><i class="icon ion-android-search"></i><span>search</span><span class="sub">This is a sub title</span></div>
+      <div class="item slide_effect"><i class="icon ion-cloud"></i><span>cloud</span><span class="sub">This is a sub title</span></div>
+      <div class="item slide_effect"><i class="icon ion-android-stopwatch"></i><span>stopwatch</span><span class="sub">This is a sub title</span></div>
+      <div class="item slide_effect"><i class="icon ion-android-apps"></i><span>apps</span><span class="sub">This is a sub title</span></div>
+      <div class="item slide_effect"><i class="icon ion-android-map"></i><span>map</span><span class="sub">This is a sub title</span></div>
+      <div class="item slide_effect"><i class="icon ion-android-locate"></i><span>locate</span><span class="sub">This is a sub title</span></div>
+      <div class="item slide_effect"><i class="icon ion-android-compass"></i><span>compass</span><span class="sub">This is a sub title</span></div>
+      <div class="item slide_effect"><i class="icon ion-plus"></i><span>create</span><span class="sub">This is a sub title</span></div>
+      <div class="item slide_effect"><i class="icon ion-android-call"></i><span>call</span><span class="sub">This is a sub title</span></div>
+    </div>
+  </ion-side-menu>
+
+  <!-- overlay -->
+  <div class="overlay" id="overlay"></div>
+
+  <!-- main content -->
+  <main class="content" id="mainContent">
+    <div class="pad">
+      <i class="logo icon ion-ionic"></i>
+      <h1>Easy Side Menu Transitions</h1>
+      <h2>Just adding some css rules can really spice up your side menus — pick an effect and open the menu.</h2>
+
+      <div class="controls">
+        <button data-effect="slide_effect" class="active">Slide Left</button>
+        <button data-effect="scale_effect">Scale Up</button>
+        <button data-effect="fade_effect">Simple Fade</button>
+        <button data-effect="slide_up">Slide Up</button>
+        <button data-effect="wave">Wave</button>
+        <button data-effect="drop_in">Drop In</button>
+        <button id="toggleMenu" style="background:var(--cta); color:#153; border:none; margin-left:8px;">Toggle Menu</button>
+      </div>
+
+      <p style="margin-top:20px; color:#ddd; font-size:13px;">
+        Tip: click the dark overlay or the main area to close the menu.
+      </p>
+    </div>
+  </main>
+
+</div>
+
+<script>
+/* Vanilla JS controller for the menu/effects.
+   Behaviours:
+   - Toggle menu (adds body.menu-open)
+   - Buttons choose effect: applies selected effect class to each .item
+   - Auto-open shortly on first load (like original)
+   - Click overlay or main content when menu open -> close
+*/
+
+(function(){
+  var body = document.body;
+  var overlay = document.getElementById('overlay');
+  var toggleBtn = document.getElementById('toggleMenu');
+  var buttons = document.querySelectorAll('.controls button[data-effect]');
+  var items = Array.from(document.querySelectorAll('ion-side-menu .item'));
+
+  // helper to set effect on all items
+  function setEffect(effectName) {
+    items.forEach(function(it){
+      // remove previous effect classes (keep only 'item')
+      it.className = 'item ' + effectName;
+    });
+    // update active button styles
+    buttons.forEach(function(b){ b.classList.toggle('active', b.getAttribute('data-effect') === effectName); });
+  }
+
+  // toggle menu open/close
+  function toggleMenu() {
+    var open = body.classList.toggle('menu-open');
+    return open;
+  }
+
+  // close
+  function closeMenu() { body.classList.remove('menu-open'); }
+
+  // events
+  toggleBtn.addEventListener('click', function(e){
+    e.stopPropagation();
+    toggleMenu();
+  });
+
+  overlay.addEventListener('click', function(){ closeMenu(); });
+
+  // clicking main content closes menu too
+  document.getElementById('mainContent').addEventListener('click', function(){
+    if (body.classList.contains('menu-open')) closeMenu();
+  });
+
+  // buttons to switch effect
+  buttons.forEach(function(btn){
+    btn.addEventListener('click', function(ev){
+      var eff = btn.getAttribute('data-effect');
+      setEffect(eff);
+      // open the menu so user sees the effect
+      var opened = toggleMenu();
+      // if opening returned true (menu now open) we leave it,
+      // if it closed because it was already open, we re-open quickly to show the effect
+      if (!opened) {
+        // menu was open and toggle closed it — re-open to show the new effect
+        setTimeout(function(){ body.classList.add('menu-open'); }, 80);
+      }
+    });
+  });
+
+  // initial setup: default effect already 'slide_effect' on items; ensure active button visuals
+  setEffect('slide_effect');
+
+  // gentle auto-open on load (replicates original behaviour)
+  window.addEventListener('load', function(){
+    // short open-close to show the menu
+    setTimeout(function(){
+      body.classList.add('menu-open');
+      setTimeout(function(){ body.classList.remove('menu-open'); }, 700);
+    }, 600);
+  });
+
+  // accessibility: escape closes menu
+  document.addEventListener('keydown', function(e){
+    if (e.key === 'Escape') closeMenu();
+  });
+
+})();
+</script>
+
+</body>
+</html>

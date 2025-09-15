@@ -1,49 +1,162 @@
-<html lang="en"><head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Parent Dashboard</title>
-  <style>
-    body {
-      margin: 0; font-family: sans-serif; background: #f9f9fb;
-    }
-    .container {
-      padding: 20px;
-      max-width: 1200px;
-      margin: auto;
-    }
-    .section {
-      background: white;
-      border-radius: 10px;
-      padding: 20px;
-      margin-bottom: 20px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.05);
-    }
-    .grid {
-      display: flex; flex-wrap: wrap; gap: 15px;
-    }
-    .card {
-      flex: 1 1 200px;
-      background: #eef1f5;
-      border-radius: 10px;
-      padding: 15px;
-      text-align: center;
-    }
-    
-    @media (max-width: 600px) {
-      .grid {
-        flex-direction: column;
-      }
-    }
-  </style>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Student Dashboard</title>
+<style>
+  body {font-family: Arial, sans-serif; margin:0; background:#f5f5f5;}
+  .header {background:#2c3e50; color:white; padding:15px; display:flex; justify-content:space-between; align-items:center;}
+  .header h1 {margin:0; font-size:20px;}
+  .container {display:flex; min-height:100vh;}
+  .sidebar {width:220px; background:#34495e; color:white; padding:20px;}
+  .sidebar ul {list-style:none; padding:0;}
+  .sidebar li {padding:10px; cursor:pointer; margin-bottom:5px; border-radius:5px;}
+  .sidebar li:hover, .sidebar li.active {background:#1abc9c;}
+  .content {flex:1; padding:20px;}
+  .tab {display:none;}
+  .tab.active {display:block;}
+  .card {background:white; padding:15px; border-radius:8px; margin-bottom:15px; box-shadow:0 1px 5px rgba(0,0,0,0.1);}
+  table {width:100%; border-collapse:collapse; background:white; border-radius:8px; overflow:hidden; margin-bottom:15px;}
+  th, td {padding:10px; text-align:left; border-bottom:1px solid #ddd;}
+  th {background:#ecf0f1;}
+  .status {padding:5px 10px; border-radius:12px; color:white; font-weight:bold; display:inline-block;}
+  .status.pending {background:#e67e22;}
+  .status.submitted {background:#27ae60;}
+  .status.reviewed {background:#2980b9;}
+  .status.overdue {background:#c0392b;}
+  .child-selector {margin-bottom:15px;}
+</style>
 </head>
 <body>
-  <div class="container">
 
-    <!-- Summary Cards -->
-    <div class="grid section">
-      <div class="card">👧 3 Students</div>
-      <div class="card">📅 6 Sessions</div>
-      <div class="card">💳 ₹12,000 Invoices</div>
-      <div class="card">🔁 2 Referrals</div>
+<div class="header">
+  <h1>Student Dashboard</h1>
+  <div class="child-selector">
+    Child: 
+    <select id="childSelect" onchange="filterChild()">
+      <option value="all">All</option>
+      <option value="child1">Rohan (10)</option>
+      <option value="child2">Meera (8)</option>
+    </select>
+  </div>
+</div>
+
+<div class="container">
+  <div class="sidebar">
+    <ul>
+      <li class="active" onclick="openTab('profile')">Profile</li>
+      <li onclick="openTab('referrals')">Referrals</li>
+      <li onclick="openTab('invoices')">Invoices</li>
+      <li onclick="openTab('sessions')">Sessions</li>
+      <li onclick="openTab('homework')">Homework</li>
+    </ul>
+  </div>
+  <div class="content">
+    
+    <!-- PROFILE TAB -->
+    <div id="profile" class="tab active">
+      <div class="card">
+        <h2>Parent Info</h2>
+        <p><strong>Name:</strong> Priya Sharma</p>
+        <p><strong>Email:</strong> priya@example.com</p>
+        <p><strong>Phone:</strong> +91 9876543210</p>
+        <p><strong>Timezone:</strong> IST</p>
+        <p><strong>Employee Assigned:</strong> Neha Verma (Counselor)</p>
+        <p><strong>Campaign:</strong> Summer2025</p>
+      </div>
+      <div class="card">
+        <h2>Children</h2>
+        <ul>
+          <li>Rohan, Age 10 <button onclick="alert('View Sessions for Rohan')">View Sessions</button> <button onclick="alert('View Homework for Rohan')">View Homework</button></li>
+          <li>Meera, Age 8 <button onclick="alert('View Sessions for Meera')">View Sessions</button> <button onclick="alert('View Homework for Meera')">View Homework</button></li>
+        </ul>
+      </div>
     </div>
-</body></html>
+    
+    <!-- REFERRALS TAB -->
+    <div id="referrals" class="tab">
+      <div class="card">
+        <h2>Received From</h2>
+        <table>
+          <tr><th>Name</th><th>Phone</th><th>Date Referred</th></tr>
+          <tr><td>Amit Kumar</td><td>+91 9988776655</td><td>2025-09-10</td></tr>
+          <tr><td>Sneha Roy</td><td>+91 9876543211</td><td>2025-09-11</td></tr>
+        </table>
+      </div>
+      <div class="card">
+        <h2>Given To</h2>
+        <table>
+          <tr><th>Name</th><th>Phone</th><th>Status</th></tr>
+          <tr><td>Karan Mehta</td><td>+91 9123456780</td><td>Joined</td></tr>
+          <tr><td>Priya Das</td><td>+91 9234567890</td><td>Not Joined</td></tr>
+        </table>
+      </div>
+      <button onclick="alert('Share Referral Link!')">Share Referral Link</button>
+    </div>
+    
+    <!-- INVOICES TAB -->
+    <div id="invoices" class="tab">
+      <div class="card">
+        <h2>Invoices</h2>
+        <table>
+          <tr><th>Invoice ID</th><th>Date</th><th>Package</th><th>Total Cost</th><th>Status</th></tr>
+          <tr><td>INV101</td><td>2025-09-01</td><td>10 Sessions</td><td>₹5000</td><td>Paid</td></tr>
+          <tr><td>INV102</td><td>2025-09-05</td><td>5 Sessions</td><td>₹2500</td><td>Pending</td></tr>
+        </table>
+      </div>
+    </div>
+    
+    <!-- SESSIONS TAB -->
+    <div id="sessions" class="tab">
+      <div class="card">
+        <h2>Demo Sessions</h2>
+        <table>
+          <tr><th>Session ID</th><th>Date</th><th>Time</th><th>Teacher</th><th>Status</th></tr>
+          <tr><td>D101</td><td>2025-09-12</td><td>10:00 AM</td><td>Neha Verma</td><td>Scheduled</td></tr>
+        </table>
+      </div>
+      <div class="card">
+        <h2>Paid Sessions</h2>
+        <table>
+          <tr><th>Session ID</th><th>Date</th><th>Time</th><th>Teacher</th><th>Status</th><th>Cost</th></tr>
+          <tr><td>S101</td><td>2025-09-15</td><td>11:00 AM</td><td>Neha Verma</td><td>Completed</td><td>₹500</td></tr>
+          <tr><td>S102</td><td>2025-09-17</td><td>11:00 AM</td><td>Neha Verma</td><td>Scheduled</td><td>₹500</td></tr>
+        </table>
+      </div>
+    </div>
+    
+    <!-- HOMEWORK TAB -->
+    <div id="homework" class="tab">
+      <div class="card">
+        <h2>Homework</h2>
+        <table>
+          <tr><th>Title</th><th>Assigned Date</th><th>Due Date</th><th>Status</th></tr>
+          <tr><td>Fractions Worksheet</td><td>2025-09-10</td><td>2025-09-12</td><td><span class="status pending">Pending</span></td></tr>
+          <tr><td>Reading Comprehension</td><td>2025-09-08</td><td>2025-09-11</td><td><span class="status submitted">Submitted</span></td></tr>
+        </table>
+      </div>
+    </div>
+    
+  </div>
+</div>
+
+<script>
+function openTab(tabId){
+  var tabs = document.querySelectorAll('.tab');
+  tabs.forEach(t => t.classList.remove('active'));
+  document.getElementById(tabId).classList.add('active');
+  
+  var sidebarItems = document.querySelectorAll('.sidebar li');
+  sidebarItems.forEach(li => li.classList.remove('active'));
+  event.target.classList.add('active');
+}
+
+function filterChild(){
+  var child = document.getElementById('childSelect').value;
+  alert('Filtering dashboard for: ' + child);
+  // TODO: Integrate child filtering for sessions/homework/profile dynamically
+}
+</script>
+
+</body>
+</html>
